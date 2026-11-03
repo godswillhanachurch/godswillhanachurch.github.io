@@ -591,6 +591,30 @@ main>section:not(.slider) p,main>section:not(.slider) li,main dd,main td,.faq-a,
 .news-split .notice h2{text-align:left;margin-bottom:var(--gap-head)!important}
 @media (max-width:1000px){.news-split{grid-template-columns:1fr}}
 @media (max-width:420px){.home-row .worship-times .times{grid-template-columns:1fr}}
+
+.vision-label{font-size:var(--t-sm)!important;font-weight:700;letter-spacing:.08em;color:var(--amber);margin:0}
+/* ===== 글 줄이기: 높은뜻 정신 펼침 / 선교 요약 ===== */
+details.spirit-item{display:block;cursor:pointer}
+.spirit-grid{align-items:start}
+details.spirit-item summary{list-style:none;display:grid;gap:.6rem}
+details.spirit-item summary::-webkit-details-marker{display:none}
+.sp-sum{color:var(--ink)!important}
+.sp-more{justify-self:start;font-size:var(--t-sm);font-weight:600;color:var(--pine)}
+.sp-more::after{content:" +"}
+details[open] .sp-more::after{content:" −"}
+.sp-sum{margin-top:.9rem!important;padding-top:.9rem;border-top:1px solid var(--line);font-weight:600}
+.sp-full{margin-top:.4rem!important}
+details.spirit-item:hover h3{color:var(--pine)}
+.m-lead{margin:0}
+.m-tags{list-style:none;margin:.2rem 0 0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
+.m-tags li{font-size:var(--t-sm)!important;line-height:1.4!important;font-weight:600;padding:.35rem .8rem;border-radius:999px;background:var(--bg);border:1px solid var(--line)}
+.m-tags li{padding:0!important;border:0!important;background:none!important}
+.m-tag{font:inherit;font-size:var(--t-sm);font-weight:600;line-height:1.4;padding:.45rem .9rem;border-radius:999px;background:var(--bg);border:1px solid var(--line);color:var(--ink);cursor:pointer;transition:background .15s,color .15s,border-color .15s}
+.m-tag:hover{border-color:var(--pine);color:var(--pine)}
+.m-tag.on{background:var(--pine);border-color:var(--pine);color:var(--bg)}
+.m-say{margin:0;min-height:3.5em}
+.m-info{display:flex;flex-wrap:wrap;gap:.2rem .8rem;margin:0;padding-top:.8rem;border-top:1px solid var(--line)}
+.m-info b{font-weight:700}
 </style>
 </head>
 <body>
@@ -818,10 +842,9 @@ main>section:not(.slider) p,main>section:not(.slider) li,main dd,main td,.faq-a,
   <!-- 4. 비전 -->
   <section class="vision" id="vision">
     <div class="wrap vision-in">
-      <h2>높은뜻 하나되는교회</h2>
+      <h2>높은뜻 하나되는교회 비전</h2>
       <p class="vision-tag">One in God, One in Love, One Korea</p>
-      <hr class="vision-rule">
-      <p class="vision-text">하나님과의 친밀함을 누리고, 서로 사랑하며, 남과 북의 하나 됨을 기도로 준비하는 공동체</p>
+            <p class="vision-text">하나님과 하나 되고, 너와 내가 하나 되며, 남과 북이 하나 되는 교회</p>
     </div>
   </section>
 
@@ -831,7 +854,6 @@ main>section:not(.slider) p,main>section:not(.slider) li,main dd,main td,.faq-a,
 <dl class="creed creed-about">
         <div class="creed-row"><dt>우리의 정체성</dt><dd>높은뜻 하나되는 교회는 북한 선교와 통일을 위해 준비하라는 하나님의 부르심에 순종하여 세워진 교회입니다.</dd></div>
         <div class="creed-row"><dt>우리가 추구하는 삶</dt><dd>우리는 하나님 나라의 복음을 전하고, 하나님과의 친밀함을 누리며, 예수 그리스도를 아는 삶의 행복을 경험하기를 갈망합니다.</dd></div>
-        <div class="creed-row"><dt>우리의 비전</dt><dd>하나님과 하나 되고, 너와 내가 하나 되며, 남과 북이 하나 되는 통일을 바라보며 기도로 세워지는 교회입니다.</dd></div>
       </dl>
       <div class="about-grid">
           <div class="box" id="people">
@@ -869,12 +891,12 @@ main>section:not(.slider) p,main>section:not(.slider) li,main dd,main td,.faq-a,
         <h2>하나님이 주인 되시는 교회</h2>
       </div>
       <div class="spirit-grid">
-        <article class="spirit-item"><h3>하나님께 영과 진리로 예배하는 교회</h3><p>모든 예배를 통하여 하나님은 영광 받으시고 모든 교인들은 충만한 은혜를 받게 하는 것이 높은뜻 교회의 목표입니다.</p></article>
-        <article class="spirit-item"><h3>하나님의 식과 법을 고집하는 교회</h3><p>높은뜻은 High Will이 아니라 God’s Will입니다. 우리는 하나님의 뜻이 이 땅에서 이루어지게 하는 것이 교회의 목표입니다.</p></article>
-        <article class="spirit-item"><h3>하나님이 기뻐하시는 일에 힘쓰는 교회</h3><p>높은뜻 교회는 하나님이 좋아하시는 음식이 가득한 잔칫상을 차려드리는 것처럼 하나님이 지금 가장 하시고 싶어 하시는 일들을 하려고 노력하고 있습니다.</p></article>
-        <article class="spirit-item"><h3>성경적 민주정치를 위해 힘쓰는 교회</h3><p>높은뜻 교회는 교회의 민주주의 정치를 추구합니다. 하나님이 주인이 되시기 위해 성도들 사이에 그 어떠한 차별도 없는 올바른 장로정치와 전문 분야의 목회가 균형을 이루는 협동 목회를 추구합니다.</p></article>
-        <article class="spirit-item"><h3>십일조, 희년정신을 실천하는 교회</h3><p>물질과 재산의 주인이 자신이 아니라 하나님이라는 고백의 실천으로써 온전한 십일조 생활을 중히 여깁니다. 희년재단을 통하여 희년정신을 실현하며 교회 예산의 1/3 이상을 교회 밖을 위하여 사용하려 합니다.</p></article>
-        <article class="spirit-item"><h3>교인들을 세상의 왕 같은 제사장으로 키우는 교회</h3><p>높은뜻 교회는 하나님이 주신 모든 직업을 다 성직으로 이해합니다. 교인 모두가 다 자기 전문적인 직업 영역에서 왕 같은 제사장이 되어야 함을 믿습니다. 교인들이 세상을 섬기기를 원합니다.</p></article>
+        <details class="spirit-item"><summary><h3>하나님께 영과 진리로 예배하는 교회</h3><span class="sp-more">자세히</span></summary><p class="sp-sum">모든 예배로 하나님께 영광을, 성도에게 충만한 은혜를.</p><p class="sp-full">모든 예배를 통하여 하나님은 영광 받으시고 모든 교인들은 충만한 은혜를 받게 하는 것이 높은뜻 교회의 목표입니다.</p></details>
+        <details class="spirit-item"><summary><h3>하나님의 식과 법을 고집하는 교회</h3><span class="sp-more">자세히</span></summary><p class="sp-sum">높은뜻은 High Will이 아니라 God’s Will입니다.</p><p class="sp-full">우리는 하나님의 뜻이 이 땅에서 이루어지게 하는 것이 교회의 목표입니다.</p></details>
+        <details class="spirit-item"><summary><h3>하나님이 기뻐하시는 일에 힘쓰는 교회</h3><span class="sp-more">자세히</span></summary><p class="sp-sum">하나님이 지금 가장 하고 싶어 하시는 일에 힘씁니다.</p><p class="sp-full">높은뜻 교회는 하나님이 좋아하시는 음식이 가득한 잔칫상을 차려드리는 것처럼 하나님이 지금 가장 하시고 싶어 하시는 일들을 하려고 노력하고 있습니다.</p></details>
+        <details class="spirit-item"><summary><h3>성경적 민주정치를 위해 힘쓰는 교회</h3><span class="sp-more">자세히</span></summary><p class="sp-sum">차별 없는 장로정치와 협동 목회를 추구합니다.</p><p class="sp-full">높은뜻 교회는 교회의 민주주의 정치를 추구합니다. 하나님이 주인이 되시기 위해 성도들 사이에 그 어떠한 차별도 없는 올바른 장로정치와 전문 분야의 목회가 균형을 이루는 협동 목회를 추구합니다.</p></details>
+        <details class="spirit-item"><summary><h3>십일조, 희년정신을 실천하는 교회</h3><span class="sp-more">자세히</span></summary><p class="sp-sum">온전한 십일조, 예산의 1/3 이상은 교회 밖으로.</p><p class="sp-full">물질과 재산의 주인이 자신이 아니라 하나님이라는 고백의 실천으로써 온전한 십일조 생활을 중히 여깁니다. 희년재단을 통하여 희년정신을 실현하며 교회 예산의 1/3 이상을 교회 밖을 위하여 사용하려 합니다.</p></details>
+        <details class="spirit-item"><summary><h3>교인들을 세상의 왕 같은 제사장으로 키우는 교회</h3><span class="sp-more">자세히</span></summary><p class="sp-sum">모든 직업은 성직, 각자의 자리에서 세상을 섬깁니다.</p><p class="sp-full">높은뜻 교회는 하나님이 주신 모든 직업을 다 성직으로 이해합니다. 교인 모두가 다 자기 전문적인 직업 영역에서 왕 같은 제사장이 되어야 함을 믿습니다. 교인들이 세상을 섬기기를 원합니다.</p></details>
       </div>
     </div>
   </section>
@@ -890,40 +912,20 @@ main>section:not(.slider) p,main>section:not(.slider) li,main dd,main td,.faq-a,
         <div class="mission-col" id="faithmission">
           <h3 class="m-head">해외선교 · FaithMission</h3>
           <div class="ministry">
-            <h4 class="m-title">주요 사역</h4>
-            <dl class="m-list">
-              <div><dt>복음 전도</dt><dd>현지 사역자와 함께 현지 가정을 방문하여 예수 그리스도의 복음을 전합니다.</dd></div>
-              <div><dt>치유 기도</dt><dd>현지인들 중에 아픈 사람들을 위해 간절히 기도하며 성령의 역사를 경험합니다.</dd></div>
-              <div><dt>위로와 축복</dt><dd>현지인 사역자 및 선교사님들을 위로하고 축복합니다.</dd></div>
-              <div><dt>패밀리 선교</dt><dd>온 세대가 함께 참여하는 패밀리 선교를 진행합니다.</dd></div>
-            </dl>
-            <h4 class="m-title" style="margin-top:1.2rem">아웃리치 지역</h4>
-            <dl class="m-list">
-              <div><dt>아프리카</dt><dd>케냐 · 에티오피아</dd></div>
-              <div><dt>중동</dt><dd>레바논</dd></div>
-              <div><dt>아시아</dt><dd>필리핀 · 태국 (치앙마이)</dd></div>
-            </dl>
+            <ul class="m-tags"><li><button type="button" class="m-tag on" aria-pressed="true" data-d="현지 사역자와 함께 가정을 방문하여 예수 그리스도의 복음을 전합니다.">복음 전도</button></li><li><button type="button" class="m-tag" aria-pressed="false" data-d="아픈 현지인들을 위해 간절히 기도하며 성령의 역사를 경험합니다.">치유 기도</button></li><li><button type="button" class="m-tag" aria-pressed="false" data-d="현지 사역자와 선교사님들을 찾아가 위로하고 축복합니다.">위로와 축복</button></li><li><button type="button" class="m-tag" aria-pressed="false" data-d="온 세대가 함께 참여하는 가족 단위 선교를 진행합니다.">패밀리 선교</button></li></ul>
+            <p class="m-say" aria-live="polite">현지 사역자와 함께 가정을 방문하여 예수 그리스도의 복음을 전합니다.</p>
+            <p class="m-info"><b>아웃리치</b>케냐 · 에티오피아 · 레바논 · 필리핀 · 태국</p>
             <div class="btns"><a class="btn btn-fill" href="https://www.youtube.com/watch?v=IKFOozfH2Bo" target="_blank" rel="noopener">▶ 사역 영상 보기</a><a class="btn" href="#offering" style="color:var(--pine)">해외선교 후원하기</a></div>
           </div>
         </div>
         <div class="mission-col" id="nk">
           <h3 class="m-head">국내선교 · 탈북민 사역</h3>
-  <div class="ministry">
-          <h4 class="m-title">주요 사역</h4>
-          <dl class="m-list">
-            <div><dt>돌봄</dt><dd>북향민 가정을 찾아가 반찬을 나눕니다.</dd></div>
-            <div><dt>기도 &amp; 예배</dt><dd>위로와 격려가 필요한 분들을 위해 간절히 기도하고 함께 예배합니다.</dd></div>
-            <div><dt>식사</dt><dd>명절과 삼복더위에 식당에서 식사를 대접해 드립니다.</dd></div>
-          </dl>
-          <h4 class="m-title" style="margin-top:1.2rem">정기 사역 (반찬나눔)</h4>
-          <dl class="m-list">
-            <div><dt>사역시간</dt><dd>매주 금요일 오전 10시~오후 2시</dd></div>
-            <div><dt>모임장소</dt><dd>교회 사무실, 오전 10시</dd></div>
-            <div><dt>사역장소</dt><dd>부산 다대포 4·5지구</dd></div>
-          </dl>
-          <p class="m-note">재정과 섬김, 기도로 누구든지 함께 참여할 수 있습니다.<br>많은 관심과 기도 부탁드립니다.</p>
-          <div class="btns"><a class="btn btn-fill" href="https://www.youtube.com/watch?v=a1WItLC-ju0" target="_blank" rel="noopener">▶ 사역 영상 보기</a><a class="btn" href="#offering" style="color:var(--pine)">반찬사역 후원하기</a></div>
-        </div>
+          <div class="ministry">
+            <ul class="m-tags"><li><button type="button" class="m-tag on" aria-pressed="true" data-d="북향민 가정을 찾아가 정성껏 준비한 반찬을 나눕니다.">돌봄</button></li><li><button type="button" class="m-tag" aria-pressed="false" data-d="위로와 격려가 필요한 분들을 위해 기도하고 함께 예배합니다.">기도와 예배</button></li><li><button type="button" class="m-tag" aria-pressed="false" data-d="명절과 삼복더위에 식당에서 따뜻한 식사를 대접합니다.">식사 대접</button></li></ul>
+            <p class="m-say" aria-live="polite">북향민 가정을 찾아가 정성껏 준비한 반찬을 나눕니다.</p>
+            <p class="m-info"><b>반찬나눔</b>매주 금요일 오전 10시 교회 사무실 출발 · 부산 다대포</p>
+            <div class="btns"><a class="btn btn-fill" href="https://www.youtube.com/watch?v=a1WItLC-ju0" target="_blank" rel="noopener">▶ 사역 영상 보기</a><a class="btn" href="#offering" style="color:var(--pine)">반찬사역 후원하기</a></div>
+          </div>
         </div>
       </div>
     </div>
@@ -1094,6 +1096,15 @@ document.querySelectorAll('.copy').forEach(function(b){
     function done(){var d=document.createElement('div');d.className='toast';d.textContent='계좌번호를 복사했습니다';document.body.appendChild(d);setTimeout(function(){d.remove()},1600)}
     function sel(){var r=document.createRange();r.selectNodeContents(el);var s=getSelection();s.removeAllRanges();s.addRange(r)}
     try{navigator.clipboard.writeText(t).then(done,sel)}catch(e){sel()}
+  });
+});
+
+document.querySelectorAll('.m-tags').forEach(function(ul){
+  var box=ul.nextElementSibling;
+  ul.addEventListener('click',function(e){
+    var b=e.target.closest('.m-tag'); if(!b) return;
+    ul.querySelectorAll('.m-tag').forEach(function(x){var on=x===b;x.classList.toggle('on',on);x.setAttribute('aria-pressed',on)});
+    box.textContent=b.getAttribute('data-d');
   });
 });
 </script>
