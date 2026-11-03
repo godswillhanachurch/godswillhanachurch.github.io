@@ -50,7 +50,6 @@ img{max-width:100%}
 
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:0}
-@media (max-width:1000px){html{scroll-padding-top:64px}}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.75;word-break:keep-all;-webkit-font-smoothing:antialiased}
 a{color:var(--pine)}
@@ -101,28 +100,47 @@ nav.menu a:hover{color:var(--pine)}
 @keyframes glow{from{opacity:.55}to{opacity:.9}}
 
 
-/* ===== 세로 사이드바 레이아웃 ===== */
-:root{--side:240px}
-.side{position:fixed;top:0;left:0;bottom:0;width:var(--side);background:var(--surface);border-right:1px solid var(--line);overflow-y:auto;z-index:9;display:flex;flex-direction:column;padding-top:env(safe-area-inset-top,0px);padding-left:env(safe-area-inset-left,0px)}
-main,footer{margin-left:var(--side)}
-.side-top{padding:24px 24px 20px;text-align:center}
-.side-logo img{width:104px;height:auto;display:inline-block}
-.side-logo-sm,.side-toggle{display:none}
-.side-nav{display:flex;flex-direction:column;border-top:1px solid var(--line)}
-.side-nav a{display:flex;align-items:center;gap:14px;padding:12px 28px;border-bottom:1px solid var(--line);color:var(--ink);text-decoration:none;font-size:1.02rem;font-weight:600;position:relative}
-.side-nav a:hover{background:var(--pine-soft);color:var(--pine)}
+/* ===== 상단 가로 메뉴 ===== */
+:root{--side:0px}
+html{scroll-padding-top:72px!important}
+.side{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:color-mix(in srgb,var(--bg) 94%,transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.side-in{max-width:1240px;margin:0 auto;height:72px;display:flex;align-items:center;gap:1.5rem;padding-left:max(24px,env(safe-area-inset-left,0px));padding-right:max(24px,env(safe-area-inset-right,0px))}
+.side-logo-sm{display:flex;align-items:center;gap:.6rem;color:var(--ink);text-decoration:none;font-weight:700;font-size:1.05rem;white-space:nowrap;flex:none}
+.side-logo-sm img{width:40px;height:40px}
+.side-nav{display:flex;align-items:center;gap:.15rem;margin-left:auto}
+.side-nav a{display:flex;align-items:center;gap:8px;padding:.5rem .7rem;color:var(--ink);text-decoration:none;font-size:.95rem;font-weight:600;white-space:nowrap;position:relative;border-radius:4px}
+.side-nav a:hover{color:var(--pine)}
 .side-nav a.on{color:var(--pine)}
-.side-nav a.on::after{content:"";position:absolute;right:0;top:0;bottom:0;width:3px;background:var(--pine)}
-.side-nav svg{flex:none;color:var(--ink);width:20px;height:20px}
-.side-nav a.on svg,.side-nav a:hover svg{color:var(--pine)}
-.side-motto{padding:22px 28px 28px;display:grid;gap:.3rem}
-.side-label{font-size:.85rem;color:var(--muted);font-weight:600}
-.side-big{font-size:1.4rem;font-weight:700;letter-spacing:-.02em}
-.side-verse{font-size:.92rem;line-height:1.65}
-.side-ref{font-size:.85rem;color:var(--muted)}
-.side-goals{margin:.6rem 0 0;padding-left:1.1rem;font-size:.9rem;line-height:1.8}
-.side-first{margin-top:1rem;display:block;text-align:center;background:var(--ink);color:var(--bg);text-decoration:none;font-size:.88rem;font-weight:600;padding:.7rem;border-radius:4px}
+.side-nav a.on::after{content:"";position:absolute;left:.7rem;right:.7rem;bottom:-.2rem;height:2px;background:var(--pine)}
+.side-nav svg{display:none;flex:none;width:18px;height:18px}
+.side-nav .sns{padding:.5rem .4rem}
+.side-nav .sns svg{display:block;width:20px;height:20px}
+.side-nav .sns span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.side-nav .home-link{display:none}
+.side-nav .sns-first{margin-left:.5rem;border-left:1px solid var(--line);border-radius:0;padding-left:.9rem}
+.side-first{flex:none;background:var(--ink);color:var(--bg);text-decoration:none;font-size:.88rem;font-weight:600;padding:.55rem 1rem;border-radius:999px;white-space:nowrap}
+.side-toggle{display:none;background:none;border:1px solid var(--line);border-radius:4px;padding:.4rem .9rem;font:inherit;font-size:.9rem;color:var(--ink);cursor:pointer}
+@media (max-width:1180px){
+  .side-in{height:64px;gap:.8rem;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+  html{scroll-padding-top:64px!important}
+  .side-first{margin-left:auto}
+  .side-toggle{display:block}
+  .side-nav{display:none;position:absolute;left:0;right:0;top:100%;margin:0;flex-direction:column;align-items:stretch;gap:0;background:var(--bg);border-bottom:1px solid var(--line);max-height:70vh;overflow-y:auto;box-shadow:0 12px 24px rgba(0,0,0,.08)}
+  .side.open .side-nav{display:flex}
+  .side-nav a,.side-nav .sns{padding:13px max(16px,env(safe-area-inset-left,0px));border-bottom:1px solid var(--line);border-radius:0;gap:14px}
+  .side-nav a.on::after{left:0;right:auto;top:0;bottom:0;width:3px;height:auto}
+  .side-nav svg,.side-nav .sns svg{display:block}
+  .side-nav .sns span{position:static;width:auto;height:auto;clip:auto}
+  .side-nav .home-link{display:flex}
+  .side-nav .sns-first{margin-left:0;border-left:0;padding-left:max(16px,env(safe-area-inset-left,0px))}
+}
+@media (max-width:480px){.side-logo-sm span{font-size:.95rem}.side-first{display:none}.side-toggle{margin-left:auto}}
 
+.slide-goals{list-style:none;margin:.5rem 0 0;padding:.8rem 0 0;border-top:1px solid rgba(111,90,67,.3);display:grid;grid-template-columns:repeat(2,auto);justify-content:end;gap:.35rem 1.4rem;font-size:.95rem;font-weight:600;color:#3d3127}
+.slide-goals li{display:flex;align-items:center;gap:.5rem;justify-content:flex-end;white-space:nowrap}
+.slide-goals b{flex:none;width:1.35rem;height:1.35rem;border-radius:50%;background:#6f5a43;color:#f3eee5;font-size:.75rem;display:grid;place-items:center}
+@media (max-width:900px){.slide-goals{font-size:.85rem;gap:.3rem 1rem}}
+@media (max-width:640px){.slide.s1{height:auto;min-height:clamp(320px,38vw,470px);padding-block:20px 52px}.slide-goals{grid-template-columns:1fr;justify-content:end}}
 /* 슬라이더 */
 .slider{position:relative;padding:0;border-top:0;overflow:hidden;background:var(--band)}
 .slides{display:grid}
@@ -195,15 +213,6 @@ main,footer{margin-left:var(--side)}
 @media (max-width:760px){.home-row .times{grid-template-columns:1fr}}
 
 @media (max-width:1000px){
-  :root{--side:0px}
-  .side{position:sticky;top:env(safe-area-inset-top,0px);bottom:auto;width:auto;border-right:0;border-bottom:1px solid var(--line);overflow:visible}
-  .side-top{display:flex;align-items:center;justify-content:space-between;padding:10px max(16px,env(safe-area-inset-left,0px)) 10px max(16px,env(safe-area-inset-left,0px));text-align:left}
-  .side-logo{display:none}
-  .side-logo-sm{display:flex;align-items:center;gap:.6rem;color:var(--ink);text-decoration:none;font-weight:700}
-  .side-toggle{display:block;background:none;border:1px solid var(--line);border-radius:4px;padding:.4rem .9rem;font:inherit;font-size:.9rem;color:var(--ink);cursor:pointer}
-  .side-nav,.side-motto{display:none}
-  .side.open .side-nav{display:flex;max-height:70vh;overflow-y:auto}
-  .side-nav a{padding:12px max(16px,env(safe-area-inset-left,0px))}
   .row-grid{grid-template-columns:1fr}
   .slide-text{padding-inline:56px}
 }
@@ -507,39 +516,27 @@ footer b{color:var(--ink);font-family:var(--f-display);font-size:1.05rem}
 </style>
 </head>
 <body>
-<aside class="side" id="side">
-  <div class="side-top">
-    <a class="side-logo" href="#top" aria-label="높은뜻 하나되는 교회 처음으로"><img src="logo.svg" alt="높은뜻 하나되는 교회" width="120" height="118"></a>
-    <a class="side-logo-sm" href="#top"><img src="logo.svg" alt="" width="36" height="36"><span>높은뜻 하나되는 교회</span></a>
-    <button class="side-toggle" type="button" id="sideToggle" aria-expanded="false" aria-controls="sideNav">메뉴</button>
-  </div>
+
+<header class="side" id="side">
+ <div class="side-in">
+  <a class="side-logo-sm" href="#top" aria-label="높은뜻 하나되는 교회 처음으로"><img src="logo.svg" alt="" width="40" height="40"><span>높은뜻 하나되는 교회</span></a>
   <nav class="side-nav" id="sideNav" aria-label="주 메뉴">
-      <a href="#top" class="on"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/></svg><span>Home</span></a>
+      <a href="#top" class="on home-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/></svg><span>Home</span></a>
       <a href="#about"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/></svg><span>교회소개</span></a>
       <a href="#spirit"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.4 5.6L20 9.3l-4.3 3.9 1.3 5.8L12 16l-5 3 1.3-5.8L4 9.3l5.6-.7z"/></svg><span>높은뜻 정신</span></a>
       <a href="#notice"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18M7 8h10"/></svg><span>예배와 말씀</span></a>
       <a href="#mission"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg><span>선교</span></a>
       <a href="#life"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.5-7 10-7 10z"/></svg><span>환영합니다</span></a>
       <a href="#news"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M7 9h10M7 13h6"/></svg><span>교회소식</span></a>
-      <a href="https://www.youtube.com/@Godwillhanachurch" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="3.5"/><path d="M10 9.5v5l4.5-2.5z" fill="currentColor"/></svg><span>YouTube</span></a>
-      <a href="https://www.facebook.com/godswillhanachurch?locale=ko_KR" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M13.5 21.3V13.5h2.6l.4-3h-3V8.8c0-.9.3-1.5 1.6-1.5h1.5V4.7c-.3 0-1.2-.1-2.2-.1-2.2 0-3.6 1.3-3.6 3.8v2.1H8.3v3h2.5v7.6"/></svg><span>Facebook</span></a>
       <a href="#offering"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="12" rx="1"/><path d="M3 11h18"/></svg><span>헌금 안내</span></a>
       <a href="#visit"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6-5.5-6-11a6 6 0 0 1 12 0c0 5.5-6 11-6 11z"/><circle cx="12" cy="10" r="2"/></svg><span>오시는 길</span></a>
+      <a class="sns sns-first" aria-label="YouTube" href="https://www.youtube.com/@Godwillhanachurch" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="3.5"/><path d="M10 9.5v5l4.5-2.5z" fill="currentColor"/></svg><span>YouTube</span></a>
+      <a class="sns" aria-label="Facebook" href="https://www.facebook.com/godswillhanachurch?locale=ko_KR" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M13.5 21.3V13.5h2.6l.4-3h-3V8.8c0-.9.3-1.5 1.6-1.5h1.5V4.7c-.3 0-1.2-.1-2.2-.1-2.2 0-3.6 1.3-3.6 3.8v2.1H8.3v3h2.5v7.6"/></svg><span>Facebook</span></a>
   </nav>
-  <div class="side-motto">
-    <p class="side-label">2026년 표어</p>
-    <p class="side-big">변화와 성숙</p>
-    <p class="side-verse">이 모든 일에 전심 전력하여 너의 성숙함을 모든 사람에게 나타나게 하라</p>
-    <p class="side-ref">디모데전서 4장 15절</p>
-    <ol class="side-goals">
-      <li>더 깊이 예배하는 교회</li>
-      <li>기도의 분량을 채우는 교회</li>
-      <li>말씀을 배우는 교회</li>
-      <li>헌신의 기쁨을 누리는 교회</li>
-    </ol>
-    <a class="side-first" href="#life">처음 오셨나요?</a>
-  </div>
-</aside>
+  <a class="side-first" href="#life">처음 오셨나요?</a>
+  <button class="side-toggle" type="button" id="sideToggle" aria-expanded="false" aria-controls="sideNav">메뉴</button>
+ </div>
+</header>
 
 <main id="top">
   <!-- 1. 슬라이드 배너 -->
@@ -590,6 +587,12 @@ footer b{color:var(--ink);font-family:var(--f-display);font-size:1.05rem}
           <h1 class="slide-title">변화와 성숙</h1>
           <p class="slide-body">이 모든 일에 전심 전력하여<br>너의 성숙함을 모든 사람에게 나타나게 하라</p>
           <p class="slide-ref">디모데전서 4장 15절</p>
+          <ol class="slide-goals" aria-label="2026년 4가지 목표">
+            <li><b>1</b>더 깊이 예배하는 교회</li>
+            <li><b>2</b>기도의 분량을 채우는 교회</li>
+            <li><b>3</b>말씀을 배우는 교회</li>
+            <li><b>4</b>헌신의 기쁨을 누리는 교회</li>
+          </ol>
         </div>
       </article>
       <article class="slide s2" aria-roledescription="slide" aria-label="2 / 3">
