@@ -1,0 +1,523 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>높은뜻 하나되는 교회</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="북한 선교와 통일을 준비하는 교회, 높은뜻 하나되는 교회 (창원 진해 신항)">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: 한 장짜리 교회 사이트 — 상단 고정 메뉴, 섹션이 위에서 아래로 쌓이는 주보형 흐름, 모바일 하단 바로가기 바 */
+:root{
+  --bg:#f7f8f5;          /* 아주 옅은 녹회색 종이 */
+  --surface:#ffffff;
+  --ink:#1f2a24;         /* 짙은 소나무빛 먹색 */
+  --muted:#5d6b63;
+  --line:#dde3dc;
+  --pine:#2f5d4a;        /* 주보 라벨 연두를 깊게 */
+  --pine-soft:#e4eee7;
+  --amber:#c9741f;       /* 절기 강조색(가을) */
+  --amber-soft:#f6e7d6;
+  --band:#24443a;
+  --band-ink:#eef3ef;
+  --f-display:"Gowun Batang","Nanum Myeongjo",serif;
+  --f-body:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#141a17;--surface:#1b231f;--ink:#e7ece8;--muted:#a3b0a8;--line:#2c3732;
+  --pine:#8cc4a8;--pine-soft:#22332b;--amber:#e8a35c;--amber-soft:#3a2b1c;--band:#1f3a30;--band-ink:#e7efe9;color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#141a17;--surface:#1b231f;--ink:#e7ece8;--muted:#a3b0a8;--line:#2c3732;
+  --pine:#8cc4a8;--pine-soft:#22332b;--amber:#e8a35c;--amber-soft:#3a2b1c;--band:#1f3a30;--band-ink:#e7efe9;color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.7;word-break:keep-all}
+a{color:var(--pine)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--amber);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--f-display);line-height:1.3;text-wrap:balance;margin:0}
+h2{font-size:clamp(1.6rem,3.2vw,2.1rem)}
+h3{font-size:1.2rem}
+p{margin:0}
+.eyebrow{font-size:.78rem;font-weight:600;letter-spacing:.12em;color:var(--pine);margin-bottom:.5rem}
+section{padding-block:72px;border-top:1px solid var(--line)}
+.sec-head{display:grid;gap:.4rem;margin-bottom:2rem;max-width:40rem}
+.sec-head p{color:var(--muted)}
+
+/* header */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:1rem;height:64px}
+.logo{display:flex;align-items:center;gap:.6rem;text-decoration:none;color:var(--ink);font-family:var(--f-display);font-weight:700;font-size:1.1rem;white-space:nowrap}
+.logo svg{flex:none}
+nav.menu{display:flex;gap:1.1rem;margin-left:auto;overflow-x:auto;scrollbar-width:none}
+nav.menu a{color:var(--ink);text-decoration:none;font-size:.92rem;font-weight:500;white-space:nowrap;padding-block:.3rem}
+nav.menu a:hover{color:var(--pine)}
+.first{flex:none;background:var(--pine);color:var(--bg);text-decoration:none;font-size:.85rem;font-weight:600;padding:.45rem .9rem;border-radius:999px;white-space:nowrap}
+@media (max-width:900px){nav.menu{display:none}.first{margin-left:auto}}
+
+/* hero */
+.hero{padding-block:64px 56px;border-top:0}
+.hero-grid{display:grid;grid-template-columns:1.25fr 1fr;gap:2.5rem;align-items:end}
+.season{display:inline-flex;align-items:center;gap:.5rem;background:var(--amber-soft);color:var(--ink);font-size:.85rem;font-weight:600;padding:.35rem .8rem;border-radius:999px;margin-bottom:1.4rem}
+.season i{width:8px;height:8px;border-radius:50%;background:var(--amber);display:block}
+.motto-label{font-size:.85rem;color:var(--muted);letter-spacing:.08em}
+.motto{font-size:clamp(2.8rem,8vw,5rem);font-weight:700;letter-spacing:-.01em;margin:.2rem 0 1.2rem}
+.motto em{font-style:normal;color:var(--pine)}
+.verse{font-family:var(--f-display);font-size:1.12rem;max-width:30rem;border-left:3px solid var(--amber);padding-left:1rem}
+.verse cite{display:block;font-style:normal;font-family:var(--f-body);font-size:.85rem;color:var(--muted);margin-top:.4rem}
+.identity{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:1.6rem}
+.identity p{font-size:.98rem}
+.identity .tag{font-size:.8rem;color:var(--muted);margin-top:1rem}
+
+/* worship times */
+.times{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:2.4rem}
+.time{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:1rem 1.1rem;min-width:0}
+.time b{display:block;font-size:1.6rem;font-variant-numeric:tabular-nums;font-weight:600;letter-spacing:-.01em}
+.time span{font-size:.88rem;color:var(--muted)}
+.time.main{border-color:var(--pine);background:var(--pine-soft)}
+@media (max-width:760px){.hero-grid{grid-template-columns:1fr}.times{grid-template-columns:repeat(2,1fr)}}
+
+/* this week */
+.week{display:grid;grid-template-columns:1.1fr 1fr;gap:2rem}
+.sermon{background:var(--band);color:var(--band-ink);border-radius:16px;padding:2rem;display:grid;gap:1rem;align-content:start}
+.sermon .eyebrow{color:var(--band-ink);opacity:.75}
+.sermon h3{font-size:clamp(1.6rem,3.6vw,2.2rem)}
+.sermon .meta{display:flex;flex-wrap:wrap;gap:.4rem 1.2rem;font-size:.92rem;opacity:.85}
+.btns{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:.4rem}
+.btn{display:inline-flex;align-items:center;gap:.4rem;padding:.6rem 1rem;border-radius:999px;font-size:.9rem;font-weight:600;text-decoration:none;border:1px solid currentColor;color:inherit;background:none;cursor:pointer;font-family:inherit}
+.btn.solid{background:var(--band-ink);color:var(--band);border-color:var(--band-ink)}
+.order{list-style:none;margin:0;padding:0;display:grid}
+.order li{display:grid;grid-template-columns:7.5rem 1fr;gap:1rem;padding:.55rem 0;border-bottom:1px dashed var(--line);font-size:.95rem}
+.order li span:first-child{color:var(--muted)}
+.order li.stand span:first-child::after{content:" *";color:var(--amber)}
+.order-note{font-size:.82rem;color:var(--muted);margin-top:.6rem}
+@media (max-width:760px){.week{grid-template-columns:1fr}}
+
+/* news */
+.news{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:1.3rem;display:grid;gap:.5rem;align-content:start;min-width:0}
+.card .cat{font-size:.75rem;font-weight:600;color:var(--pine);letter-spacing:.06em}
+.card h3{font-family:var(--f-body);font-size:1.05rem;font-weight:600}
+.card p{font-size:.92rem;color:var(--muted)}
+.card dl{display:grid;grid-template-columns:auto 1fr;gap:.2rem .8rem;margin:.3rem 0 0;font-size:.88rem}
+.card dt{color:var(--muted)}.card dd{margin:0}
+.card.hl{border-color:var(--amber);background:var(--amber-soft)}
+.card.hl .cat{color:var(--amber)}
+.d-day{justify-self:start;font-size:.75rem;font-weight:700;background:var(--amber);color:var(--surface);padding:.1rem .55rem;border-radius:999px}
+
+/* campaign */
+.campaign{margin-top:2.5rem;display:grid;grid-template-columns:repeat(7,1fr);gap:8px}
+.cp{border:1px solid var(--line);border-radius:12px;padding:.9rem .7rem;text-align:center;background:var(--surface);min-width:0}
+.cp b{display:block;font-family:var(--f-display);font-size:1.1rem;color:var(--pine)}
+.cp span{font-size:.78rem;color:var(--muted);line-height:1.5;display:block;margin-top:.3rem}
+@media (max-width:900px){.campaign{grid-template-columns:repeat(4,1fr)}}
+@media (max-width:480px){.campaign{grid-template-columns:repeat(2,1fr)}}
+
+/* vision band */
+.vision{background:var(--band);color:var(--band-ink);border-top:0}
+.vision .eyebrow{color:var(--band-ink);opacity:.7}
+.ones{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:1.8rem}
+.one{padding:1.2rem 1.4rem;border-left:1px solid color-mix(in srgb,var(--band-ink) 25%,transparent)}
+.one:first-child{border-left:0;padding-left:0}
+.one b{font-family:var(--f-display);font-size:clamp(1.3rem,3vw,1.8rem);display:block}
+.one span{font-size:.9rem;opacity:.8}
+.vision-text{max-width:42rem;margin-top:2rem;opacity:.9}
+@media (max-width:700px){.ones{grid-template-columns:1fr}.one{border-left:0;padding-left:0;border-top:1px solid color-mix(in srgb,var(--band-ink) 25%,transparent)}.one:first-child{border-top:0}}
+
+/* about */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+.list{margin:0;padding:0;list-style:none;display:grid;gap:.55rem}
+.list li{display:grid;grid-template-columns:1.8rem 1fr;font-size:.96rem}
+.list li span{color:var(--pine);font-weight:600;font-variant-numeric:tabular-nums}
+.box{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:1.5rem;min-width:0}
+.box h3{margin-bottom:1rem}
+.people{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.person{text-align:center}
+.avatar{width:64px;height:64px;border-radius:50%;margin:0 auto .5rem;background:var(--pine-soft);display:grid;place-items:center;font-family:var(--f-display);font-size:1.4rem;color:var(--pine)}
+.person b{display:block}.person span{font-size:.82rem;color:var(--muted)}
+.brothers{display:flex;flex-wrap:wrap;gap:6px}
+.brothers span{font-size:.82rem;border:1px solid var(--line);border-radius:999px;padding:.15rem .65rem;background:var(--bg)}
+.brothers span.me{border-color:var(--pine);color:var(--pine);font-weight:600}
+@media (max-width:760px){.about-grid{grid-template-columns:1fr}}
+
+/* next gen */
+.gens{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.gen{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:1.4rem;display:grid;gap:.4rem;min-width:0}
+.gen .age{font-size:.8rem;color:var(--muted)}
+.gen h3{font-size:1.35rem}
+.gen .when{font-weight:600;color:var(--pine);font-variant-numeric:tabular-nums}
+@media (max-width:700px){.gens{grid-template-columns:1fr}}
+
+/* mission */
+.mission-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:2rem}
+.ministry{background:var(--pine-soft);border-radius:16px;padding:1.8rem;display:grid;gap:.8rem;align-content:start}
+.ministry h3{font-size:1.5rem}
+.missionaries{list-style:none;margin:0;padding:0;display:grid}
+.missionaries li{display:flex;justify-content:space-between;gap:1rem;padding:.7rem 0;border-bottom:1px solid var(--line)}
+.missionaries li b{font-weight:600}
+.missionaries li span{color:var(--muted);font-size:.9rem}
+.small{font-size:.82rem;color:var(--muted);margin-top:.8rem}
+@media (max-width:760px){.mission-grid{grid-template-columns:1fr}}
+
+/* life */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:0;counter-reset:s;margin-bottom:2rem}
+.step{padding:1.2rem 1.2rem 1.2rem 0;border-top:2px solid var(--pine)}
+.step::before{counter-increment:s;content:"STEP " counter(s);font-size:.75rem;font-weight:700;color:var(--pine);letter-spacing:.1em}
+.step h3{font-family:var(--f-body);font-size:1.05rem;font-weight:600;margin-top:.3rem}
+.step p{font-size:.9rem;color:var(--muted)}
+@media (max-width:700px){.steps{grid-template-columns:1fr}}
+
+/* offering + visit */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.acct{display:grid;gap:.25rem;padding:1rem 0;border-bottom:1px solid var(--line)}
+.acct:last-of-type{border-bottom:0}
+.acct small{color:var(--muted)}
+.acct-row{display:flex;flex-wrap:wrap;align-items:center;gap:.6rem}
+.acct-row code{font-family:var(--f-body);font-size:1.15rem;font-weight:600;font-variant-numeric:tabular-nums;user-select:all}
+.copy{font-size:.78rem;padding:.25rem .65rem;border-radius:999px;border:1px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer;font-family:inherit}
+.addr{font-size:1.05rem;font-weight:500}
+@media (max-width:760px){.two{grid-template-columns:1fr}}
+
+footer{background:var(--surface);border-top:1px solid var(--line);padding-block:40px 110px;font-size:.88rem;color:var(--muted)}
+footer .wrap{display:grid;gap:.4rem}
+footer b{color:var(--ink);font-family:var(--f-display);font-size:1.05rem}
+
+/* mobile quick bar */
+.quick{display:none}
+@media (max-width:760px){
+  .quick{display:grid;grid-template-columns:repeat(3,1fr);position:fixed;left:0;right:0;bottom:0;z-index:9;background:var(--surface);border-top:1px solid var(--line);
+    padding-bottom:env(safe-area-inset-bottom,0px);padding-left:max(0px,env(safe-area-inset-left,0px));padding-right:max(0px,env(safe-area-inset-right,0px))}
+  .quick a{display:grid;place-items:center;padding:.7rem 0;font-size:.82rem;font-weight:600;color:var(--ink);text-decoration:none}
+  .quick a+a{border-left:1px solid var(--line)}
+}
+.toast{position:fixed;left:50%;bottom:calc(80px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);font-size:.85rem;padding:.5rem 1rem;border-radius:999px;z-index:20}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="높은뜻 하나되는 교회 처음으로">
+      <svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><circle cx="11" cy="15" r="9" fill="none" stroke="var(--pine)" stroke-width="2"/><circle cx="19" cy="15" r="9" fill="none" stroke="var(--amber)" stroke-width="2"/><path d="M15 9v12M12 13h6" stroke="var(--ink)" stroke-width="1.6" stroke-linecap="round"/></svg>
+      높은뜻 하나되는 교회
+    </a>
+    <nav class="menu" aria-label="주 메뉴">
+      <a href="#about">교회소개</a>
+      <a href="#worship">예배와 말씀</a>
+      <a href="#nextgen">다음세대</a>
+      <a href="#mission">북향민·선교</a>
+      <a href="#life">교회생활</a>
+      <a href="#news">교회소식</a>
+      <a href="#offering">헌금 안내</a>
+    </nav>
+    <a class="first" href="#life">처음 오셨나요?</a>
+  </div>
+</header>
+
+<main id="top">
+  <!-- 1. 메인 배너 -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <span class="season"><i></i>11월 1일 추수감사주일 · 온세대 예배</span>
+          <p class="motto-label">2026년 표어</p>
+          <h1 class="motto">변화와 <em>성숙</em></h1>
+          <blockquote class="verse" style="margin:0">
+            이 모든 일에 전심 전력하여 너의 성숙함을 모든 사람에게 나타나게 하라
+            <cite>디모데전서 4장 15절</cite>
+          </blockquote>
+        </div>
+        <div class="identity">
+          <p class="eyebrow">우리는 이런 교회입니다</p>
+          <p>높은뜻 하나되는 교회는 북한 선교와 통일을 위해 준비하라는 하나님의 부르심에 순종하여 세워진 교회입니다.</p>
+          <p class="tag">대한예수교장로회(통합) · 경남 창원시 진해구 신항</p>
+        </div>
+      </div>
+
+      <div class="times" aria-label="예배 시간">
+        <div class="time main"><b>11:45</b><span>주일예배</span></div>
+        <div class="time"><b>10:00</b><span>다음세대 (주일)</span></div>
+        <div class="time"><b>20:00</b><span>금요 1 Hour 기도회</span></div>
+        <div class="time"><b>06:00</b><span>새벽기도 (월~금)</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. 이번 주 말씀 + 예배 순서 -->
+  <section id="worship">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">예배와 말씀</p>
+        <h2>이번 주 말씀</h2>
+      </div>
+      <div class="week">
+        <div class="sermon">
+          <p class="eyebrow">2026. 11. 01 · 추수감사주일</p>
+          <h3>나의 힘이 되시는 하나님</h3>
+          <div class="meta"><span>하박국 3장 15~19절</span><span>임영호 목사</span></div>
+          <div class="btns">
+            <a class="btn solid" href="#worship">설교 영상 보기</a>
+            <a class="btn" href="#news">이번 주 주보 (PDF)</a>
+          </div>
+        </div>
+        <div>
+          <h3 style="margin-bottom:.8rem">주일예배 순서</h3>
+          <ol class="order">
+            <li class="stand"><span>예배로 부름</span><span></span></li>
+            <li class="stand"><span>영광송</span><span>예수 우리 왕이여</span></li>
+            <li class="stand"><span>사도신경</span><span>다같이</span></li>
+            <li><span>찬양</span><span>다같이</span></li>
+            <li><span>기도</span><span>송정윤 집사</span></li>
+            <li class="stand"><span>말씀봉독</span><span>하박국 3장 15~19절</span></li>
+            <li><span>말씀선포</span><span>임영호 목사</span></li>
+            <li><span>결단찬양 · 교회소식</span><span>다같이</span></li>
+            <li><span>봉헌 · 축도</span><span>임영호 목사</span></li>
+          </ol>
+          <p class="order-note">* 표시는 일어서서 드립니다. 다음 주 기도: 조채선 목사</p>
+        </div>
+      </div>
+
+      <div class="campaign" aria-label="하나되는 예배 캠페인">
+        <div class="cp"><b>시간</b><span>예배 10분 전에 도착합니다</span></div>
+        <div class="cp"><b>기도</b><span>아버지의 마음에 귀를 기울입니다</span></div>
+        <div class="cp"><b>찬양</b><span>찬송 가운데 하나님을 만납니다</span></div>
+        <div class="cp"><b>말씀</b><span>‘나’에게 주시는 말씀으로 듣습니다</span></div>
+        <div class="cp"><b>축복</b><span>하나님 나라의 가족으로 축복합니다</span></div>
+        <div class="cp"><b>정리</b><span>모임 후 다같이 정리합니다</span></div>
+        <div class="cp"><b>배려</b><span>휴대폰은 무음으로 바꿉니다</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. 교회소식 -->
+  <section id="news">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">교회소식</p>
+        <h2>이번 주 소식</h2>
+      </div>
+      <div class="news">
+        <article class="card hl">
+          <span class="cat">선교</span>
+          <span class="d-day">11월 6일 (금)</span>
+          <h3>얼감감 프로젝트</h3>
+          <p>쌀, 야채, 과일, 간식에 감사의 마음을 담아 교회로 가져와 주세요. 우리가 섬기는 북향민 이웃에게 전합니다.</p>
+          <dl><dt>출발</dt><dd>오전 10시 30분, 사무실</dd></dl>
+        </article>
+        <article class="card">
+          <span class="cat">양육</span>
+          <h3>2026년 하반기 심방</h3>
+          <p>10~11월 중 심방을 원하시는 분은 신청해 주세요.</p>
+          <dl><dt>신청</dt><dd>안유리 전도사</dd></dl>
+        </article>
+        <article class="card">
+          <span class="cat">목장</span>
+          <h3>“믿음으로 사는 삶” 목장모임</h3>
+          <p>모든 성도가 함께하는 목장모임입니다.</p>
+          <dl><dt>일시</dt><dd>주일 예배 후, 오후 2시</dd></dl>
+        </article>
+        <article class="card">
+          <span class="cat">기도</span>
+          <h3>금요일밤 “1 Hour” 기도회</h3>
+          <p>가정과 교회, 열방을 위해 함께 기도하는 시간에 초대합니다.</p>
+          <dl><dt>일시</dt><dd>매주 금요일 저녁 8~9시</dd></dl>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. 비전 -->
+  <section class="vision" id="vision">
+    <div class="wrap">
+      <p class="eyebrow">우리의 비전</p>
+      <h2>통일을 바라보며 기도로 세워지는 교회</h2>
+      <div class="ones">
+        <div class="one"><b>하나님과 하나</b><span>영과 진리로 드리는 예배</span></div>
+        <div class="one"><b>너와 내가 하나</b><span>서로를 축복하는 공동체</span></div>
+        <div class="one"><b>남과 북이 하나</b><span>북한 선교와 통일 준비</span></div>
+      </div>
+      <p class="vision-text">우리는 하나님 나라의 복음을 전하고, 하나님과의 친밀함을 누리며, 예수 그리스도를 아는 삶의 행복을 경험하기를 갈망합니다.</p>
+    </div>
+  </section>
+
+  <!-- 5. 교회소개 -->
+  <section id="about">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">교회소개</p>
+        <h2>하나님이 주인 되시는 건강하고 행복한 교회</h2>
+      </div>
+      <div class="about-grid">
+        <div class="box">
+          <h3>교회의 목표</h3>
+          <ul class="list">
+            <li><span>1</span>더 깊이 예배하는 교회</li>
+            <li><span>2</span>기도의 분량을 채우는 교회</li>
+            <li><span>3</span>말씀을 배우는 교회</li>
+            <li><span>4</span>헌신의 기쁨을 누리는 교회</li>
+          </ul>
+          <h3 style="margin-top:1.6rem">높은뜻 정신</h3>
+          <ul class="list">
+            <li><span>·</span>하나님께 영과 진리로 예배하는 교회</li>
+            <li><span>·</span>하나님의 식과 법을 고집하는 교회</li>
+            <li><span>·</span>하나님이 기뻐하시는 일에 힘쓰는 교회</li>
+            <li><span>·</span>성경적 민주정치를 위해 힘쓰는 교회</li>
+            <li><span>·</span>십일조, 희년정신을 실천하는 교회</li>
+            <li><span>·</span>교인들을 세상의 왕 같은 제사장으로 키우는 교회</li>
+          </ul>
+        </div>
+        <div style="display:grid;gap:14px;align-content:start">
+          <div class="box">
+            <h3>섬기는 사람</h3>
+            <div class="people">
+              <div class="person"><div class="avatar">임</div><b>임영호</b><span>담임목사</span></div>
+              <div class="person"><div class="avatar">안</div><b>안유리</b><span>전도사</span></div>
+              <div class="person"><div class="avatar">김</div><b>김병현</b><span>섬기는 사람</span></div>
+            </div>
+          </div>
+          <div class="box">
+            <h3>높은뜻 형제교회</h3>
+            <div class="brothers">
+              <span>광성교회</span><span>대진교회</span><span>덕소교회</span><span>브리즈번교회</span><span>섬기는교회</span><span>세움교회</span><span>씨앗이되어교회</span><span>오차노미즈교회</span><span>안성교회</span><span>우신교회</span><span>정의교회</span><span>파주교회</span><span>푸른교회</span><span class="me">하나되는교회</span><span>하늘교회</span><span>행복한교회</span>
+            </div>
+            <p class="small">분립개척: 주가 그리시는 교회</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. 다음세대 -->
+  <section id="nextgen">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">다음세대</p>
+        <h2>원키즈 · 원틴즈</h2>
+        <p>주일 오전 10시, 아이들이 자기 눈높이에서 예배합니다.</p>
+      </div>
+      <div class="gens">
+        <div class="gen"><span class="age">유치부</span><h3>원키즈 유치</h3><span class="when">주일 10:00</span><p>처음 만나는 하나님을 노래와 이야기로 배웁니다.</p></div>
+        <div class="gen"><span class="age">초등부</span><h3>원키즈 초등</h3><span class="when">주일 10:00</span><p>말씀을 함께 읽고, 친구들과 신앙을 나눕니다.</p></div>
+        <div class="gen"><span class="age">중·고등부</span><h3>원틴즈</h3><span class="when">주일 10:00</span><p>청소년의 질문을 함께 붙들고 예배합니다.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. 북향민·선교 -->
+  <section id="mission">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">북향민·선교</p>
+        <h2>남과 북이 하나 되는 일을 오늘 여기서</h2>
+      </div>
+      <div class="mission-grid">
+        <div class="ministry">
+          <h3>북향민 사역 (반찬나눔)</h3>
+          <p>매주 금요일, 북향민 가정을 찾아가 반찬을 나누고 돌봄과 예배로 섬깁니다.</p>
+          <div class="card" style="background:none;border:0;padding:0"><dl><dt>일시</dt><dd>매주 금요일 오전 10시~오후 2시</dd><dt>지역</dt><dd>부산·창원 지역</dd></dl></div>
+          <div class="btns"><a class="btn" href="#offering" style="color:var(--pine)">반찬사역 후원하기</a></div>
+          <p class="small">북향민 가정의 안전을 위해 구체적인 장소와 사진은 공개하지 않습니다.</p>
+        </div>
+        <div>
+          <h3 style="margin-bottom:.6rem">파송·협력 선교</h3>
+          <ul class="missionaries">
+            <li><b>태국</b><span>파송선교사</span></li>
+            <li><b>중남미</b><span>파송선교사</span></li>
+            <li><b>네덜란드</b><span>파송선교사</span></li>
+            <li><b>에티오피아</b><span>파송선교사</span></li>
+            <li><b>케냐</b><span>협력선교사</span></li>
+          </ul>
+          <p class="small">선교사님 이름은 각 가정의 동의를 받은 뒤 공개합니다. 보안 지역 선교사님은 표시하지 않았습니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. 교회생활 / 새가족 -->
+  <section id="life">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">교회생활 · 처음 오신 분께</p>
+        <h2>처음 오셨다면, 이렇게 함께합니다</h2>
+      </div>
+      <div class="steps">
+        <div class="step"><h3>방문카드 작성</h3><p>예배 후 안내석에서 방문카드를 작성해 주세요.</p></div>
+        <div class="step"><h3>교회 등록</h3><p>목회자와 짧게 인사를 나누고 등록합니다.</p></div>
+        <div class="step"><h3>새가족과정</h3><p>교회소개 과정을 통해 공동체에 자리를 잡습니다.</p></div>
+      </div>
+      <div class="news">
+        <div class="card"><span class="cat">목장</span><h3>목장모임</h3><p>주일 예배 후 오후 2시, 삶과 믿음을 나눕니다.</p></div>
+        <div class="card"><span class="cat">기도</span><h3>기도회</h3><p>금요 1 Hour 기도회 저녁 8시, 새벽기도(개인기도) 월~금 오전 6시.</p></div>
+        <div class="card"><span class="cat">가정</span><h3>수요 가정예배</h3><p>수요일에는 각 가정에서 예배합니다.</p></div>
+        <div class="card"><span class="cat">양육</span><h3>심방 신청</h3><p>안유리 전도사에게 신청해 주세요.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. 헌금 · 오시는 길 -->
+  <section id="offering">
+    <div class="wrap">
+      <div class="two">
+        <div class="box">
+          <p class="eyebrow">헌금 안내</p>
+          <h3>온라인 헌금</h3>
+          <div class="acct">
+            <small>농협 · 높은뜻하나되는 교회</small>
+            <div class="acct-row"><code id="acct1">355-0602-8923-33</code><button class="copy" type="button" data-copy="acct1">복사</button></div>
+          </div>
+          <div class="acct">
+            <small>반찬사역 · 농협 · 높은뜻하나되는선교회</small>
+            <div class="acct-row"><code id="acct2">355-0078-6149-33</code><button class="copy" type="button" data-copy="acct2">복사</button></div>
+          </div>
+          <p class="small">계좌 이체 시 이름과 헌금명(예: 십일조, 감사, 목적, 건축)을 함께 적어 주세요.</p>
+        </div>
+        <div class="box" id="visit">
+          <p class="eyebrow">오시는 길</p>
+          <h3>경남 창원시 진해구</h3>
+          <p class="addr" style="margin-top:.6rem">신항동로 226, 부영2단지 아파트 상가 2층</p>
+          <p class="small">전화·팩스 055-602-8923 · godswillhanachurch@gmail.com</p>
+          <div class="btns" style="margin-top:1rem;color:var(--pine)">
+            <a class="btn" target="_blank" rel="noopener" href="https://map.kakao.com/?q=%EC%B0%BD%EC%9B%90%EC%8B%9C%20%EC%A7%84%ED%95%B4%EA%B5%AC%20%EC%8B%A0%ED%95%AD%EB%8F%99%EB%A1%9C%20226">카카오맵</a>
+            <a class="btn" target="_blank" rel="noopener" href="https://map.naver.com/p/search/%EC%B0%BD%EC%9B%90%EC%8B%9C%20%EC%A7%84%ED%95%B4%EA%B5%AC%20%EC%8B%A0%ED%95%AD%EB%8F%99%EB%A1%9C%20226">네이버지도</a>
+          </div>
+          <p class="small">주차 안내는 확인 후 추가 예정입니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <b>높은뜻 하나되는 교회</b>
+    <span>경남 창원시 진해구 신항동로 226, 부영2단지 아파트 상가 2층 · 전화·팩스 055-602-8923</span>
+    <span>godswillhanachurch@gmail.com · 대한예수교장로회 통합측</span>
+    <span>주보 제9권 44호(통권 446호) 기준</span>
+  </div>
+</footer>
+
+<nav class="quick" aria-label="바로가기">
+  <a href="tel:0556028923">전화</a>
+  <a href="#visit">길찾기</a>
+  <a href="#worship">주보·말씀</a>
+</nav>
+
+<script>
+document.querySelectorAll('.copy').forEach(function(b){
+  b.addEventListener('click',function(){
+    var el=document.getElementById(b.dataset.copy), t=el.textContent;
+    function done(){var d=document.createElement('div');d.className='toast';d.textContent='계좌번호를 복사했습니다';document.body.appendChild(d);setTimeout(function(){d.remove()},1600)}
+    function sel(){var r=document.createRange();r.selectNodeContents(el);var s=getSelection();s.removeAllRanges();s.addRange(r)}
+    try{navigator.clipboard.writeText(t).then(done,sel)}catch(e){sel()}
+  });
+});
+</script>
+</body>
+</html>
