@@ -43,10 +43,8 @@ img{max-width:100%}
   --f-display:"Pretendard",-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
   --f-body:"Pretendard",-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
 }
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --bg:#171614;--surface:#1f1d1a;--ink:#efe9df;--muted:#aaa296;--line:#34302b;--pine:#cdb08c;--pine-soft:#2b2722;--amber:#cfb48d;--amber-soft:#2a2620;--band:#0f0e0d;--band-ink:#efe9df;--copper:#26231f;--copper-ink:#efe9df;color-scheme:dark}}
-:root[data-theme="dark"]{
-  --bg:#171614;--surface:#1f1d1a;--ink:#efe9df;--muted:#aaa296;--line:#34302b;--pine:#cdb08c;--pine-soft:#2b2722;--amber:#cfb48d;--amber-soft:#2a2620;--band:#0f0e0d;--band-ink:#efe9df;--copper:#26231f;--copper-ink:#efe9df;color-scheme:dark}
+ /* 항상 밝은 화면으로 고정 */
+:root{color-scheme:light}
 
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:0}
