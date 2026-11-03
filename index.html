@@ -580,6 +580,17 @@ main>section:not(.slider) p,main>section:not(.slider) li,main dd,main td,.faq-a,
   .m-list>div{padding:.7rem 0!important}
   .wt-group{padding:.9rem 0!important}
 }
+
+/* ===== 배치: 말씀+예배시간 / 소식+주보 ===== */
+.home-row .worship-times{margin-top:0!important;min-width:0}
+.home-row .wt-group{grid-template-columns:1fr;gap:.6rem}
+.home-row .worship-times .times{grid-template-columns:repeat(2,1fr)}
+.news-split{display:grid;grid-template-columns:1.25fr 1fr;gap:var(--gap-block) 48px;align-items:start}
+.news-col{min-width:0}
+.news-split .news-grid{grid-template-columns:1fr}
+.news-split .notice h2{text-align:left;margin-bottom:var(--gap-head)!important}
+@media (max-width:1000px){.news-split{grid-template-columns:1fr}}
+@media (max-width:420px){.home-row .worship-times .times{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -718,42 +729,28 @@ main>section:not(.slider) p,main>section:not(.slider) li,main dd,main td,.faq-a,
           <p class="latest-meta">2026년 11월 1일 추수감사주일 / 본문: 하박국 3장 15~19절 / 설교자: 임영호 목사</p>
           <div class="latest-btns"><a class="btn-dark" href="https://www.youtube.com/@Godwillhanachurch/shorts" target="_blank" rel="noopener">설교 숏츠 보기</a><a class="more" href="https://www.youtube.com/@Godwillhanachurch/streams" target="_blank" rel="noopener">지난 설교 전체 보기 <span aria-hidden="true">→</span></a></div>
         </div>
-        <div class="notice">
-          <h2>공지사항</h2>
-          <table>
-            <thead><tr><th scope="col">제목</th><th scope="col">작성일</th></tr></thead>
-            <tbody>
-              <tr><td><a href="#bulletin" class="open-bulletin">2026년 11월 1일 주보 (통권 446호)</a></td><td>2026.11.01</td></tr>
-              <tr><td><a href="#news">얼감감 프로젝트 참여 안내 (11월 6일)</a></td><td>2026.11.01</td></tr>
-              <tr><td><a href="#news">추수감사주일 온세대 예배와 전교인 소풍</a></td><td>2026.11.01</td></tr>
-              <tr><td><a href="#news">2026년 하반기 심방 신청 안내</a></td><td>2026.11.01</td></tr>
-              <tr><td><a href="#news">금요일밤 “1 Hour” 기도회</a></td><td>2026.11.01</td></tr>
-              <tr><td><a href="#news">“믿음으로 사는 삶” 목장모임</a></td><td>2026.11.01</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-      <div class="worship-times" id="worship">
-        <h2 class="wt-title">예배 시간 안내</h2>
-        <div class="wt-group">
-          <h3 class="wt-label">주일 예배</h3>
-          <div class="times">
-            <div class="time main"><b>11:45</b><span>주일예배</span></div>
-            <div class="time"><b>14:00</b><span>목장모임</span></div>
+        <div class="worship-times" id="worship">
+          <h2 class="wt-title">예배 시간 안내</h2>
+          <div class="wt-group">
+            <h3 class="wt-label">주일 예배</h3>
+            <div class="times">
+              <div class="time main"><b>11:45</b><span>주일예배</span></div>
+              <div class="time"><b>14:00</b><span>목장모임</span></div>
+            </div>
           </div>
-        </div>
-        <div class="wt-group" id="nextgen">
-          <h3 class="wt-label">다음세대 예배</h3>
-          <div class="times">
-            <div class="time"><b>10:30</b><span>원키즈 유치부 (주일)</span></div>
-            <div class="time"><b>10:00</b><span>원키즈 초등부 (주일)</span></div>
-            <div class="time"><b>10:00</b><span>원틴즈 중고등부 (주일)</span></div>
+          <div class="wt-group" id="nextgen">
+            <h3 class="wt-label">다음세대 예배</h3>
+            <div class="times">
+              <div class="time"><b>10:30</b><span>원키즈 유치부 (주일)</span></div>
+              <div class="time"><b>10:00</b><span>원키즈 초등부 (주일)</span></div>
+              <div class="time"><b>10:00</b><span>원틴즈 중고등부 (주일)</span></div>
+            </div>
           </div>
-        </div>
-        <div class="wt-group">
-          <h3 class="wt-label">주중 예배</h3>
-          <div class="times">
-            <div class="time"><b>20:00</b><span>금요일밤 1 Hour 기도회</span></div>
+          <div class="wt-group">
+            <h3 class="wt-label">주중 예배</h3>
+            <div class="times">
+              <div class="time"><b>20:00</b><span>금요일밤 1 Hour 기도회</span></div>
+            </div>
           </div>
         </div>
       </div>
@@ -763,39 +760,57 @@ main>section:not(.slider) p,main>section:not(.slider) li,main dd,main td,.faq-a,
   <!-- 3. 교회소식 -->
   <section id="news">
     <div class="wrap">
-      <div class="news-head">
-        <h2>소식을 전합니다.</h2>
+      <div class="news-split">
+        <div class="news-col">
+        <div class="news-head">
+          <h2>소식을 전합니다.</h2>
 
-      </div>
-      <div class="news-grid">
-        <article class="feature">
-          <div class="feature-body">
-            <p class="cats"><span>교회소식</span> · <span>선교소식</span></p>
-            <h3>얼감감 프로젝트, 감사의 마음을 나눕니다</h3>
-            <p>감사의 마음을 담아 교회로 가져와 주세요. 우리가 섬기는 북향민 이웃에게 전합니다. 사무실에서 모여 출발합니다.</p>
-            <time datetime="2026-11-06">2026-11-06</time>
-          </div>
-        </article>
-        <div class="news-list">
-          <article class="item">
-            <p class="cats"><span>교회소식</span> · <span>양육</span></p>
-            <h3>2026년 하반기 심방 신청</h3>
-            <p class="item-note">10~11월 중 원하시는 분은 안유리 전도사에게 신청해 주세요.</p>
-            <time datetime="2026-11-01">2026-11-01</time>
-          </article>
-          <article class="item">
-            <p class="cats"><span>교회소식</span> · <span>목장</span></p>
-            <h3>“믿음으로 사는 삶” 목장모임</h3>
-            <p class="item-note">주일 예배 후 오후 2시, 모든 성도</p>
-            <time datetime="2026-11-01">2026-11-01</time>
-          </article>
-          <article class="item">
-            <p class="cats"><span>교회소식</span> · <span>기도</span></p>
-            <h3>금요일밤 “1 Hour” 기도회</h3>
-            <p class="item-note">매주 금요일 저녁 8~9시, 가정과 교회와 열방을 위해</p>
-            <time datetime="2026-11-01">2026-11-01</time>
-          </article>
         </div>
+        <div class="news-grid">
+          <article class="feature">
+            <div class="feature-body">
+              <p class="cats"><span>교회소식</span> · <span>선교소식</span></p>
+              <h3>얼감감 프로젝트, 감사의 마음을 나눕니다</h3>
+              <p>감사의 마음을 담아 교회로 가져와 주세요. 우리가 섬기는 북향민 이웃에게 전합니다. 사무실에서 모여 출발합니다.</p>
+              <time datetime="2026-11-06">2026-11-06</time>
+            </div>
+          </article>
+          <div class="news-list">
+            <article class="item">
+              <p class="cats"><span>교회소식</span> · <span>양육</span></p>
+              <h3>2026년 하반기 심방 신청</h3>
+              <p class="item-note">10~11월 중 원하시는 분은 안유리 전도사에게 신청해 주세요.</p>
+              <time datetime="2026-11-01">2026-11-01</time>
+            </article>
+            <article class="item">
+              <p class="cats"><span>교회소식</span> · <span>목장</span></p>
+              <h3>“믿음으로 사는 삶” 목장모임</h3>
+              <p class="item-note">주일 예배 후 오후 2시, 모든 성도</p>
+              <time datetime="2026-11-01">2026-11-01</time>
+            </article>
+            <article class="item">
+              <p class="cats"><span>교회소식</span> · <span>기도</span></p>
+              <h3>금요일밤 “1 Hour” 기도회</h3>
+              <p class="item-note">매주 금요일 저녁 8~9시, 가정과 교회와 열방을 위해</p>
+              <time datetime="2026-11-01">2026-11-01</time>
+            </article>
+          </div>
+        </div>
+        </div>
+      <div class="notice" id="bulletin-list">
+        <h2>주보</h2>
+        <table>
+          <thead><tr><th scope="col">제목</th><th scope="col">작성일</th></tr></thead>
+          <tbody>
+            <tr><td><a href="#bulletin" class="open-bulletin">2026년 11월 1일 주보 (통권 446호)</a></td><td>2026.11.01</td></tr>
+            <tr><td><a href="#news">얼감감 프로젝트 참여 안내 (11월 6일)</a></td><td>2026.11.01</td></tr>
+            <tr><td><a href="#news">추수감사주일 온세대 예배와 전교인 소풍</a></td><td>2026.11.01</td></tr>
+            <tr><td><a href="#news">2026년 하반기 심방 신청 안내</a></td><td>2026.11.01</td></tr>
+            <tr><td><a href="#news">금요일밤 “1 Hour” 기도회</a></td><td>2026.11.01</td></tr>
+            <tr><td><a href="#news">“믿음으로 사는 삶” 목장모임</a></td><td>2026.11.01</td></tr>
+          </tbody>
+        </table>
+      </div>
       </div>
     </div>
   </section>
@@ -1019,7 +1034,7 @@ main>section:not(.slider) p,main>section:not(.slider) li,main dd,main td,.faq-a,
 <nav class="quick" aria-label="바로가기">
   <a href="tel:0556028923">전화</a>
   <a href="#visit">길찾기</a>
-  <a href="#notice">주보·말씀</a>
+  <a href="#bulletin-list">주보·말씀</a>
 </nav>
 
 <script>
