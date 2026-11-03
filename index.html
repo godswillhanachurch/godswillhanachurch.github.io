@@ -648,6 +648,17 @@ details.spirit-item{border:0!important;border-top:1px solid var(--rule)!importan
 .home-row{border-top:1px solid var(--line)!important}
 /* 설교 영상 : 예배 시간 = 2 : 1 */
 @media (min-width:1001px){.home-row .row-grid{grid-template-columns:2fr 1fr;gap:48px}.home-row .worship-times .times{grid-template-columns:1fr}}
+/* 형제교회 + 분립개척 한 세트 */
+.family{display:grid;grid-template-columns:1fr 220px;align-items:stretch;gap:0}
+.family h3{margin-bottom:1rem!important}
+.family-plant h3{justify-self:stretch;text-align:left}
+.family-main{padding-right:28px;min-width:0}
+.family-main img{display:block;width:100%;max-width:760px;height:auto;margin:0 auto}
+.family-plant{display:grid;justify-items:start;align-content:start;gap:.35rem;padding-left:28px;border-left:1px solid var(--line);text-align:left}
+.family-plant img{width:auto;height:88px}
+.family-tag{font-size:var(--t-sm);font-weight:700;color:var(--pine)}
+.family-cap{font-size:var(--t-sm);color:var(--muted);line-height:1.5}
+@media (max-width:640px){.family{grid-template-columns:1fr;gap:16px}.family-main{padding-right:0}.family-plant{padding-left:0;border-left:0;justify-items:start;text-align:left}.family-plant img{height:72px}}
 </style>
 </head>
 <body>
@@ -850,10 +861,14 @@ details.spirit-item{border:0!important;border-top:1px solid var(--rule)!importan
           </div>
       </div>
       <div class="box brothers-box" id="brothers">
-        <h3>높은뜻 형제교회</h3>
-        <div class="brothers-img"><img src="brothers-logos.png" alt="높은뜻 형제교회: 광성교회, 브리즈번교회, 섬기는교회, 세움교회, 씨앗이되어교회, 오차노미즈교회, 안성교회, 우신교회, 정의교회, 푸른교회, 하늘교회, 파주교회, 행복한교회" width="732" height="199" loading="lazy"></div>
-        <h3 style="margin-top:1.8rem">분립개척</h3>
-        <div class="brothers-img plant-img"><img src="plant-logo.png" alt="주가 그리시는 교회 (God's Design Church) 로고" width="334" height="271" loading="lazy"><div class="plant-cap"><span>윤성철 목사 · 2025년 3월 분립개척</span></div></div>
+        <div class="family">
+          <div class="family-main"><h3>높은뜻 형제교회</h3><img src="brothers-logos.png" alt="높은뜻 형제교회: 광성교회, 브리즈번교회, 섬기는교회, 세움교회, 씨앗이되어교회, 오차노미즈교회, 안성교회, 우신교회, 정의교회, 푸른교회, 하늘교회, 파주교회, 행복한교회" width="732" height="199" loading="lazy"></div>
+          <div class="family-plant">
+            <h3>분립개척</h3>
+            <img src="plant-logo.png" alt="주가 그리시는 교회 (God's Design Church) 로고" width="334" height="271" loading="lazy">
+            <span class="family-cap">윤성철 목사 · 2025년 3월</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
