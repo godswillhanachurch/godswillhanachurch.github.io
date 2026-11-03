@@ -512,6 +512,74 @@ footer b{color:var(--ink);font-family:var(--f-display);font-size:1.05rem}
   .quick a+a{border-left:1px solid var(--line)}
 }
 .toast{position:fixed;left:50%;bottom:calc(80px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);font-size:.85rem;padding:.5rem 1rem;border-radius:999px;z-index:20}
+
+/* ===== 글자 크기·줄 간격·여백 통일 (이 블록이 위의 개별 설정보다 우선) ===== */
+:root{
+  --t-h2:clamp(1.5rem,1.15rem + 1.3vw,2rem);      /* 섹션 제목 24→32px */
+  --t-h3:clamp(1.2rem,1.1rem + .4vw,1.375rem);    /* 블록 제목 19→22px */
+  --t-h4:1.0625rem;                               /* 항목 제목 17px */
+  --t-body:1rem;                                  /* 본문 16px */
+  --t-sm:.875rem;                                 /* 보조 글 14px */
+  --lh-head:1.4; --lh-body:1.75; --lh-sm:1.6;
+  --sec-pad:clamp(56px,7vw,88px);                 /* 섹션 위아래 여백 */
+  --gap-block:clamp(2.5rem,5vw,3.5rem);           /* 섹션 안 큰 덩어리 사이 */
+  --gap-head:1.5rem;                              /* 제목 아래 여백 */
+}
+body{font-size:var(--t-body);line-height:var(--lh-body)}
+
+/* 섹션 여백: 모든 섹션 같은 높이 리듬 */
+main>section:not(.slider):not(.vision){padding-block:var(--sec-pad)!important}
+section.vision{padding-block:calc(var(--sec-pad)*.6)!important}
+#about{padding-top:var(--sec-pad)!important}
+
+/* 섹션 제목 (H2) */
+main h2,.notice h2,.wt-title,.welcome-h,.news-head h2,.vision-in h2{font-size:var(--t-h2)!important;line-height:var(--lh-head)!important;font-weight:700;letter-spacing:-.02em}
+.sec-head{margin-bottom:var(--gap-head)!important;gap:.5rem}
+.news-head{margin-bottom:var(--gap-head)!important}
+.notice h2,.wt-title{margin-bottom:var(--gap-head)!important}
+.eyebrow{font-size:var(--t-sm)!important;line-height:var(--lh-sm);margin-bottom:0}
+
+/* 블록 제목 (H3) */
+main h3,.latest-title,.m-head,.reg-title,.faq-title,.sub-h,.box h3,.spirit-item h3,.feature h3{font-size:var(--t-h3)!important;line-height:var(--lh-head)!important;font-weight:700}
+.reg-title,.faq-title{margin-bottom:var(--gap-head)!important}
+.box h3,.sub-h{margin-bottom:1rem}
+.m-head{margin-bottom:1rem;padding-bottom:.75rem}
+
+/* 항목 제목 (H4급) */
+.item h3,.m-title,.reg-steps b,.gen h3,#nextgen .gen h3,.person b,.mission-countries b,.faq-q,.step h3,.card h3,.plant-cap b,.wt-label,.creed dt,.m-list dt,.one b,.acct-row code,.addr{font-size:var(--t-h4)!important;line-height:var(--lh-head)!important;font-weight:700}
+.faq-q,.addr{font-weight:600}
+
+/* 본문 */
+main>section:not(.slider) p,main>section:not(.slider) li,main dd,main td,.faq-a,.m-desc,.m-works li,.spirit-item p,.vision-text,.vision-in .vision-text,.vision-tag,.faq-lead,.item-note,.latest-meta,.order li,.missionaries li,#faithmission .m-list dd,#nk .m-list dd,.creed dd,.m-list dd,.identity p{font-size:var(--t-body)!important;line-height:var(--lh-body)!important}
+.spirit-item p,.faq-lead,.item-note,.latest-meta,.m-note{color:var(--muted)}
+
+/* 보조 글 */
+.reg-d,.reg-no,.faq-cat,.m-note,.small,main time,.cats,.notice th,.person span,.acct small,.item time,.feature time,.mission-countries span,.gen .age,.thumb-meta,.thumb-date,.more,.cp span,.order-note,.plant-cap span,.d-day,.card .cat,.fa-tag,.fa-sub,.time span,.worship-times .time span,.one span,.btn,.btn-dark,.faq-btn,.copy,.side-ref,footer,footer p{font-size:var(--t-sm)!important;line-height:var(--lh-sm)!important}
+.notice td,.notice td a{font-size:var(--t-body)!important}
+.notice td:last-child{font-size:var(--t-sm)!important}
+
+/* 예배 시간 숫자 */
+.time b,.worship-times .time b{font-size:1.25rem!important;line-height:1.3!important}
+
+/* 섹션 안 덩어리 간격 통일 */
+.worship-times,.faq,.campaign,.brothers-box{margin-top:var(--gap-block)!important}
+.reg{margin-top:0!important}
+.creed-about{margin-bottom:var(--gap-block)!important}
+.mission-grid{row-gap:var(--gap-block)!important}
+.about-grid,.row-grid{row-gap:var(--gap-block)}
+
+/* 휴대폰: 카드·박스 안쪽 여백과 간격을 같게 */
+@media (max-width:760px){
+  :root{--gap-head:1.25rem}
+  .box,.ministry,.reg,.spirit-item,.feature .feature-body,.item,.gen,.identity{padding:1.25rem!important}
+  .spirit-grid,.news-grid,.news-list,.gens,.two{gap:12px!important}
+  .reg-steps{row-gap:1.5rem!important}
+  .faq-item summary{padding:1rem .25rem!important}
+  .faq-a{padding:0 .25rem 1.1rem!important}
+  .creed-row{padding:.9rem 0!important;gap:.25rem!important}
+  .m-list>div{padding:.7rem 0!important}
+  .wt-group{padding:.9rem 0!important}
+}
 </style>
 </head>
 <body>
@@ -786,12 +854,12 @@ footer b{color:var(--ink);font-family:var(--f-display);font-size:1.05rem}
         <h2>하나님이 주인 되시는 교회</h2>
       </div>
       <div class="spirit-grid">
-        <article class="spirit-item"><h3>하나님께 영과 진리로 예배하는 교회</h3><p>모든 예배를 통하여 하나님은 영광 받으시고 모든 교인들은<br>충만한 은혜를 받게 하는 것이 높은뜻 교회의 목표입니다.</p></article>
-        <article class="spirit-item"><h3>하나님의 식과 법을 고집하는 교회</h3><p>높은뜻은 High Will이 아니라 God’s Will입니다.<br>우리는 하나님의 뜻이 이 땅에서 이루어지게 하는 것이 교회의 목표입니다.</p></article>
-        <article class="spirit-item"><h3>하나님이 기뻐하시는 일에 힘쓰는 교회</h3><p>높은뜻 교회는 하나님이 좋아하시는 음식이 가득한 잔칫상을 차려드리는 것처럼<br>하나님이 지금 가장 하시고 싶어 하시는 일들을 하려고 노력하고 있습니다.</p></article>
-        <article class="spirit-item"><h3>성경적 민주정치를 위해 힘쓰는 교회</h3><p>높은뜻 교회는 교회의 민주주의 정치를 추구합니다.<br>하나님이 주인이 되시기 위해 성도들 사이에 그 어떠한 차별도 없는 올바른 장로정치와 전문 분야의 목회가 균형을 이루는 협동 목회를 추구합니다.</p></article>
-        <article class="spirit-item"><h3>십일조, 희년정신을 실천하는 교회</h3><p>물질과 재산의 주인이 자신이 아니라 하나님이라는 고백의 실천으로써 온전한 십일조 생활을 중히 여깁니다.<br>희년재단을 통하여 희년정신을 실현하며 교회 예산의 1/3 이상을 교회 밖을 위하여 사용하려 합니다.</p></article>
-        <article class="spirit-item"><h3>교인들을 세상의 왕 같은 제사장으로 키우는 교회</h3><p>높은뜻 교회는 하나님이 주신 모든 직업을 다 성직으로 이해합니다.<br>교인 모두가 다 자기 전문적인 직업 영역에서 왕 같은 제사장이 되어야 함을 믿습니다. 교인들이 세상을 섬기기를 원합니다.</p></article>
+        <article class="spirit-item"><h3>하나님께 영과 진리로 예배하는 교회</h3><p>모든 예배를 통하여 하나님은 영광 받으시고 모든 교인들은 충만한 은혜를 받게 하는 것이 높은뜻 교회의 목표입니다.</p></article>
+        <article class="spirit-item"><h3>하나님의 식과 법을 고집하는 교회</h3><p>높은뜻은 High Will이 아니라 God’s Will입니다. 우리는 하나님의 뜻이 이 땅에서 이루어지게 하는 것이 교회의 목표입니다.</p></article>
+        <article class="spirit-item"><h3>하나님이 기뻐하시는 일에 힘쓰는 교회</h3><p>높은뜻 교회는 하나님이 좋아하시는 음식이 가득한 잔칫상을 차려드리는 것처럼 하나님이 지금 가장 하시고 싶어 하시는 일들을 하려고 노력하고 있습니다.</p></article>
+        <article class="spirit-item"><h3>성경적 민주정치를 위해 힘쓰는 교회</h3><p>높은뜻 교회는 교회의 민주주의 정치를 추구합니다. 하나님이 주인이 되시기 위해 성도들 사이에 그 어떠한 차별도 없는 올바른 장로정치와 전문 분야의 목회가 균형을 이루는 협동 목회를 추구합니다.</p></article>
+        <article class="spirit-item"><h3>십일조, 희년정신을 실천하는 교회</h3><p>물질과 재산의 주인이 자신이 아니라 하나님이라는 고백의 실천으로써 온전한 십일조 생활을 중히 여깁니다. 희년재단을 통하여 희년정신을 실현하며 교회 예산의 1/3 이상을 교회 밖을 위하여 사용하려 합니다.</p></article>
+        <article class="spirit-item"><h3>교인들을 세상의 왕 같은 제사장으로 키우는 교회</h3><p>높은뜻 교회는 하나님이 주신 모든 직업을 다 성직으로 이해합니다. 교인 모두가 다 자기 전문적인 직업 영역에서 왕 같은 제사장이 되어야 함을 믿습니다. 교인들이 세상을 섬기기를 원합니다.</p></article>
       </div>
     </div>
   </section>
