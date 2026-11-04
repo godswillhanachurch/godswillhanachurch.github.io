@@ -78,7 +78,7 @@ nav.menu a:hover{color:var(--pine)}
 
 /* ===== 상단 가로 메뉴 ===== */
 :root{--side:0px}
-html{scroll-padding-top:72px!important}
+html{scroll-padding-top:84px!important}
 .side{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:color-mix(in srgb,var(--bg) 94%,transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
 .side-in{max-width:1240px;margin:0 auto;height:72px;display:flex;align-items:center;gap:1.5rem;padding-left:max(24px,env(safe-area-inset-left,0px));padding-right:max(24px,env(safe-area-inset-right,0px))}
 .side-logo-sm{display:flex;align-items:center;gap:.6rem;color:var(--ink);text-decoration:none;font-weight:700;font-size:1.05rem;white-space:nowrap;flex:none}
@@ -98,7 +98,7 @@ html{scroll-padding-top:72px!important}
 .side-toggle{display:none;background:none;border:1px solid var(--line);border-radius:4px;padding:.4rem .9rem;font:inherit;font-size:.9rem;color:var(--ink);cursor:pointer}
 @media (max-width:1180px){
   .side-in{height:64px;gap:.8rem;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
-  html{scroll-padding-top:64px!important}
+  html{scroll-padding-top:74px!important}
   .side-first{margin-left:auto}
   .side-toggle{display:block}
   .side-nav{display:none;position:absolute;left:0;right:0;top:100%;margin:0;flex-direction:column;align-items:stretch;gap:0;background:var(--bg);border-bottom:1px solid var(--line);max-height:70vh;overflow-y:auto;box-shadow:0 12px 24px rgba(0,0,0,.08)}
@@ -709,16 +709,16 @@ a.sns:hover{color:var(--ink)!important}
 .side-in{transition:height .25s ease}
 .side-logo-sm img.logo-full{transition:height .25s ease}
 @media (min-width:1181px){
-  .side-in{height:108px}
-  .side-logo-sm img.logo-full{height:86px}
-  .side.shrink .side-in{height:72px}
-  .side.shrink .side-logo-sm img.logo-full{height:56px}
+  .side-in{height:124px}
+  .side-logo-sm img.logo-full{height:104px}
+  .side.shrink .side-in{height:80px}
+  .side.shrink .side-logo-sm img.logo-full{height:64px}
 }
 @media (max-width:1180px){
-  .side-in{height:84px}
-  .side-logo-sm img.logo-full{height:66px}
-  .side.shrink .side-in{height:64px}
-  .side.shrink .side-logo-sm img.logo-full{height:48px}
+  .side-in{height:96px}
+  .side-logo-sm img.logo-full{height:80px}
+  .side.shrink .side-in{height:70px}
+  .side.shrink .side-logo-sm img.logo-full{height:56px}
 }
 @media (prefers-reduced-motion:reduce){.side-in,.side-logo-sm img.logo-full{transition:none}}
 
