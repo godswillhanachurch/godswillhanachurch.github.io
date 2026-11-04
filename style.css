@@ -1052,3 +1052,7 @@ nav.menu a:hover,.side-nav a:hover,.side-nav a.on{color:var(--pine)!important}
 }
 /* 교회 비전 띠는 원래 모습 그대로 (짙은 갈색 + 사진) */
 .vision{background:#2b2219!important;color:#f4efe6!important}
+
+/* 2026-11-05 다듬기: 모바일 로고, 비전 문구 줄바꿈 */
+.side-logo-sm picture{display:flex}
+.vision-text .nb{display:inline-block}
