@@ -883,3 +883,64 @@ details.spirit-item h3{font-size:var(--t-h4)!important}
 .en-back a{font-weight:600;text-decoration:none}
 @media (max-width:760px){.en-grid{grid-template-columns:1fr}}
 @media (max-width:520px){.en-list div{display:grid;gap:.1rem}.en-list dd{text-align:left}.en-box{padding:1.25rem}}
+
+/* ===================== 따뜻한 테마 ===================== */
+:root{
+  --bg:#faf7f2;            /* 아이보리 바탕 */
+  --bg-alt:#f3ece2;        /* 번갈아 까는 베이지 */
+  --surface:#fffdf9;       /* 카드 바탕 */
+  --pine-soft:#f1e9dd;
+  --line:#e9e1d5;
+  --rule:#e3d9ca;
+  --gold:#b8955a;
+  --f-serif:"Gowun Batang","Noto Serif KR","Noto Serif CJK KR","AppleMyungjo","Batang",serif;
+  --radius:12px;
+  --shadow:0 1px 2px rgba(70,48,25,.05),0 10px 28px rgba(70,48,25,.07);
+}
+body{background:var(--bg)}
+/* 1. 섹션: 회색 줄 대신 바탕색으로 구분 */
+section{border-top:0!important}
+main>section{background:var(--bg)}
+main>section.alt{background:var(--bg-alt)}
+footer{background:var(--bg-alt)!important;border-top:0!important}
+.side{background:color-mix(in srgb,var(--bg) 92%,transparent)!important;border-bottom-color:var(--line)!important}
+
+/* 2. 명조 제목 */
+h1,h2,.slide-title,.en-title,.welcome-h,.vision-in h2,.news-head h2,.sec-head h2{font-family:var(--f-serif)!important;font-weight:700!important;letter-spacing:-.01em!important}
+.slide-body,.slide-ref,.vision-tag,.thumb strong{font-family:var(--f-serif)!important;letter-spacing:0!important}
+.slide-body{font-size:clamp(1.05rem,.95rem + .4vw,1.3rem)!important;line-height:1.7!important}
+.latest-title,.wt-title,.bul-title,.m-head,.reg-title,.faq-title,.box h3,.en-h,.album-head .bul-title{font-family:var(--f-serif)!important;letter-spacing:-.005em!important}
+details.spirit-item h3{font-family:var(--f-serif)!important;font-size:1.125rem!important}
+
+/* 6. 금색 짧은 선 장식 */
+.eyebrow::before{content:"";display:block;width:28px;height:2px;background:var(--gold);margin-bottom:.8rem;border-radius:2px}
+.eyebrow{color:var(--pine)!important;letter-spacing:.08em!important}
+.vision-in h2::after,.en-title::after{content:"";display:block;width:36px;height:2px;background:var(--gold);margin:1rem auto 0;border-radius:2px}
+.en-title::after{margin-left:0}
+.slide-eyebrow::before{content:"";display:block;width:28px;height:2px;background:#e2c48e;margin-bottom:.7rem;border-radius:2px}
+
+/* 5. 모서리 둥글게 · 그림자 · 버튼 통일 */
+.feature,.ministry,.reg,.care-cta,.en-box,#offering .box,.thumb,.bv-stage img{border-radius:var(--radius)!important}
+.album-img,.explore-img,.ph-strip .ph,.ph-wide:not(.ph-flat){border-radius:10px!important}
+.time,.worship-times .time{border-radius:10px!important}
+.feature,.en-box,#offering .box,.care-cta,.reg,.ministry{border:0!important;box-shadow:var(--shadow)}
+.feature,.en-box,#offering .box{background:var(--surface)!important}
+.ministry,.reg,.care-cta{background:var(--surface)!important}
+.time{background:var(--pine-soft)!important}
+.time.main{background:var(--ink)!important}
+.thumb{box-shadow:var(--shadow)}
+.btn,.btn-dark,.btn-fill,.reg-btn,.copy,.en-btns .btn{border-radius:999px!important}
+.btn-dark{background:var(--ink)}
+.latest-btns .btn-dark,.reg-btn:not(.reg-btn-line){background:var(--pine)!important;color:#fff!important}
+.latest-btns .btn-dark:hover,.reg-btn:not(.reg-btn-line):hover{background:var(--ink)!important}
+#faithmission .ministry .btn,#nk .ministry .btn{border-radius:999px!important}
+.m-tag{border-radius:999px!important}
+.ministry .ph-wide,.ministry figure{border-radius:10px!important;overflow:hidden}
+.feature>figure{border-radius:0!important}
+.notice table,.news-v2 .news-list{background:transparent}
+/* 어두운 띠와 사진 위 층을 따뜻한 갈색으로 */
+:root{--band:#2b2219;--copper:#2e251c;--ink:#221c16}
+.ph-hero.has-img::after{background:linear-gradient(90deg,rgba(36,24,14,.80) 0%,rgba(36,24,14,.52) 45%,rgba(36,24,14,.18) 100%)!important}
+.ph-bg.has-img::after{background:rgba(40,28,18,.5)!important}
+.side-first{background:var(--pine)!important;color:#fff!important;transition:background .2s}
+.side-first:hover{background:var(--ink)!important}
