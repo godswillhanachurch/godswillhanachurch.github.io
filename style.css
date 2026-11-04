@@ -974,3 +974,14 @@ details.spirit-item h3{font-family:var(--f-serif)!important;font-size:1.125rem!i
 .greet-confess p{margin:0}
 .greet-sign{margin-top:1rem!important;text-align:right;font-family:var(--f-serif)}
 .greet-sign b{font-size:1.15em;margin-left:.3rem}
+.greet-head{display:grid;grid-template-columns:220px 1fr;gap:2rem;align-items:end;margin-bottom:2rem}
+.greet-head .sec-head{margin:0}
+.greet-photo{margin:0;border-radius:var(--radius);overflow:hidden;aspect-ratio:4/5;background:var(--surface)}
+.greet-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.greet-name{margin-top:.6rem!important;font-family:var(--f-serif);opacity:.85}
+.greet-name b{font-size:1.1em;margin-left:.25rem}
+@media (max-width:640px){
+  .greet-head{grid-template-columns:1fr;justify-items:center;text-align:center;gap:1.2rem;margin-bottom:1.4rem}
+  .greet-photo{width:min(220px,62vw)}
+  .greet-head .sec-head .eyebrow::before,.greet-head .sec-head::before{margin-inline:auto}
+}
