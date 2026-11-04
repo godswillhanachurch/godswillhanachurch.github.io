@@ -941,7 +941,7 @@ details.spirit-item h3{font-family:var(--f-serif)!important;font-size:1.125rem!i
 /* 어두운 띠와 사진 위 층을 따뜻한 갈색으로 */
 :root{--band:#353f45;--copper:#384349;--ink:#1f2427}
 .ph-hero.has-img::after{background:linear-gradient(90deg,rgba(18,24,28,.80) 0%,rgba(18,24,28,.52) 45%,rgba(18,24,28,.18) 100%)!important}
-.ph-bg.has-img::after{background:rgba(20,26,30,.5)!important}
+.ph-bg.has-img::after{background:rgba(40,28,18,.5)!important}
 .side-first{background:var(--pine)!important;color:#fff!important;transition:background .2s}
 .side-first:hover{background:var(--ink)!important}
 /* ===== 은은한 움직임 ===== */
@@ -1008,15 +1008,15 @@ details.spirit-item h3{font-family:var(--f-serif)!important;font-size:1.125rem!i
   --surface:#ffffff;        /* 카드 */
   --line:#dcd9d2;
   --rule:#d0ccc4;
-  --band:#7a7068;           /* 띠: 따뜻한 회갈색 */
-  --copper:#7f756d;
+  --band:#95593a;           /* 띠: 가을 벽돌색 */
+  --copper:#9a5e3f;
   --band-ink:#f4f3ef;
 }
 body{color:var(--ink)}
 
 /* 1. 흐리게 처리한 글자를 원래 색 그대로 */
 .slide-ref,.thumb-meta,.bv-bar strong span,.bv-hint,.time.main span,.sermon .eyebrow,.sermon .meta,.fa-sub,
-.vision .eyebrow,.one span,.vision-text,.vision-tag,.ph-in small,.lb-count,.lb-fig figcaption,.en-lead,.greet-name{opacity:1!important}
+.ph-in small,.lb-count,.lb-fig figcaption,.en-lead,.greet-name{opacity:1!important}
 .sec-head p,footer{color:var(--muted)!important}
 footer{font-size:var(--t-sm)!important}
 
@@ -1050,5 +1050,5 @@ nav.menu a:hover,.side-nav a:hover,.side-nav a.on{color:var(--pine)!important}
   .quick{background:#fff!important;box-shadow:0 -4px 16px rgba(30,40,46,.08)}
   .quick a{font-size:.95rem!important;padding:.85rem 0!important;color:var(--pine)!important}
 }
-/* 비전 띠: 사진 위를 따뜻한 회갈색으로 덮어 다른 띠와 같은 밝기로 */
-.ph-bg.has-img::after{background:rgba(116,104,94,.82)!important}
+/* 교회 비전 띠는 원래 모습 그대로 (짙은 갈색 + 사진) */
+.vision{background:#2b2219!important;color:#f4efe6!important}
