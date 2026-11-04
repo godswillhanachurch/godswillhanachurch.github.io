@@ -1008,8 +1008,8 @@ details.spirit-item h3{font-family:var(--f-serif)!important;font-size:1.125rem!i
   --surface:#ffffff;        /* 카드 */
   --line:#dcd9d2;
   --rule:#d0ccc4;
-  --band:#95593a;           /* 띠: 가을 벽돌색 */
-  --copper:#9a5e3f;
+  --band:#7a5644;           /* 띠: 가을 밤색 */
+  --copper:#7a5644;
   --band-ink:#f4f3ef;
 }
 body{color:var(--ink)}
