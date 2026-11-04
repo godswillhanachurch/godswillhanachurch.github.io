@@ -794,6 +794,41 @@ details.spirit-item h3{font-size:var(--t-h4)!important}
 .news-v2 .notice tr:last-child td{border-bottom-color:var(--rule)}
 @media (max-width:900px){.news-v2{grid-template-columns:1fr!important;gap:2rem!important}}
 @media (max-width:480px){.news-v2 .item{grid-template-columns:1fr auto!important}.news-v2 .item .cats{grid-column:1}.news-v2 .item time{grid-column:2}.news-v2 .item h3{grid-column:1/-1;grid-row:2}.news-v2 .item .item-note{grid-column:1/-1;grid-row:3}}
+
+/* 행사 앨범 */
+.album{margin-top:var(--gap-block)}
+.album-head{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:1rem}
+.album-head .bul-title{margin:0!important}
+.album-more{font-size:var(--t-sm);font-weight:600;color:var(--pine);text-decoration:none}
+.album-more:hover{text-decoration:underline}
+.album-grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:20px 16px}
+.album-card{all:unset;box-sizing:border-box;display:grid;gap:.6rem;width:100%;cursor:pointer}
+.album-card:focus-visible{outline:2px solid var(--amber);outline-offset:4px;border-radius:6px}
+.album-img{position:relative;display:block;aspect-ratio:4/3;border-radius:6px;overflow:hidden;background:var(--pine-soft)}
+.album-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
+.album-card:hover .album-img img{transform:scale(1.04)}
+.album-count{position:absolute;right:8px;bottom:8px;background:rgba(20,18,16,.72);color:#fff;font-size:.75rem;font-weight:600;padding:.15rem .55rem;border-radius:999px}
+.album-meta{display:flex;align-items:baseline;justify-content:space-between;gap:.5rem}
+.album-meta b{font-size:var(--t-h4);font-weight:700;color:var(--ink);line-height:1.4}
+.album-meta time{font-size:var(--t-sm);color:var(--muted);white-space:nowrap}
+.album-card:hover .album-meta b{color:var(--pine)}
+@media (max-width:640px){.album-grid{grid-template-columns:1fr;gap:16px}}
+.lb{position:fixed;inset:0;z-index:31;background:rgba(20,18,16,.97);display:flex;flex-direction:column;
+  padding:calc(12px + env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) calc(12px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+.lb[hidden]{display:none!important}
+.lb-bar{display:flex;align-items:center;gap:.8rem;color:#f4efe6;padding-bottom:10px}
+.lb-bar strong{font-size:1rem}
+.lb-count{font-size:.85rem;opacity:.65}
+.lb-bar .bv-close{margin-left:auto}
+.lb-stage{flex:1;min-height:0;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:8px}
+.lb-fig{margin:0;min-height:0;height:100%;display:grid;grid-template-rows:1fr auto;justify-items:center;gap:8px}
+.lb-fig img{max-width:100%;max-height:100%;min-height:0;object-fit:contain;align-self:center}
+.lb-fig figcaption{color:#f4efe6;opacity:.8;font-size:.9rem;text-align:center}
+.lb-nav{background:rgba(244,239,230,.12);color:#f4efe6;border:0;width:44px;height:64px;border-radius:6px;font-size:2rem;line-height:1;cursor:pointer}
+.lb-nav:hover{background:rgba(244,239,230,.25)}
+.lb-nav[disabled]{opacity:.25;cursor:default}
+.lb-more{align-self:center;margin-top:10px;color:#e2c48e;font-size:.9rem;font-weight:600;text-decoration:none}
+@media (max-width:640px){.lb-stage{grid-template-columns:1fr}.lb-nav{position:absolute;top:50%;transform:translateY(-50%);z-index:1}.lb-prev{left:6px}.lb-next{right:6px}}
 </style>
 </head>
 <body>
@@ -1041,6 +1076,26 @@ details.spirit-item h3{font-size:var(--t-h4)!important}
           </div>
         </div>
       </div>
+      <div class="album" id="album">
+        <div class="album-head">
+          <h3 class="bul-title">행사 앨범</h3>
+          <a class="album-more" href="https://www.facebook.com/godswillhanachurch" target="_blank" rel="noopener">페이스북에서 전체 사진 보기 <span aria-hidden="true">→</span></a>
+        </div>
+        <ul class="album-grid">
+            <li><button type="button" class="album-card" data-title="주일예배" data-photos="[{&quot;src&quot;: &quot;images/album/worship-1.jpg&quot;, &quot;cap&quot;: &quot;손을 들고 함께 찬양하는 예배&quot;}, {&quot;src&quot;: &quot;images/album/worship-2.jpg&quot;, &quot;cap&quot;: &quot;조명 아래 함께 드리는 찬양&quot;}, {&quot;src&quot;: &quot;images/album/worship-3.jpg&quot;, &quot;cap&quot;: &quot;주일 예배 모습&quot;}, {&quot;src&quot;: &quot;images/album/thanks-1.jpg&quot;, &quot;cap&quot;: &quot;추수감사주일 · 십자가 앞에 놓인 헌물&quot;}, {&quot;src&quot;: &quot;images/album/deacon-1.jpg&quot;, &quot;cap&quot;: &quot;집사 임명식&quot;}]">
+              <span class="album-img"><img src="images/album/worship-cover.jpg" alt="" width="640" height="480" loading="lazy" decoding="async"><span class="album-count">사진 5장</span></span>
+              <span class="album-meta"><b>주일예배</b></span>
+            </button></li>
+            <li><button type="button" class="album-card" data-title="국내외선교" data-photos="[{&quot;src&quot;: &quot;images/album/kenya-1.jpg&quot;, &quot;cap&quot;: &quot;케냐 아웃리치 · AIC 올로마이야나 교회 앞에서&quot;}, {&quot;src&quot;: &quot;images/album/outreach-1.jpg&quot;, &quot;cap&quot;: &quot;해외 아웃리치 팀&quot;}, {&quot;src&quot;: &quot;images/album/nk-1.jpg&quot;, &quot;cap&quot;: &quot;국내선교 · 북향민 가정에 나눌 반찬&quot;}]">
+              <span class="album-img"><img src="images/album/kenya-cover.jpg" alt="" width="640" height="480" loading="lazy" decoding="async"><span class="album-count">사진 3장</span></span>
+              <span class="album-meta"><b>국내외선교</b></span>
+            </button></li>
+            <li><button type="button" class="album-card" data-title="다음세대" data-photos="[{&quot;src&quot;: &quot;images/album/nextgen-1.jpg&quot;, &quot;cap&quot;: &quot;다음세대를 위한 축복기도&quot;}, {&quot;src&quot;: &quot;images/album/nextgen-2.jpg&quot;, &quot;cap&quot;: &quot;찬양을 준비하는 다음세대&quot;}]">
+              <span class="album-img"><img src="images/album/nextgen-cover.jpg" alt="" width="640" height="480" loading="lazy" decoding="async"><span class="album-count">사진 2장</span></span>
+              <span class="album-meta"><b>다음세대</b></span>
+            </button></li>
+        </ul>
+      </div>
     </div>
   </section>
 
@@ -1181,6 +1236,19 @@ details.spirit-item h3{font-size:var(--t-h4)!important}
   <p class="bv-hint">이미지를 누르면 다음 면으로 넘어갑니다</p>
 </div>
 
+<div class="lb" id="albumViewer" hidden role="dialog" aria-modal="true" aria-labelledby="lbTitle">
+  <div class="lb-bar">
+    <strong id="lbTitle"></strong><span class="lb-count" id="lbCount"></span>
+    <button type="button" class="bv-close" id="lbClose" aria-label="앨범 닫기">닫기 ✕</button>
+  </div>
+  <div class="lb-stage">
+    <button type="button" class="lb-nav lb-prev" id="lbPrev" aria-label="이전 사진">‹</button>
+    <figure class="lb-fig"><img id="lbImg" alt=""><figcaption id="lbCap"></figcaption></figure>
+    <button type="button" class="lb-nav lb-next" id="lbNext" aria-label="다음 사진">›</button>
+  </div>
+  <a class="lb-more" href="https://www.facebook.com/godswillhanachurch" target="_blank" rel="noopener">페이스북에서 전체 사진 보기 →</a>
+</div>
+
 <nav class="quick" aria-label="바로가기">
   <a href="tel:0556028923">전화</a>
   <a href="#visit">길찾기</a>
@@ -1272,6 +1340,29 @@ document.querySelectorAll('.m-tags').forEach(function(ul){
   var on=false;
   function chk(){var y=scrollY>40; if(y!==on){on=y;side.classList.toggle('shrink',y)}}
   addEventListener('scroll',chk,{passive:true}); chk();
+})();
+
+(function(){
+  var v=document.getElementById('albumViewer'); if(!v) return;
+  var img=document.getElementById('lbImg'), cap=document.getElementById('lbCap'), cnt=document.getElementById('lbCount'),
+      ttl=document.getElementById('lbTitle'), prev=document.getElementById('lbPrev'), next=document.getElementById('lbNext');
+  var list=[], cur=0, last=null;
+  function show(n){cur=n; var p=list[n]; img.src=p.src; img.alt=p.cap||''; cap.textContent=p.cap||'';
+    cnt.textContent=(n+1)+' / '+list.length; prev.disabled=n===0; next.disabled=n===list.length-1;
+    prev.hidden=next.hidden=list.length<2;}
+  function open(b){try{list=JSON.parse(b.getAttribute('data-photos'))}catch(e){return}
+    last=b; ttl.textContent=b.getAttribute('data-title'); show(0); v.hidden=false; document.body.style.overflow='hidden'; document.getElementById('lbClose').focus();}
+  function close(){v.hidden=true; document.body.style.overflow=''; if(last) last.focus();}
+  document.querySelectorAll('.album-card').forEach(function(b){b.addEventListener('click',function(){open(b)})});
+  prev.onclick=function(){if(cur>0)show(cur-1)}; next.onclick=function(){if(cur<list.length-1)show(cur+1)};
+  img.onclick=function(){if(cur<list.length-1)show(cur+1)};
+  document.getElementById('lbClose').onclick=close;
+  v.addEventListener('click',function(e){if(e.target===v||e.target.classList.contains('lb-stage'))close()});
+  document.addEventListener('keydown',function(e){if(v.hidden)return; if(e.key==='Escape')close();
+    if(e.key==='ArrowRight'&&cur<list.length-1)show(cur+1); if(e.key==='ArrowLeft'&&cur>0)show(cur-1)});
+  var sx=null; v.addEventListener('touchstart',function(e){sx=e.touches[0].clientX},{passive:true});
+  v.addEventListener('touchend',function(e){if(sx===null)return; var dx=e.changedTouches[0].clientX-sx; sx=null;
+    if(dx<-40&&cur<list.length-1)show(cur+1); if(dx>40&&cur>0)show(cur-1)});
 })();
 </script>
 
