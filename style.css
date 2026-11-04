@@ -981,7 +981,8 @@ details.spirit-item h3{font-family:var(--f-serif)!important;font-size:1.125rem!i
 .greet-name{margin-top:.6rem!important;font-family:var(--f-serif);opacity:.85}
 .greet-name b{font-size:1.1em;margin-left:.25rem}
 @media (max-width:640px){
-  .greet-head{grid-template-columns:1fr;justify-items:center;text-align:center;gap:1.2rem;margin-bottom:1.4rem}
-  .greet-photo{width:min(220px,62vw)}
-  .greet-head .sec-head .eyebrow::before,.greet-head .sec-head::before{margin-inline:auto}
+  .greet-head{grid-template-columns:96px 1fr;align-items:center;gap:1rem;margin-bottom:1.4rem}
+  .greet-photo{width:96px}
+  .greet-head h2{font-size:1.3rem!important}
+  .greet-name{margin-top:.3rem!important}
 }
