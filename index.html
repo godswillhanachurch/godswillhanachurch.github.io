@@ -648,6 +648,72 @@ details.spirit-item{border:0!important;border-top:1px solid var(--rule)!importan
 .home-row{border-top:1px solid var(--line)!important}
 /* 설교 영상 : 예배 시간 = 2 : 1 */
 @media (min-width:1001px){.home-row .row-grid{grid-template-columns:2fr 1fr;gap:48px}.home-row .worship-times .times{grid-template-columns:1fr}}
+
+/* ===== 사진 배치 시안 (자리 표시) ===== */
+.ph{margin:0;position:relative;display:grid;place-items:center;overflow:hidden;color:#fff;
+  background:linear-gradient(135deg,#cbb89a 0%,#a8906f 55%,#8a7357 100%)}
+.ph::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(45deg,rgba(255,255,255,.06) 0 2px,transparent 2px 14px)}
+.ph-in{position:relative;display:grid;justify-items:center;gap:.3rem;text-align:center;padding:1rem;text-shadow:0 1px 4px rgba(0,0,0,.25)}
+.ph-in b{font-size:1rem;font-weight:700}
+.ph-in small{font-size:.8rem;opacity:.9;max-width:28em;line-height:1.5}
+.ph-n{position:absolute;left:12px;top:12px;z-index:2;width:26px;height:26px;border-radius:50%;background:#c4302b;color:#fff;font-size:.8rem;font-weight:800;display:grid;place-items:center;box-shadow:0 2px 6px rgba(0,0,0,.25)}
+/* 1 배너 */
+.slide.has-photo{justify-content:flex-start}
+.ph-hero{position:absolute;inset:0;width:100%;height:100%;background:linear-gradient(120deg,#5d4b39,#3a2f25 60%,#2a231c)}
+.ph-hero .ph-in{position:absolute;right:6%;bottom:56px;justify-items:end;text-align:right;opacity:.75}
+.slide.has-photo .slide-text{text-align:left;margin-left:max(72px,8%);padding:0;background:none!important}
+.slide.has-photo .slide-title,.slide.has-photo .slide-body,.slide.has-photo .slide-goals{color:#fff}
+.slide.has-photo .slide-eyebrow,.slide.has-photo .slide-ref{color:#e2c48e}
+.slide.has-photo .slide-goals{justify-content:start;border-top-color:rgba(255,255,255,.3)}
+.slide.has-photo .slide-goals li{justify-content:flex-start}
+.slide.has-photo .slide-goals b{background:#e2c48e;color:#2a231c}
+/* 2 비전 배경 */
+.vision.has-photo{position:relative;overflow:hidden}
+.ph-bg{position:absolute;inset:0;background:linear-gradient(135deg,#4a3d30,#2a231c)}
+.ph-bg .ph-in{position:absolute;right:16px;bottom:10px;padding:0;justify-items:end;opacity:.6}
+.ph-bg .ph-in svg,.ph-bg .ph-in b{display:none}
+.vision.has-photo .vision-in{position:relative}
+/* 3 프로필 */
+.ph-avatar{width:88px;height:88px;border-radius:50%;margin:0 auto .7rem;overflow:visible}
+.ph-avatar::before{border-radius:50%}
+.ph-avatar .ph-in{padding:0}.ph-avatar .ph-in b,.ph-avatar .ph-in small{display:none}
+.ph-avatar .ph-n{left:auto;right:-2px;top:-2px;width:22px;height:22px;font-size:.7rem}
+.person{border-top:0!important;padding-top:0!important}
+/* 4·6 가로 사진 */
+.ph-wide{aspect-ratio:16/9;border-radius:6px;margin-bottom:.4rem}
+.ph-flat{border-radius:0;margin:0}
+.feature{display:block!important;overflow:hidden}
+/* 5 공동체 사진 3장 */
+.ph-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:var(--gap-block)}
+.ph-strip .ph{aspect-ratio:4/3;border-radius:6px}
+@media (max-width:640px){
+  .ph-strip{grid-template-columns:1fr 1fr}.ph-strip .ph:first-child{grid-column:1/-1;aspect-ratio:16/9}
+  .slide.has-photo .slide-text{margin-left:44px;margin-right:44px}
+  .ph-hero .ph-in{display:none}
+}
+
+/* 실제 사진이 들어간 자리 */
+.ph.has-img{background:#2a231c}
+.ph.has-img::before{display:none}
+.ph.has-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;max-width:none}
+.ph-bg.has-img img{object-position:center 30%}
+.ph-bg.has-img::after{content:"";position:absolute;inset:0;background:rgba(34,32,29,.45)}
+.ph-hero.has-img::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,16,12,.78) 0%,rgba(20,16,12,.5) 45%,rgba(20,16,12,.15) 100%)}
+.notice td{vertical-align:middle}
+.sns svg{width:22px!important;height:22px!important}
+a.sns{color:var(--pine)!important}
+a.sns:hover{color:var(--ink)!important}
+.side-logo-sm img.logo-full{width:auto;height:62px}
+@media (max-width:640px){.side-logo-sm img.logo-full{height:48px}}
+/* 섬기는 사람들: 원형 프로필 (이름 + 직위) */
+.staff{display:grid;justify-items:center}
+.staff .badge{width:132px;aspect-ratio:1;border-radius:50%;display:grid;place-content:center;justify-items:center;gap:.35rem;text-align:center;
+  background:var(--pine-soft);border:2px solid var(--pine);box-shadow:0 0 0 6px var(--pine-soft)}
+.person.staff .badge b{color:var(--ink);margin:0}
+.person.staff .badge .role{font-size:var(--t-sm)!important;color:var(--pine)!important;font-weight:600;white-space:nowrap}
+.person.staff:first-child .badge{background:var(--pine)}
+.person.staff:first-child .badge b,.person.staff:first-child .badge .role{color:#fff!important}
+@media (max-width:640px){.staff .badge{width:100px;box-shadow:0 0 0 4px var(--pine-soft)}.person.staff .badge .role{font-size:.75rem!important}}
 /* 형제교회 + 분립개척 한 세트 */
 .family{display:grid;grid-template-columns:1fr 220px;align-items:stretch;gap:0}
 .family h3{margin-bottom:1rem!important}
@@ -665,7 +731,7 @@ details.spirit-item{border:0!important;border-top:1px solid var(--rule)!importan
 
 <header class="side" id="side">
  <div class="side-in">
-  <a class="side-logo-sm" href="#top" aria-label="높은뜻 하나되는 교회 처음으로"><img src="logo.svg" alt="" width="40" height="40"><span>높은뜻 하나되는 교회</span></a>
+  <a class="side-logo-sm" href="#top" aria-label="높은뜻 하나되는 교회 처음으로"><img class="logo-full" src="logo-header.svg" alt="" width="335" height="199"></a>
   <nav class="side-nav" id="sideNav" aria-label="주 메뉴">
       <a href="#top" class="on home-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/></svg><span>Home</span></a>
       <a href="#notice"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18M7 8h10"/></svg><span>예배와 말씀</span></a>
@@ -675,8 +741,8 @@ details.spirit-item{border:0!important;border-top:1px solid var(--rule)!importan
       <a href="#news"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M7 9h10M7 13h6"/></svg><span>교회소식</span></a>
       <a class="m-only" href="#offering"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="12" rx="1"/><path d="M3 11h18"/></svg><span>헌금 안내</span></a>
       <a class="m-only" href="#visit"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6-5.5-6-11a6 6 0 0 1 12 0c0 5.5-6 11-6 11z"/><circle cx="12" cy="10" r="2"/></svg><span>오시는 길</span></a>
-      <a class="sns sns-first" aria-label="YouTube" href="https://www.youtube.com/@Godwillhanachurch" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="3.5"/><path d="M10 9.5v5l4.5-2.5z" fill="currentColor"/></svg><span>YouTube</span></a>
-      <a class="sns" aria-label="Facebook" href="https://www.facebook.com/godswillhanachurch?locale=ko_KR" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M13.5 21.3V13.5h2.6l.4-3h-3V8.8c0-.9.3-1.5 1.6-1.5h1.5V4.7c-.3 0-1.2-.1-2.2-.1-2.2 0-3.6 1.3-3.6 3.8v2.1H8.3v3h2.5v7.6"/></svg><span>Facebook</span></a>
+      <a class="sns sns-first" aria-label="YouTube" href="https://www.youtube.com/@Godwillhanachurch" target="_blank" rel="noopener"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" d="M6 5h12a4 4 0 0 1 4 4v6a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V9a4 4 0 0 1 4-4zm4 4.2v5.6l5-2.8z"/></svg><span>YouTube</span></a>
+      <a class="sns" aria-label="Facebook" href="https://www.facebook.com/godswillhanachurch?locale=ko_KR" target="_blank" rel="noopener"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-1.6 19.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.3v7A10 10 0 0 0 12 2z"/></svg><span>Facebook</span></a>
   </nav>
   <a class="side-first" href="#life">처음 오셨나요?</a>
   <button class="side-toggle" type="button" id="sideToggle" aria-expanded="false" aria-controls="sideNav">메뉴</button>
@@ -687,46 +753,8 @@ details.spirit-item{border:0!important;border-top:1px solid var(--rule)!importan
   <!-- 1. 슬라이드 배너 -->
   <section class="slider" aria-roledescription="carousel" aria-label="주요 안내">
     <div class="slides" id="slides">
-      <article class="slide s1" aria-roledescription="slide" aria-label="1 / 3">
-        <svg class="slide-bg" viewBox="0 0 1200 470" preserveAspectRatio="xMinYMid slice" aria-hidden="true">
-          <rect width="1200" height="470" fill="#f3eee5"/>
-          <g transform="translate(-30 60) scale(.85)"><circle cx="560" cy="150" r="96" fill="#e6d6b8" opacity=".55"/>
-          <circle cx="560" cy="150" r="150" fill="#e6d6b8" opacity=".22"/>
-          </g><path d="M0 386 C 300 372, 700 372, 1200 388 V470 H0z" fill="#e7dfd1"/>
-          <path d="M0 386 C 300 372, 700 372, 1200 388" stroke="#cbbca4" stroke-width="1.5" fill="none"/><g transform="translate(-30 60) scale(.85)">
-          <path d="M128 360 C 230 300, 330 285, 430 250" stroke="#b9a68a" stroke-width="1.5" stroke-dasharray="2 7" stroke-linecap="round" fill="none"/>
-          <g stroke="#6f5a43" stroke-linecap="round" stroke-linejoin="round" fill="none">
-            <!-- 1. 씨앗 -->
-            <ellipse cx="110" cy="392" rx="9" ry="6" fill="#8a7155" stroke="none"/>
-            <path d="M110 398 q -4 10 2 18 M110 398 q 6 8 4 16" stroke-width="1.4"/>
-            <!-- 2. 새싹 -->
-            <path d="M220 384 V346" stroke-width="2.5"/>
-            <path d="M220 352 C 204 350, 196 338, 198 328 C 210 330, 220 340, 220 352z" fill="#a7865f" stroke-width="1.5"/>
-            <path d="M220 346 C 236 344, 244 332, 242 322 C 230 324, 220 334, 220 346z" fill="#b99a70" stroke-width="1.5"/>
-            <!-- 3. 어린 나무 -->
-            <path d="M350 384 V290" stroke-width="3.5"/>
-            <path d="M350 350 C 326 348, 314 330, 316 316 C 334 318, 348 334, 350 350z" fill="#a7865f" stroke-width="1.5"/>
-            <path d="M350 330 C 374 328, 386 310, 384 296 C 366 298, 352 314, 350 330z" fill="#b99a70" stroke-width="1.5"/>
-            <path d="M350 306 C 330 302, 322 286, 326 274 C 340 278, 350 292, 350 306z" fill="#8f7558" stroke-width="1.5"/>
-            <path d="M350 294 C 366 288, 372 272, 368 262 C 356 266, 350 280, 350 294z" fill="#a7865f" stroke-width="1.5"/>
-          </g>
-          <!-- 4. 열매 맺은 나무 -->
-          <g>
-            <path d="M556 386 C 552 340, 552 300, 556 250 M556 300 C 530 280, 510 262, 496 240 M556 286 C 582 266, 600 250, 612 226" stroke="#5c4a37" stroke-width="11" stroke-linecap="round" fill="none"/>
-            <circle cx="500" cy="210" r="62" fill="#8f7558" opacity=".92"/>
-            <circle cx="612" cy="200" r="66" fill="#a7865f" opacity=".92"/>
-            <circle cx="556" cy="160" r="74" fill="#6f5a43" opacity=".95"/>
-            <circle cx="470" cy="250" r="40" fill="#a7865f" opacity=".85"/>
-            <circle cx="646" cy="250" r="42" fill="#8f7558" opacity=".85"/>
-            <g fill="#e2c48e">
-              <circle cx="520" cy="150" r="7"/><circle cx="590" cy="130" r="6"/><circle cx="612" cy="210" r="7"/>
-              <circle cx="490" cy="222" r="6"/><circle cx="556" cy="196" r="7"/><circle cx="650" cy="250" r="6"/><circle cx="466" cy="256" r="5"/>
-            </g>
-          </g>
-          <g fill="#8a7a66" font-family="Pretendard, sans-serif" font-size="13" text-anchor="middle" letter-spacing="1">
-            <text x="110" y="440">씨앗</text><text x="220" y="440">새싹</text><text x="350" y="440">자람</text><text x="556" y="440">열매</text>
-          </g>
-        </g></svg>
+      <article class="slide s1 has-photo" aria-roledescription="slide" aria-label="1 / 3">
+        <figure class="ph ph-hero slide-bg has-img"><img src="images/hero-worship.jpg" alt="높은뜻 하나되는 교회 주일 예배 모습" fetchpriority="high" decoding="async"></figure>
         <div class="slide-text">
           <p class="slide-eyebrow">2026년 표어</p>
           <h1 class="slide-title">변화와 성숙</h1>
@@ -787,13 +815,13 @@ details.spirit-item{border:0!important;border-top:1px solid var(--rule)!importan
       <div class="row-grid">
         <div class="latest">
           <a class="thumb" href="https://www.youtube.com/watch?v=8PKMA2Dn6oE" target="_blank" rel="noopener" aria-label="11월 1일 주일예배 영상 보기 (유튜브)">
-            <img class="thumb-img" src="https://i.ytimg.com/vi/8PKMA2Dn6oE/hqdefault.jpg" alt="" loading="lazy" onload="this.parentNode.classList.add('has-img')" onerror="this.remove()">
+            <img class="thumb-img" src="images/sermon-thumb.jpg" alt="" loading="lazy" onload="this.parentNode.classList.add('has-img')" onerror="this.remove()">
             <span class="thumb-date">2026. 11. 1 주일예배</span>
-            <strong>나의 힘이 되시는<br>하나님</strong>
+            <strong>나의 힘이 되신 여호와,<br>하나님</strong>
             <span class="thumb-meta">하박국 3:15~19 · 임영호 목사</span>
             <span class="play" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span>
           </a>
-          <h2 class="latest-title">[주일예배] 나의 힘이 되시는 하나님</h2>
+          <h2 class="latest-title">[주일예배] 나의 힘이 되신 여호와, 하나님</h2>
           <p class="latest-meta">2026년 11월 1일 추수감사주일 / 본문: 하박국 3장 15~19절 / 설교자: 임영호 목사</p>
           <div class="latest-btns"><a class="btn-dark" href="https://www.youtube.com/@Godwillhanachurch/shorts" target="_blank" rel="noopener">설교 숏츠 보기</a><a class="more" href="https://www.youtube.com/@Godwillhanachurch/streams" target="_blank" rel="noopener">지난 설교 전체 보기 <span aria-hidden="true">→</span></a></div>
         </div>
@@ -826,7 +854,8 @@ details.spirit-item{border:0!important;border-top:1px solid var(--rule)!importan
   </section>
 
   <!-- 3. 교회소개 — 비전 -->
-  <section class="vision" id="vision">
+  <section class="vision has-photo" id="vision">
+    <figure class="ph ph-bg has-img" aria-hidden="true"><img src="images/vision-bg.jpg" alt="" loading="lazy" decoding="async"></figure>
     <div class="wrap vision-in">
       <h2>높은뜻 하나되는교회 비전</h2>
       <p class="vision-tag">One in God, One in Love, One Korea</p>
@@ -845,9 +874,9 @@ details.spirit-item{border:0!important;border-top:1px solid var(--rule)!importan
           <div class="box" id="people">
             <h3>섬기는 사람들</h3>
             <div class="people">
-              <div class="person"><b>임영호</b><span>담임목사</span></div>
-              <div class="person"><b>안유리</b><span>전임 전도사</span></div>
-              <div class="person"><b>김병현</b><span>찬양 전도사</span></div>
+              <div class="person staff"><div class="badge"><b>임영호</b><span class="role">담임목사</span></div></div>
+              <div class="person staff"><div class="badge"><b>안유리</b><span class="role">전임 전도사</span></div></div>
+              <div class="person staff"><div class="badge"><b>김병현</b><span class="role">찬양 전도사</span></div></div>
             </div>
           </div>
           <div class="box" id="missionaries">
@@ -902,6 +931,7 @@ details.spirit-item{border:0!important;border-top:1px solid var(--rule)!importan
         <div class="mission-col" id="faithmission">
           <h3 class="m-head">해외선교 · FaithMission</h3>
           <div class="ministry">
+            <figure class="ph ph-wide has-img"><img src="images/mission-overseas.jpg" alt="케냐 AIC 올로마이야나 교회 앞에서 현지 성도들과 함께한 단체 사진" loading="lazy" decoding="async"></figure>
             <ul class="m-tags"><li><button type="button" class="m-tag on" aria-pressed="true" data-d="현지 사역자와 함께 가정을 방문하여 예수 그리스도의 복음을 전합니다.">복음 전도</button></li><li><button type="button" class="m-tag" aria-pressed="false" data-d="아픈 현지인들을 위해 간절히 기도하며 성령의 역사를 경험합니다.">치유 기도</button></li><li><button type="button" class="m-tag" aria-pressed="false" data-d="현지 사역자와 선교사님들을 찾아가 위로하고 축복합니다.">위로와 축복</button></li><li><button type="button" class="m-tag" aria-pressed="false" data-d="온 세대가 함께 참여하는 가족 단위 선교를 진행합니다.">패밀리 선교</button></li></ul>
             <p class="m-say" aria-live="polite">현지 사역자와 함께 가정을 방문하여 예수 그리스도의 복음을 전합니다.</p>
             <p class="m-info"><b>아웃리치</b>케냐 · 에티오피아 · 레바논 · 필리핀 · 태국</p>
@@ -911,6 +941,7 @@ details.spirit-item{border:0!important;border-top:1px solid var(--rule)!importan
         <div class="mission-col" id="nk">
           <h3 class="m-head">국내선교 · 탈북민 사역</h3>
           <div class="ministry">
+            <figure class="ph ph-wide has-img"><img src="images/mission-nk.jpg" alt="북향민 가정에 나눌 버섯 전골 재료를 정성껏 담은 그릇들" loading="lazy" decoding="async"></figure>
             <ul class="m-tags"><li><button type="button" class="m-tag on" aria-pressed="true" data-d="북향민 가정을 찾아가 정성껏 준비한 반찬을 나눕니다.">돌봄</button></li><li><button type="button" class="m-tag" aria-pressed="false" data-d="위로와 격려가 필요한 분들을 위해 기도하고 함께 예배합니다.">기도와 예배</button></li><li><button type="button" class="m-tag" aria-pressed="false" data-d="명절과 삼복더위에 식당에서 따뜻한 식사를 대접합니다.">식사 대접</button></li></ul>
             <p class="m-say" aria-live="polite">북향민 가정을 찾아가 정성껏 준비한 반찬을 나눕니다.</p>
             <p class="m-info"><b>반찬나눔</b>매주 금요일 오전 10시 교회 사무실 출발 · 부산 다대포</p>
@@ -928,6 +959,7 @@ details.spirit-item{border:0!important;border-top:1px solid var(--rule)!importan
         <p class="eyebrow">환영합니다</p>
         <h2 class="welcome-h">하나님이 주인 되시는 건강하고 행복한,<br><span class="nb">높은뜻 하나되는 교회</span>에 오신 여러분을 환영하고 축복합니다.</h2>
       </div>
+      <div class="ph-strip"><figure class="ph has-img"><img src="images/worship.jpg" alt="예배 후 함께 모인 높은뜻 하나되는 교회 성도들" loading="lazy" decoding="async"></figure><figure class="ph has-img"><img src="images/smallgroup.jpg" alt="목장 모임에서 함께 선교 영상을 보는 모습" loading="lazy" decoding="async"></figure><figure class="ph has-img"><img src="images/nextgen.jpg" alt="찬양을 준비하는 다음세대 아이들" loading="lazy" decoding="async"></figure></div>
       <div class="reg" id="register">
         <h3 class="reg-title">새가족 등록과정 안내</h3>
         <ol class="reg-steps">
@@ -973,6 +1005,7 @@ details.spirit-item{border:0!important;border-top:1px solid var(--rule)!importan
         </div>
         <div class="news-grid">
           <article class="feature">
+            <figure class="ph ph-wide ph-flat has-img"><img src="images/news-thanks.jpg" alt="십자가 앞에 놓인 추수감사 헌물: 쌀, 단호박, 감, 두유와 간식" loading="lazy" decoding="async"></figure>
             <div class="feature-body">
               <p class="cats"><span>선교소식</span></p>
               <h3>얼감감 프로젝트, 감사의 마음을 나눕니다</h3>
@@ -1007,12 +1040,10 @@ details.spirit-item{border:0!important;border-top:1px solid var(--rule)!importan
         <table>
           <thead><tr><th scope="col">제목</th><th scope="col">작성일</th></tr></thead>
           <tbody>
-            <tr><td><a href="#bulletin" class="open-bulletin">2026년 11월 1일 주보 (통권 446호)</a></td><td>2026.11.01</td></tr>
-            <tr><td><a href="#news">얼감감 프로젝트 참여 안내 (11월 6일)</a></td><td>2026.11.01</td></tr>
-            <tr><td><a href="#news">추수감사주일 온세대 예배와 전교인 소풍</a></td><td>2026.11.01</td></tr>
-            <tr><td><a href="#news">2026년 하반기 심방 신청 안내</a></td><td>2026.11.01</td></tr>
-            <tr><td><a href="#news">금요일밤 “1 Hour” 기도회</a></td><td>2026.11.01</td></tr>
-            <tr><td><a href="#news">“믿음으로 사는 삶” 목장모임</a></td><td>2026.11.01</td></tr>
+            <tr><td><a href="#bulletin" class="open-bulletin" data-b="446">2026년 11월 1일 주보 (통권 446호)</a></td><td>2026.11.01</td></tr>
+            <tr><td><a href="#bulletin" class="open-bulletin" data-b="445">2026년 10월 25일 주보 (통권 445호)</a></td><td>2026.10.25</td></tr>
+            <tr><td><a href="#bulletin" class="open-bulletin" data-b="444">2026년 10월 18일 주보 (통권 444호)</a></td><td>2026.10.18</td></tr>
+            <tr><td><a href="#bulletin" class="open-bulletin" data-b="443">2026년 10월 11일 주보 (통권 443호)</a></td><td>2026.10.11</td></tr>
           </tbody>
         </table>
       </div>
@@ -1067,9 +1098,9 @@ details.spirit-item{border:0!important;border-top:1px solid var(--rule)!importan
 </footer>
 
 
-<div class="bv" id="bulletinViewer" hidden role="dialog" aria-modal="true" aria-label="2026년 11월 1일 주보">
+<div class="bv" id="bulletinViewer" hidden role="dialog" aria-modal="true" aria-labelledby="bvTitle">
   <div class="bv-bar">
-    <strong>2026년 11월 1일 주보 <span>제9권 44호 (통권 446호)</span></strong>
+    <strong id="bvTitle">2026년 11월 1일 주보 <span>제9권 44호 (통권 446호)</span></strong>
     <div class="bv-tabs" role="tablist">
       <button type="button" role="tab" class="on" data-page="0" aria-selected="true">앞면</button>
       <button type="button" role="tab" data-page="1" aria-selected="false">뒷면</button>
@@ -1077,8 +1108,8 @@ details.spirit-item{border:0!important;border-top:1px solid var(--rule)!importan
     <button type="button" class="bv-close" id="bvClose" aria-label="주보 닫기">닫기 ✕</button>
   </div>
   <div class="bv-stage">
-    <img src="bulletin-446-1.jpg" alt="주보 앞면: 예배 순서, 교회 정체성과 비전, 섬기는 사람, 온라인 헌금 안내" width="1518" height="1075" class="on">
-    <img src="bulletin-446-2.jpg" alt="주보 뒷면: 하나되는 예배 캠페인과 교회이야기(환영, 행정, 예배, 양육, 사역, 선교, 목장 소식)" width="1518" height="1075" loading="lazy">
+    <img src="bulletin-446-1.jpg" alt="주보 앞면: 예배 순서, 교회 정체성과 비전, 섬기는 사람, 온라인 헌금 안내" width="1518" height="1075" class="on" loading="lazy">
+    <img src="bulletin-446-2.jpg" alt="주보 뒷면: 예배 캠페인과 교회이야기(환영, 행정, 예배, 양육, 사역, 선교, 목장 소식)" width="1518" height="1075" loading="lazy">
   </div>
   <p class="bv-hint">이미지를 누르면 다음 면으로 넘어갑니다</p>
 </div>
@@ -1114,7 +1145,31 @@ document.querySelectorAll('a[href="#life"]').forEach(function(a){a.addEventListe
   var v=document.getElementById('bulletinViewer'); if(!v) return;
   var imgs=v.querySelectorAll('.bv-stage img'), tabs=v.querySelectorAll('.bv-tabs button'), last=null, cur=0;
   function show(n){cur=n;imgs.forEach(function(im,k){im.classList.toggle('on',k===n)});tabs.forEach(function(t,k){t.classList.toggle('on',k===n);t.setAttribute('aria-selected',k===n)})}
-  function open(e){e.preventDefault();last=document.activeElement;show(0);v.hidden=false;document.body.style.overflow='hidden';document.getElementById('bvClose').focus()}
+  // 최근 4주 주보만 보관합니다. 새 주보는 맨 위에 추가하고 가장 오래된 것은 지웁니다.
+  var B={
+    '446':['2026년 11월 1일','제9권 44호'],
+    '445':['2026년 10월 25일','제9권 43호'],
+    '444':['2026년 10월 18일','제9권 42호'],
+    '443':['2026년 10월 11일','제9권 41호']
+  };
+  // 주보 목록 높이를 대표 소식 카드 아래선에 맞춤 (두 칸으로 나란히 보일 때만)
+  (function(){
+    var f=document.querySelector('#news .feature'), t=document.querySelector('#bulletin-list table');
+    if(!f||!t) return;
+    function fit(){
+      t.style.height='';
+      var fr=f.getBoundingClientRect(), tr=t.getBoundingClientRect();
+      if(tr.left>fr.right-1 && fr.bottom>tr.bottom){ t.style.height=(fr.bottom-tr.top)+'px'; }
+    }
+    addEventListener('resize',fit); addEventListener('load',fit);
+    f.querySelectorAll('img').forEach(function(im){im.addEventListener('load',fit)});
+    fit();
+  })();
+  var title=document.getElementById('bvTitle');
+  function load(n){var b=B[n]; if(!b) return;
+    imgs[0].src='bulletin-'+n+'-1.jpg'; imgs[1].src='bulletin-'+n+'-2.jpg';
+    title.innerHTML=b[0]+' 주보 <span>'+b[1]+' (통권 '+n+'호)</span>';}
+  function open(e){e.preventDefault();last=document.activeElement;load(this.getAttribute('data-b')||'446');show(0);v.hidden=false;document.body.style.overflow='hidden';document.getElementById('bvClose').focus()}
   function close(){v.hidden=true;document.body.style.overflow='';if(last)last.focus()}
   document.querySelectorAll('.open-bulletin').forEach(function(a){a.addEventListener('click',open)});
   tabs.forEach(function(t,k){t.onclick=function(){show(k)}});
