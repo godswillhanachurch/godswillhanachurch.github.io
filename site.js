@@ -91,3 +91,22 @@ document.querySelectorAll('.m-tags').forEach(function(ul){
   v.addEventListener('touchend',function(e){if(sx===null)return; var dx=e.changedTouches[0].clientX-sx; sx=null;
     if(dx<-40&&cur<list.length-1)show(cur+1); if(dx>40&&cur>0)show(cur-1)});
 })();
+
+/* 은은한 움직임: 화면에 들어오는 요소를 부드럽게 보여줌 */
+(function(){
+  if(!('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var sel=['.sec-head','.news-head','.latest','.worship-times','.vision-in','.creed','.about-grid > *','.spirit-item',
+    '.feature','.news-side','.care-cta','.album-head','.album-grid > li','.mission-col','.ph-strip > *','.reg','.faq-head','.faq-title','.faq-list',
+    '.explore-grid > li','#offering .box','.en-box','.en-hero .wrap > *'];
+  var els=[].slice.call(document.querySelectorAll(sel.join(',')));
+  var vh=innerHeight;
+  els.forEach(function(el){
+    var parent=el.parentElement, sib=[].slice.call(parent.children).indexOf(el);
+    el.classList.add('rv');
+    if(/grid|strip/.test(parent.className)) el.classList.add('d'+Math.min(sib,3));
+    if(el.getBoundingClientRect().top<vh) el.classList.add('in');   /* 처음 화면에 보이는 건 바로 */
+  });
+  document.documentElement.classList.add('motion');
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px'});
+  els.forEach(function(el){if(!el.classList.contains('in')) io.observe(el)});
+})();
