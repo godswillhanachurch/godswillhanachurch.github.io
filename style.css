@@ -944,3 +944,16 @@ details.spirit-item h3{font-family:var(--f-serif)!important;font-size:1.125rem!i
 .ph-bg.has-img::after{background:rgba(40,28,18,.5)!important}
 .side-first{background:var(--pine)!important;color:#fff!important;transition:background .2s}
 .side-first:hover{background:var(--ink)!important}
+/* ===== 은은한 움직임 ===== */
+@media (prefers-reduced-motion:no-preference){
+  /* 첫 배너 사진이 아주 천천히 다가옴 */
+  .slide.on .ph-hero img{animation:kb 18s ease-out both}
+  @keyframes kb{from{transform:scale(1.0)}to{transform:scale(1.07)}}
+  /* 스크롤하면 부드럽게 떠오름 (스크립트가 켜졌을 때만) */
+  .motion .rv{opacity:0;transform:translateY(18px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
+  .motion .rv.in{opacity:1;transform:none}
+  .motion .rv.d1{transition-delay:.08s}.motion .rv.d2{transition-delay:.16s}.motion .rv.d3{transition-delay:.24s}
+  /* 카드에 마우스를 올리면 살짝 떠오름 */
+  .feature,.ministry,.en-box,.care-cta,.explore-card,.album-card,.thumb{transition:transform .35s ease,box-shadow .35s ease}
+  .feature:hover,.ministry:hover,.thumb:hover{transform:translateY(-3px);box-shadow:0 2px 4px rgba(70,48,25,.06),0 16px 36px rgba(70,48,25,.10)}
+}
