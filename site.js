@@ -110,3 +110,8 @@ document.querySelectorAll('.m-tags').forEach(function(ul){
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px'});
   els.forEach(function(el){if(!el.classList.contains('in')) io.observe(el)});
 })();
+
+// 홈 화면 앱(PWA): 오프라인일 때도 열리도록 서비스 워커 등록
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function(){ navigator.serviceWorker.register('/sw.js').catch(function(){}); });
+}
