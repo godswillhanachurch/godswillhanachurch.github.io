@@ -1008,8 +1008,8 @@ details.spirit-item h3{font-family:var(--f-serif)!important;font-size:1.125rem!i
   --surface:#ffffff;        /* 카드 */
   --line:#dcd9d2;
   --rule:#d0ccc4;
-  --band:#353f45;           /* 어두운 띠: 짙은 청회색 */
-  --copper:#384349;
+  --band:#66757d;           /* 어두운 띠: 중간 청회색 (덜 짙게) */
+  --copper:#6b7a82;
   --band-ink:#f4f3ef;
 }
 body{color:var(--ink)}
@@ -1050,3 +1050,5 @@ nav.menu a:hover,.side-nav a:hover,.side-nav a.on{color:var(--pine)!important}
   .quick{background:#fff!important;box-shadow:0 -4px 16px rgba(30,40,46,.08)}
   .quick a{font-size:.95rem!important;padding:.85rem 0!important;color:var(--pine)!important}
 }
+/* 비전 띠: 사진 위를 중간 청회색으로 덮어 다른 띠와 같은 밝기로 */
+.ph-bg.has-img::after{background:rgba(94,108,116,.82)!important}
