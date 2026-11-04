@@ -711,9 +711,13 @@ a.sns:hover{color:var(--ink)!important}
   background:var(--pine-soft);border:2px solid var(--pine);box-shadow:0 0 0 6px var(--pine-soft)}
 .person.staff .badge b{color:var(--ink);margin:0}
 .person.staff .badge .role{font-size:var(--t-sm)!important;color:var(--pine)!important;font-weight:600;white-space:nowrap}
-.person.staff:first-child .badge{background:var(--pine)}
-.person.staff:first-child .badge b,.person.staff:first-child .badge .role{color:#fff!important}
+#people .person.staff:first-child .badge{background:var(--pine)}
+#people .person.staff:first-child .badge b,#people .person.staff:first-child .badge .role{color:#fff!important}
 @media (max-width:640px){.staff .badge{width:100px;box-shadow:0 0 0 4px var(--pine-soft)}.person.staff .badge .role{font-size:.75rem!important}}
+#missionaries .people{grid-template-columns:repeat(4,1fr)!important;gap:8px}
+#missionaries .staff .badge{width:min(112px,100%)}
+#missionaries .person.staff .badge b{font-size:1rem!important}
+@media (max-width:640px){#missionaries .people{grid-template-columns:repeat(2,1fr)!important;gap:16px 8px}#missionaries .staff .badge{width:100px}}
 /* 형제교회 + 분립개척 한 세트 */
 .family{display:grid;grid-template-columns:1fr 220px;align-items:stretch;gap:0}
 .family h3{margin-bottom:1rem!important}
@@ -882,10 +886,10 @@ a.sns:hover{color:var(--ink)!important}
           <div class="box" id="missionaries">
             <h3>파송 &amp; 협력 선교사</h3>
             <div class="people">
-              <div class="person"><b>태국</b><span>파송선교사</span></div>
-              <div class="person"><b>중남미</b><span>파송선교사</span></div>
-              <div class="person"><b>에티오피아</b><span>파송선교사</span></div>
-              <div class="person"><b>케냐</b><span>협력선교사</span></div>
+              <div class="person staff"><div class="badge"><b>태국</b><span class="role">파송선교사</span></div></div>
+              <div class="person staff"><div class="badge"><b>중남미</b><span class="role">파송선교사</span></div></div>
+              <div class="person staff"><div class="badge"><b>에티오피아</b><span class="role">파송선교사</span></div></div>
+              <div class="person staff"><div class="badge"><b>케냐</b><span class="role">협력선교사</span></div></div>
             </div>
           </div>
       </div>
