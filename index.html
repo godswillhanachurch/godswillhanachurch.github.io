@@ -829,6 +829,31 @@ details.spirit-item h3{font-size:var(--t-h4)!important}
 .lb-nav[disabled]{opacity:.25;cursor:default}
 .lb-more{align-self:center;margin-top:10px;color:#e2c48e;font-size:.9rem;font-weight:600;text-decoration:none}
 @media (max-width:640px){.lb-stage{grid-template-columns:1fr}.lb-nav{position:absolute;top:50%;transform:translateY(-50%);z-index:1}.lb-prev{left:6px}.lb-next{right:6px}}
+
+/* 새가족 문의·신청 */
+.reg-cta{margin-top:1.75rem;padding-top:1.5rem;border-top:1px solid var(--rule);display:flex;align-items:center;justify-content:space-between;gap:1rem 2rem;flex-wrap:wrap}
+.reg-cta-t{display:grid;gap:.2rem;margin:0}
+.reg-cta-t b{font-size:var(--t-h4);color:var(--ink);line-height:1.45}
+.reg-cta-t span{font-size:var(--t-sm)!important;color:var(--muted)}
+.reg-cta-btns{display:flex;align-items:center;gap:1.1rem;flex-wrap:wrap}
+.reg-btn{margin:0!important;font-size:.95rem!important;padding:.8rem 1.6rem!important;border-radius:999px!important;background:var(--pine)!important}
+.reg-btn:hover{background:var(--ink)!important}
+.reg-btn-line{display:inline-block;text-decoration:none;font-weight:600;background:transparent!important;color:var(--pine)!important;border:1px solid var(--pine);text-align:center}
+.reg-btn-line:hover{background:var(--pine)!important;color:#fff!important}
+.reg-btn{min-width:150px;text-align:center}
+@media (max-width:640px){.reg-cta-btns{grid-template-columns:1fr!important;justify-items:stretch!important}.reg-btn{min-width:0}}
+.reg-tel{font-size:var(--t-sm);font-weight:600;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--rule)}
+.reg-tel:hover{color:var(--pine)}
+.reg-pending{flex-basis:100%;margin:0;font-size:.8rem;color:#c4302b;text-align:right}
+@media (max-width:640px){.reg-cta{display:grid;justify-items:start}.reg-btn{width:100%;text-align:center}.reg-cta-btns{width:100%;display:grid;gap:.8rem;justify-items:center}.reg-pending{text-align:left}}
+
+/* 교회소식: 심방·기도 요청 */
+.care-cta{margin-top:2rem;padding:1.25rem 1.5rem;border-radius:6px;background:var(--pine-soft);display:flex;align-items:center;justify-content:space-between;gap:1rem 2rem;flex-wrap:wrap}
+.care-t{display:grid;gap:.2rem;margin:0}
+.care-t b{font-size:var(--t-h4);color:var(--ink);line-height:1.45}
+.care-t span{font-size:var(--t-sm)!important;color:var(--muted)}
+.care-btn{flex:none}
+@media (max-width:640px){.care-cta{display:grid}.care-btn{width:100%}}
 </style>
 </head>
 <body>
@@ -1076,6 +1101,10 @@ details.spirit-item h3{font-size:var(--t-h4)!important}
           </div>
         </div>
       </div>
+      <div class="care-cta" id="care">
+        <p class="care-t"><b>심방 · 기도 요청</b><span>기도가 필요하거나 심방을 원하시면, 또는 궁금한 점이 있으시면 편하게 남겨주세요.</span></p>
+        <a class="reg-btn reg-btn-line care-btn" href="https://forms.gle/axMa5vcBnpzwUkuK8" target="_blank" rel="noopener">심방·기도 요청</a>
+      </div>
       <div class="album" id="album">
         <div class="album-head">
           <h3 class="bul-title">행사 앨범</h3>
@@ -1145,8 +1174,14 @@ details.spirit-item h3{font-size:var(--t-h4)!important}
           <li><span class="reg-no">STEP ①</span><b>등록카드 작성</b><span class="reg-d">예배 전후 등록카드 작성</span></li>
           <li><span class="reg-no">STEP ②</span><b>새가족 교육</b><span class="reg-d">5주 과정</span></li>
           <li><span class="reg-no">STEP ③</span><b>새가족 환영</b><span class="reg-d">예배 중 환영인사</span></li>
-          <li><span class="reg-no">STEP ④</span><b>공동체 편성</b><span class="reg-d">교인등록 후 공동체 편성</span></li>
+          <li><span class="reg-no">STEP ④</span><b>공동체 편성</b><span class="reg-d">교인 등록 후 목장 편성</span></li>
         </ol>
+        <div class="reg-cta" id="newcomer">
+          <p class="reg-cta-t"><b>방문 전에 등록카드를 미리 작성하고 싶으신가요?</b><span>남겨주시면 교회에서 연락드리겠습니다.</span></p>
+          <div class="reg-cta-btns">
+            <a class="btn-dark reg-btn" id="newcomerApply" href="https://forms.gle/8nm678yjCQn427rk7" target="_blank" rel="noopener">새가족 신청하기</a>
+          </div>
+        </div>
       </div>
       <div class="faq" id="faq">
         <h3 class="faq-title">새가족 FAQ</h3>
