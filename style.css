@@ -857,7 +857,7 @@ details.spirit-item h3{font-size:var(--t-h4)!important}
 .explore-card b::after{content:" →";color:var(--pine)}
 .explore-card span:last-child{font-size:var(--t-sm);color:var(--muted);line-height:var(--lh-sm)}
 .explore-card:hover b{color:var(--pine)}
-@media (max-width:900px){.explore-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:1060px){.explore-grid{grid-template-columns:repeat(2,1fr)}}
 /* English */
 .en-hero{background:var(--band);color:var(--band-ink);border-top:0}
 .en-hero .eyebrow{color:#e2c48e!important}
