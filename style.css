@@ -986,3 +986,7 @@ details.spirit-item h3{font-family:var(--f-serif)!important;font-size:1.125rem!i
   .greet-head h2{font-size:1.3rem!important}
   .greet-name{margin-top:.3rem!important}
 }
+
+/* 예배 시간 칸: 좁은 휴대폰에서도 한 줄, 모든 칸 같은 높이 */
+.worship-times .time span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+@media (max-width:480px){.worship-times .time{gap:.55rem;padding:.65rem .85rem}}
