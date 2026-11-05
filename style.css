@@ -1141,3 +1141,4 @@ i.k-prayer{background:#a3a0b8!important}
 .cal-up li.is-special b{color:var(--amber)}
 @media (hover:hover){.cal-up-btn:hover span{text-decoration:underline;text-underline-offset:3px}}
 i.k-ministry{background:#8a9a6e!important}
+@media (max-width:760px){.cal-up{display:none}}
