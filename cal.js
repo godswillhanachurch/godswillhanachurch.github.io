@@ -90,7 +90,7 @@
       }).join('')+'</ul>' : '<p class="cal-none">예정된 일정이 없습니다.</p>';
     h += '</div>';
 
-    var up = upcoming(6);
+    var up = upcoming(3);
     if (up.length) {
       h += '<div class="cal-up"><p class="cal-sel">다가오는 일정</p><ul>' + up.map(function(x){
         var e = x.e, ds = x.a < x.show ? '~'+(x.b.getMonth()+1)+'.'+x.b.getDate() : (x.a.getMonth()+1)+'.'+x.a.getDate()+' ('+WD[x.a.getDay()]+')';

@@ -1162,3 +1162,11 @@ i.k-ministry{background:#8a9a6e!important}
 #people .person.staff:first-child .badge b,#people .person.staff:first-child .badge .role{color:#fff!important}
 .cal-day:not(.past):not(.sel){background:var(--sage-bg)}
 .person.staff .badge{border-width:1.25px!important}
+/* 노트북: 오른쪽 일정 칸을 달력 높이에 맞춤 */
+@media (min-width:761px){
+  .cal-side{gap:1.1rem;align-self:stretch;align-content:start}
+  .cal-list li{padding:.5rem 0}
+  .cal-up-btn{padding:.45rem 0}
+  .cal-up-btn span{flex-direction:row;flex-wrap:wrap;align-items:baseline;column-gap:.5rem}
+  .cal-sel{margin-bottom:.35rem!important}
+}
