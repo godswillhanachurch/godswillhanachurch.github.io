@@ -1081,3 +1081,6 @@ nav.menu a:hover,.side-nav a:hover,.side-nav a.on{color:var(--pine)!important}
 /* 교회소식 목록: 분류(양육·목장·기도)와 제목 사이 간격 */
 .news-v2 .item{column-gap:.9rem!important}
 @media (min-width:481px){.news-v2 .item .cats{margin-right:.15rem!important}}
+
+/* 바닥글 누적 방문 수 */
+footer .visits b{font-weight:600;font-variant-numeric:tabular-nums}
