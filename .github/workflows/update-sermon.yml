@@ -4,7 +4,12 @@ on:
   schedule:
     - cron: "0 4-14 * * 0"   # 주일 오후 1시~밤 11시(한국 시간) 매시간
     - cron: "0 3 * * 1-6"    # 평일·토요일 정오(한국 시간) 한 번
-  workflow_dispatch: {}       # Actions 탭에서 직접 실행
+  workflow_dispatch:          # Actions 탭에서 직접 실행
+    inputs:
+      preview:
+        description: "바꾸지 않고 결과만 미리 보기"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -21,6 +26,7 @@ jobs:
       - name: 최신 주일예배 영상 확인
         env:
           YT_CHANNEL_ID: ${{ vars.YT_CHANNEL_ID }}
+          PREVIEW: ${{ inputs.preview && '1' || '' }}
         run: python3 .github/scripts/update_sermon.py
       - name: 바뀐 내용이 있으면 게시
         run: |

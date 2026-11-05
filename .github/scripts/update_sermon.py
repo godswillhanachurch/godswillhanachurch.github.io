@@ -158,6 +158,10 @@ def main():
     if not v:
         print("예배 영상을 찾지 못해 그대로 둡니다.")
         return
+    if os.environ.get("PREVIEW"):
+        print("미리보기 설명란:\n" + v["desc"][:600])
+        print("미리보기 결과:\n" + render(v))
+        return
     page = open(INDEX, encoding="utf-8").read()
     m = re.search(r"(<!-- sermon:start[^>]*-->\n)(.*?)(<!-- sermon:end -->)", page, re.S)
     if not m:
