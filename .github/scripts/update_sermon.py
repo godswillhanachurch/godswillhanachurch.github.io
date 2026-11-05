@@ -7,6 +7,7 @@ GitHub Actions(.github/workflows/update-sermon.yml)가 주일 오후마다 실�
 """
 import datetime as dt
 import html
+import json
 import os
 import re
 import sys
@@ -64,6 +65,38 @@ def pick(items):
     return None
 
 
+def from_pages():
+    """RSS가 안 될 때: 채널의 실시간(streams)·동영상 목록 화면에서 직접 찾습니다."""
+    for tab in ("streams", "videos"):
+        try:
+            page = get(f"https://www.youtube.com/@{HANDLE}/{tab}")
+        except Exception as ex:
+            print(f"{tab} 화면을 읽지 못함:", ex)
+            continue
+        for chunk in page.split('"videoRenderer":{')[1:]:
+            m = re.match(r'"videoId":"([\w-]{11})"', chunk)
+            t = re.search(r'"title":\{"runs":\[\{"text":"((?:[^"\\]|\\.)*)"', chunk)
+            if not m or not t:
+                continue
+            head = chunk[:6000]
+            if "upcomingEventData" in head or '"style":"LIVE"' in head:
+                continue  # 아직 시작 전이거나 지금 방송 중인 영상은 건너뜀
+            title = json.loads('"' + t.group(1) + '"')
+            if "예배" not in title:
+                continue
+            vid = m.group(1)
+            watch = get(f"https://www.youtube.com/watch?v={vid}")
+            d = re.search(r'"(?:publishDate|uploadDate)":"([^"]+)"', watch) or \
+                re.search(r'itemprop="(?:datePublished|uploadDate)" content="([^"]+)"', watch)
+            desc = re.search(r'"shortDescription":"((?:[^"\\]|\\.)*)"', watch)
+            pub = d.group(1) if d else dt.datetime.now(KST).isoformat()
+            if len(pub) == 10:
+                pub += "T12:00:00+09:00"
+            return {"id": vid, "title": title, "published": pub,
+                    "desc": json.loads('"' + desc.group(1) + '"') if desc else ""}
+    return None
+
+
 def sunday_of(published):
     d = dt.datetime.fromisoformat(published.replace("Z", "+00:00")).astimezone(KST).date()
     back = (d.weekday() + 1) % 7  # 일요일까지 거슬러 간 날 수 (일=0)
@@ -103,8 +136,15 @@ def render(v):
 
 
 def main():
-    cid = channel_id()
-    v = pick(entries(get(f"https://www.youtube.com/feeds/videos.xml?channel_id={cid}")))
+    v = None
+    try:
+        cid = channel_id()
+        print("채널 ID:", cid)
+        v = pick(entries(get(f"https://www.youtube.com/feeds/videos.xml?channel_id={cid}")))
+    except BaseException as ex:  # RSS 장애(404 등) 시 목록 화면으로 대체
+        print("RSS를 읽지 못함:", ex)
+    if not v:
+        v = from_pages()
     if not v:
         print("예배 영상을 찾지 못해 그대로 둡니다.")
         return
