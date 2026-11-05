@@ -1188,3 +1188,10 @@ i.k-pastor{background:#4f8a8b!important}
 .cal-bar.k-season{background:#7a5c8f}.cal-bar.k-ministry{background:#8a9a6e}.cal-bar.k-prayer{background:#a3a0b8}.cal-bar.k-group{background:#8fa3ad}
 .cal-day.sel .cal-bar{box-shadow:0 0 0 1px #fff}
 .cal-bar{bottom:calc(3px + var(--i,0) * 6px)}.cal-day{padding-bottom:.6rem}
+
+/* 옅은 민트 띠 (2026-11): 헌금·오시는 길, 영어 페이지 상단 */
+:root{--mint-band:#dde9e4;--mint-ink:#1f2427}
+#offering{background:var(--mint-band)!important;color:var(--mint-ink)!important}
+.en-hero{background:var(--mint-band)!important;color:var(--mint-ink)!important}
+.en-hero .eyebrow{color:#8a7140!important}
+.en-hero h1,.en-hero h2,.en-hero p{color:var(--mint-ink)!important}
