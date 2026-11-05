@@ -92,6 +92,12 @@
       "title": "청소년 연합예배 (with 가덕교회)",
       "replace": "원키즈·원틴즈 예배팀 모임",
       "kind": "nextgen"
+    },
+    {
+      "date": "2026-11-10",
+      "title": "높은뜻 담임목사 수련회",
+      "note": "임영호 목사",
+      "kind": "pastor"
     }
   ],
   "skip": []
