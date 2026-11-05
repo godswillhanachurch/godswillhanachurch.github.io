@@ -1142,3 +1142,13 @@ i.k-prayer{background:#a3a0b8!important}
 @media (hover:hover){.cal-up-btn:hover span{text-decoration:underline;text-underline-offset:3px}}
 i.k-ministry{background:#8a9a6e!important}
 @media (max-width:760px){.cal-up{display:none}}
+/* 신청 기간 안내 띠와 마감 표시 */
+.cal-band{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:baseline;gap:.25rem .75rem;margin:0;padding:.75rem 1rem;border-radius:10px;background:color-mix(in srgb,var(--amber) 14%,transparent);border:1px solid color-mix(in srgb,var(--amber) 35%,transparent)}
+.cal-band-tag{font-size:var(--t-sm);font-weight:700;color:#8a7140}
+.cal-band b{font-weight:700}
+.cal-band-when{font-size:var(--t-sm);color:var(--muted)}
+.cal-band-when em{font-style:normal;font-weight:700;color:#8a7140;margin-left:.25rem}
+.cal-band small{flex-basis:100%;font-size:var(--t-sm);color:var(--muted)}
+.cal-tag{font-size:.65rem;line-height:1;font-weight:700;color:#8a7140;letter-spacing:-.02em}
+.cal-day.sel .cal-tag{color:#fff}
+.cal-list li b:only-child{}
