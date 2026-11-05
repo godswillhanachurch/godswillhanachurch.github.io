@@ -116,8 +116,18 @@ def field(desc, *labels):
 
 
 def render(v):
-    title = re.sub(r"^\s*\[[^\]]*\]\s*", "", v["title"]).strip() or v["title"]
-    day = sunday_of(v["published"])
+    dm = re.search(r"(\d{2,4})\.\s*(\d{1,2})\.\s*(\d{1,2})", v["title"])
+    if dm:  # 제목의 '26. 11. 01.' 같은 날짜를 우선 사용
+        yy = int(dm.group(1))
+        day = dt.date(yy + 2000 if yy < 100 else yy, int(dm.group(2)), int(dm.group(3)))
+    else:
+        day = sunday_of(v["published"])
+    title = field(v["desc"], "설교 제목", "제목")
+    if not title:  # 설명란에 제목이 없으면 영상 제목에서 날짜·꾸밈을 뺀 나머지
+        rest = re.sub(r"^\s*\[[^\]]*\]\s*", "", v["title"])
+        rest = re.sub(r"\d{2,4}\.\s*\d{1,2}\.\s*\d{1,2}\.?", "", rest).strip(" |·-")
+        title = rest if rest and re.sub(r"\s", "", rest) not in ("주일예배", "예배") else "주일예배 말씀"
+    head = f"[주일예배] {title}" if title != "주일예배 말씀" else f"[주일예배] {day.year}년 {day.month}월 {day.day}일"
     passage = field(v["desc"], "본문", "말씀")
     preacher = field(v["desc"], "설교자", "설교")
     e = html.escape
@@ -134,7 +144,7 @@ def render(v):
         + (f'            <span class="thumb-meta">{e(meta_short)}</span>\n' if meta_short else "")
         + '            <span class="play" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span>\n'
         '          </a>\n'
-        f'          <h2 class="latest-title">{e(v["title"])}</h2>\n'
+        f'          <h2 class="latest-title">{e(head)}</h2>\n'
         f'          <p class="latest-meta">{e(meta_long)}</p>\n'
     )
 
