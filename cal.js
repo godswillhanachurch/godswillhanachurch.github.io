@@ -15,7 +15,7 @@
   function key(d){ return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); }
   function parse(s){ var p = s.split('-'); return new Date(+p[0], +p[1]-1, +p[2]); }
   function esc(s){ return String(s||'').replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
-  function label(e){ return e.time ? esc(e.time) : (e.kind==='season' ? '절기' : (e.last ? '마감' : (e.range ? '기간' : '종일'))); }
+  function label(e){ return e.time ? esc(e.time) : (e.kind==='season' ? '절기' : (e.last ? '마감' : (e.range ? '기간' : (e.weekly ? '미정' : '종일')))); }
   // 오늘 진행 중인 신청·기간 일정 (달력 위 안내 띠)
   function ongoing(){
     return (data.events||[]).filter(function(e){ return e.end && parse(e.date) <= today && parse(e.end) >= today; })
@@ -37,7 +37,7 @@
         if (d.getDay() === m.day && Math.ceil(d.getDate()/7) === m.nth) list.push({ time: m.time||'', title: m.title, note: m.note||'', kind: m.kind||'special', special: true });
       });
       (data.weekly||[]).forEach(function(w){
-        if (d.getDay() === w.day && replaced.indexOf(w.title) < 0) list.push({ time: w.time, title: w.title, note: w.note||'', kind: w.kind||'' });
+        if (d.getDay() === w.day && replaced.indexOf(w.title) < 0) list.push({ time: w.time||'', title: w.title, note: w.note||'', kind: w.kind||'', weekly: true });
       });
     }
     list.sort(function(x,y){ var a = x.kind==='season'?'':(x.time||'00:00'), b = y.kind==='season'?'':(y.time||'00:00'); return a < b ? -1 : a > b ? 1 : 0; });
