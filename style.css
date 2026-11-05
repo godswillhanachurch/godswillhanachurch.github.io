@@ -1071,3 +1071,9 @@ nav.menu a:hover,.side-nav a:hover,.side-nav a.on{color:var(--pine)!important}
 /* 2026-11-05 예배시간 위계 정리 — 시간만 굵게, 부서명은 보통, 묶음 이름은 작고 차분하게 */
 .worship-times .time span{font-weight:500!important}
 .worship-times .wt-label{font-size:var(--t-sm)!important;font-weight:600!important;color:var(--muted)!important;letter-spacing:.02em}
+
+/* 예배 시간: 시간과 내용을 항상 한 줄로 */
+.worship-times .time{flex-wrap:nowrap!important;align-items:baseline}
+.worship-times .time b{flex-shrink:0;white-space:nowrap}
+.worship-times .time span{white-space:nowrap!important;min-width:0}
+@media (max-width:480px){.worship-times .time{gap:.5rem;padding:.65rem .8rem}.worship-times .time span{letter-spacing:-.02em}}
