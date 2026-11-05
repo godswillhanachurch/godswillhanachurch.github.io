@@ -29,7 +29,7 @@
       var a = parse(e.date), b = e.end ? parse(e.end) : a;
       if (d >= a && d <= b) {
         if (e.replace) replaced.push(e.replace);
-        list.push({ time: e.time||'', title: e.title, note: e.note||'', kind: e.kind||'special', range: !!e.end, last: !!e.end && +d === +b, special: !e.replace && e.kind !== 'season' });
+        list.push({ time: e.time||'', title: e.title, note: e.note||'', kind: e.kind||'special', range: !!e.end, last: !!e.end && +d === +b, special: !e.replace && (e.kind||'special') === 'special' });
       }
     });
     if (!skip) {
@@ -94,7 +94,7 @@
     if (up.length) {
       h += '<div class="cal-up"><p class="cal-sel">다가오는 일정</p><ul>' + up.map(function(x){
         var e = x.e, ds = x.a < x.show ? '~'+(x.b.getMonth()+1)+'.'+x.b.getDate() : (x.a.getMonth()+1)+'.'+x.a.getDate()+' ('+WD[x.a.getDay()]+')';
-        var item = { kind: e.kind||'special', special: !e.replace && e.kind !== 'season' };
+        var item = { kind: e.kind||'special', special: !e.replace && (e.kind||'special') === 'special' };
         return '<li class="'+cls(item)+'"><button type="button" class="cal-up-btn" data-jump="'+key(x.show)+'"><b>'+ds+'</b><span>'+esc(e.title)
           + '<small>'+[e.time||'', e.note||''].filter(Boolean).map(esc).join(' · ')+'</small></span></button></li>';
       }).join('') + '</ul></div>';
