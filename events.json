@@ -1,15 +1,91 @@
 {
-  "_안내": "교회 일정 달력 데이터입니다. weekly=매주 반복(day: 0일 1월 2화 3수 4목 5금 6토), monthly=매월 n번째 요일, events=날짜가 정해진 일정(end가 있으면 기간). skip에 날짜를 넣으면 그날 반복 일정을 쉽니다.",
+  "_안내": "교회 일정 달력 데이터입니다. weekly=매주 반복(day: 0일 1월 2화 3수 4목 5금 6토), monthly=매월 n번째 요일, events=날짜가 정해진 일정(end가 있으면 기간, replace가 있으면 그날 같은 이름의 반복 일정을 대신함, kind=season은 교회 절기). skip에 날짜를 넣으면 그날 반복 일정을 모두 쉽니다.",
   "weekly": [
-    { "day": 0, "time": "11:45", "title": "주일예배", "kind": "worship" },
-    { "day": 0, "time": "14:30", "title": "목장모임", "kind": "group" },
-    { "day": 5, "time": "20:00", "title": "금요일밤 기도회", "kind": "prayer" }
+    {
+      "day": 0,
+      "time": "11:45",
+      "title": "주일예배",
+      "kind": "worship"
+    },
+    {
+      "day": 0,
+      "time": "14:30",
+      "title": "목장모임",
+      "kind": "group"
+    },
+    {
+      "day": 5,
+      "time": "20:00",
+      "title": "금요일밤 기도회",
+      "kind": "prayer"
+    }
   ],
-  "monthly": [
-    { "nth": 1, "day": 0, "title": "온세대 예배", "note": "첫째 주일예배는 아이들과 함께 드립니다", "kind": "special" }
-  ],
+  "monthly": [],
   "events": [
-    { "date": "2026-11-01", "end": "2026-11-30", "title": "하반기 심방 신청", "note": "안유리 전도사에게 신청", "kind": "special" }
+    {
+      "date": "2026-11-01",
+      "end": "2026-11-30",
+      "title": "하반기 심방 신청",
+      "note": "안유리 전도사에게 신청",
+      "kind": "special"
+    },
+    {
+      "date": "2026-11-01",
+      "title": "온세대 예배",
+      "note": "주일예배를 아이들과 함께 드립니다",
+      "kind": "worship",
+      "time": "11:45",
+      "replace": "주일예배"
+    },
+    {
+      "date": "2026-11-08",
+      "time": "14:30",
+      "title": "연합목장모임",
+      "replace": "목장모임",
+      "kind": "group"
+    },
+    {
+      "date": "2026-12-06",
+      "time": "14:30",
+      "title": "연합목장모임",
+      "replace": "목장모임",
+      "kind": "group"
+    },
+    {
+      "date": "2026-11-29",
+      "title": "대림절 첫째 주일",
+      "kind": "season"
+    },
+    {
+      "date": "2026-12-06",
+      "title": "대림절 둘째 주일",
+      "kind": "season"
+    },
+    {
+      "date": "2026-12-13",
+      "title": "대림절 셋째 주일",
+      "kind": "season"
+    },
+    {
+      "date": "2026-12-20",
+      "title": "대림절 넷째 주일",
+      "kind": "season"
+    },
+    {
+      "date": "2026-12-24",
+      "title": "성탄 전야",
+      "kind": "season"
+    },
+    {
+      "date": "2026-12-25",
+      "title": "성탄절",
+      "kind": "season"
+    },
+    {
+      "date": "2026-12-27",
+      "title": "성탄 후 첫째 주일",
+      "kind": "season"
+    }
   ],
   "skip": []
 }

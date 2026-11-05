@@ -1122,3 +1122,6 @@ i.k-special{background:var(--amber)!important}
 .cal-list li.is-special b{color:var(--amber)}
 .cal-none{color:var(--muted);font-size:var(--t-sm);margin:.25rem 0}
 @media (max-width:760px){.cal{grid-template-columns:1fr}.cal-day{min-height:2.75rem}}
+i.k-season{background:#7a5c8f!important}
+i.k-prayer{background:#a3a0b8!important}
+.cal-list li.is-season b,.cal-list li.is-season span{color:#6b4f80;font-weight:600}
