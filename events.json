@@ -86,6 +86,12 @@
       "date": "2026-12-27",
       "title": "성탄 후 첫째 주일",
       "kind": "season"
+    },
+    {
+      "date": "2026-12-26",
+      "title": "청소년 연합예배 (with 가덕교회)",
+      "replace": "원키즈·원틴즈 예배팀 모임",
+      "kind": "nextgen"
     }
   ],
   "skip": []
