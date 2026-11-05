@@ -73,18 +73,22 @@ def from_pages():
         except Exception as ex:
             print(f"{tab} 화면을 읽지 못함:", ex)
             continue
-        for chunk in page.split('"videoRenderer":{')[1:]:
-            m = re.match(r'"videoId":"([\w-]{11})"', chunk)
-            t = re.search(r'"title":\{"runs":\[\{"text":"((?:[^"\\]|\\.)*)"', chunk)
-            if not m or not t:
-                continue
-            head = chunk[:6000]
-            if "upcomingEventData" in head or '"style":"LIVE"' in head:
-                continue  # 아직 시작 전이거나 지금 방송 중인 영상은 건너뜀
-            title = json.loads('"' + t.group(1) + '"')
-            if "예배" not in title:
-                continue
+        found = []
+        for m in re.finditer(r'"videoId":"([\w-]{11})"', page):
             vid = m.group(1)
+            if vid in [x[0] for x in found]:
+                continue
+            near = page[m.start():m.start() + 8000]
+            t = (re.search(r'"title":\{"runs":\[\{"text":"((?:[^"\\]|\\.)*)"', near)
+                 or re.search(r'"title":\{"content":"((?:[^"\\]|\\.)*)"', near)
+                 or re.search(r'"accessibilityText":"((?:[^"\\]|\\.)*)"', near))
+            if not t:
+                continue
+            found.append((vid, json.loads('"' + t.group(1) + '"'), "upcomingEventData" in near[:3000] or "UPCOMING" in near[:3000]))
+        print(f"{tab}: 화면 {len(page)}자, 영상 {len(found)}개 —", [x[1][:20] for x in found[:5]])
+        for vid, title, upcoming in found:
+            if upcoming or "예배" not in title:
+                continue
             watch = get(f"https://www.youtube.com/watch?v={vid}")
             d = re.search(r'"(?:publishDate|uploadDate)":"([^"]+)"', watch) or \
                 re.search(r'itemprop="(?:datePublished|uploadDate)" content="([^"]+)"', watch)
@@ -140,7 +144,13 @@ def main():
     try:
         cid = channel_id()
         print("채널 ID:", cid)
-        v = pick(entries(get(f"https://www.youtube.com/feeds/videos.xml?channel_id={cid}")))
+        for q in (f"channel_id={cid}", f"playlist_id=UU{cid[2:]}"):
+            try:
+                v = pick(entries(get(f"https://www.youtube.com/feeds/videos.xml?{q}")))
+                if v:
+                    break
+            except Exception as ex:
+                print("RSS 실패:", q, ex)
     except BaseException as ex:  # RSS 장애(404 등) 시 목록 화면으로 대체
         print("RSS를 읽지 못함:", ex)
     if not v:
