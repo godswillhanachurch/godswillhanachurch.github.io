@@ -29,7 +29,7 @@
       var a = parse(e.date), b = e.end ? parse(e.end) : a;
       if (d >= a && d <= b) {
         if (e.replace) replaced.push(e.replace);
-        list.push({ time: e.time||'', title: e.title, note: e.note||'', kind: e.kind||'special', range: !!e.end && (e.kind||'special') === 'special', last: !!e.end && (e.kind||'special') === 'special' && +d === +b, special: !e.replace && (e.kind||'special') === 'special' });
+        list.push({ time: e.time||'', title: e.title, note: e.note||'', kind: e.kind||'special', span: e.end && (e.kind||'special') !== 'special' && +a !== +b ? { start: +d === +a, end: +d === +b, id: e.date+e.title } : null, range: !!e.end && (e.kind||'special') === 'special', last: !!e.end && (e.kind||'special') === 'special' && +d === +b, special: !e.replace && (e.kind||'special') === 'special' });
       }
     });
     if (!skip) {
@@ -77,7 +77,12 @@
       var c = 'cal-day' + (dt.getDay()===0?' sun':'') + (+dt===+today?' today':'') + (+dt===+sel?' sel':'') + (past?' past':'');
       h += '<button type="button" class="'+c+'" data-d="'+key(dt)+'"'+(past?' disabled aria-label="'+(m+1)+'월 '+d+'일 (지난 날)"':' aria-label="'+(m+1)+'월 '+d+'일 일정 '+ev.length+'개"')+(+dt===+sel?' aria-pressed="true"':'')+'>'
         + '<span class="n">'+d+'</span><span class="cal-dots">'
-        + ev.filter(function(e){ return !e.range || e.last; }).map(function(e){ return e.special?'special':e.kind; }).filter(function(k,i,a){ return a.indexOf(k)===i; }).slice(0,4).map(function(k){ return '<i class="k-'+k+'"></i>'; }).join('') + '</span></button>';
+        + ev.filter(function(e){ return (!e.range || e.last) && !e.span; }).map(function(e){ return e.special?'special':e.kind; }).filter(function(k,i,a){ return a.indexOf(k)===i; }).slice(0,4).map(function(k){ return '<i class="k-'+k+'"></i>'; }).join('') + '</span></button>';
+      var bars = ev.filter(function(e){ return e.span; }).map(function(e, i){
+        var wd = dt.getDay(), c = 'cal-bar k-' + e.kind + (e.span.start || wd === 0 || d === 1 ? ' s' : '') + (e.span.end || wd === 6 || d === days ? ' e' : '');
+        return '<span class="'+c+'" style="--i:'+i+'" title="'+esc(e.title)+'"></span>';
+      }).join('');
+      if (bars) h = h.replace(/<\/button>$/, bars + '</button>');
       if (ev.some(function(e){ return e.last; })) h = h.replace(/<\/button>$/, '<span class="cal-tag">마감</span></button>');
       if ((first.getDay()+d) % 7 === 0 && d < days) h += '</div><div class="cal-row" role="row">';
     }
