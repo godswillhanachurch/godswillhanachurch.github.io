@@ -1152,3 +1152,12 @@ i.k-ministry{background:#8a9a6e!important}
 .cal-tag{font-size:.65rem;line-height:1;font-weight:700;color:#8a7140;letter-spacing:-.02em}
 .cal-day.sel .cal-tag{color:#fff}
 .cal-list li b:only-child{}
+
+/* 세이지 색 적용 (2026-11): 섬기는 사람들·선교사 원, 교회 일정 달력 칸 */
+:root{--sage-bg:#e6eae2;--sage-halo:#eef0ea;--sage:#7a8770;--sage-deep:#5f6c57}
+.person.staff .badge{background:var(--sage-bg)!important;border-color:var(--sage)!important;box-shadow:0 0 0 5px var(--sage-halo)!important}
+@media (max-width:640px){.person.staff .badge{box-shadow:0 0 0 4px var(--sage-halo)!important}}
+.person.staff .badge .role{color:var(--sage-deep)!important}
+#people .person.staff:first-child .badge{background:var(--sage-deep)!important;border-color:var(--sage-deep)!important}
+#people .person.staff:first-child .badge b,#people .person.staff:first-child .badge .role{color:#fff!important}
+.cal-day:not(.past):not(.sel){background:var(--sage-bg)}
