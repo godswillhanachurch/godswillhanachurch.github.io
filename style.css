@@ -1179,3 +1179,12 @@ i.k-pastor{background:#4f8a8b!important}
 @media (min-width:1181px){.side.shrink{margin-bottom:44px}}
 @media (max-width:1180px){.side.shrink{margin-bottom:26px}}
 @media (prefers-reduced-motion:reduce){.side{transition:none}}
+/* 여러 날 이어지는 일정: 가로 바 */
+.cal-day{position:relative}
+.cal-bar{position:absolute;left:-3px;right:-3px;bottom:calc(5px + var(--i,0) * 6px);height:4px;background:var(--pine);pointer-events:none}
+.cal-bar.s{left:8px;border-top-left-radius:3px;border-bottom-left-radius:3px}
+.cal-bar.e{right:8px;border-top-right-radius:3px;border-bottom-right-radius:3px}
+.cal-bar.k-worship{background:#596871}.cal-bar.k-pastor{background:#4f8a8b}.cal-bar.k-nextgen{background:#d08c74}
+.cal-bar.k-season{background:#7a5c8f}.cal-bar.k-ministry{background:#8a9a6e}.cal-bar.k-prayer{background:#a3a0b8}.cal-bar.k-group{background:#8fa3ad}
+.cal-day.sel .cal-bar{box-shadow:0 0 0 1px #fff}
+.cal-bar{bottom:calc(3px + var(--i,0) * 6px)}.cal-day{padding-bottom:.6rem}
