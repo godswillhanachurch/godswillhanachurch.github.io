@@ -1,0 +1,71 @@
+// 교회 일정 달력 — events.json을 읽어 월별 달력과 선택한 날의 일정을 보여 줍니다.
+(function(){
+  var box = document.getElementById('churchCal');
+  if (!box || !window.fetch) return;
+  var WD = ['일','월','화','수','목','금','토'];
+  var today = new Date(); today.setHours(0,0,0,0);
+  var view = new Date(today.getFullYear(), today.getMonth(), 1);
+  var sel = new Date(today);
+  var data = { weekly: [], monthly: [], events: [], skip: [] };
+
+  function key(d){ return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); }
+  function parse(s){ var p = s.split('-'); return new Date(+p[0], +p[1]-1, +p[2]); }
+  function esc(s){ return String(s||'').replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+
+  function on(d){
+    var k = key(d), list = [], skip = (data.skip||[]).indexOf(k) > -1;
+    (data.events||[]).forEach(function(e){
+      var a = parse(e.date), b = e.end ? parse(e.end) : a;
+      if (d >= a && d <= b) list.push({ time: e.time||'', title: e.title, note: e.note||'', kind: e.kind||'special', range: !!e.end, special: true });
+    });
+    if (!skip) {
+      (data.monthly||[]).forEach(function(m){
+        if (d.getDay() === m.day && Math.ceil(d.getDate()/7) === m.nth) list.push({ time: m.time||'', title: m.title, note: m.note||'', kind: m.kind||'special', special: true });
+      });
+      (data.weekly||[]).forEach(function(w){
+        if (d.getDay() === w.day) list.push({ time: w.time, title: w.title, note: w.note||'', kind: w.kind||'' });
+      });
+    }
+    list.sort(function(x,y){ return (x.time||'00:00') < (y.time||'00:00') ? -1 : 1; });
+    return list;
+  }
+
+  function render(){
+    var y = view.getFullYear(), m = view.getMonth();
+    var first = new Date(y, m, 1), days = new Date(y, m+1, 0).getDate();
+    var h = '<div class="cal-head"><button type="button" class="cal-nav" data-go="-1" aria-label="이전 달">‹</button>'
+      + '<strong class="cal-month">'+y+'년 '+(m+1)+'월</strong>'
+      + '<button type="button" class="cal-nav" data-go="1" aria-label="다음 달">›</button>'
+      + '<button type="button" class="cal-today" data-today>오늘</button></div>';
+    h += '<div class="cal-grid" role="grid"><div class="cal-row cal-wd" role="row">'
+      + WD.map(function(w,i){ return '<span role="columnheader"'+(i===0?' class="sun"':'')+'>'+w+'</span>'; }).join('') + '</div><div class="cal-row" role="row">';
+    for (var i = 0; i < first.getDay(); i++) h += '<span class="cal-empty"></span>';
+    for (var d = 1; d <= days; d++){
+      var dt = new Date(y, m, d), ev = on(dt);
+      var cls = 'cal-day' + (dt.getDay()===0?' sun':'') + (+dt===+today?' today':'') + (+dt===+sel?' sel':'');
+      h += '<button type="button" class="'+cls+'" data-d="'+key(dt)+'" aria-label="'+(m+1)+'월 '+d+'일 일정 '+ev.length+'개"'+(+dt===+sel?' aria-pressed="true"':'')+'>'
+        + '<span class="n">'+d+'</span><span class="cal-dots">'
+        + ev.filter(function(e){ return !e.range; }).map(function(e){ return e.special?'special':e.kind; }).filter(function(k,i,a){ return a.indexOf(k)===i; }).slice(0,4).map(function(k){ return '<i class="k-'+k+'"></i>'; }).join('') + '</span></button>';
+      if ((first.getDay()+d) % 7 === 0 && d < days) h += '</div><div class="cal-row" role="row">';
+    }
+    h += '</div></div>';
+    var list = on(sel);
+    h += '<div class="cal-list" aria-live="polite"><p class="cal-sel">'+(sel.getMonth()+1)+'월 '+sel.getDate()+'일 ('+WD[sel.getDay()]+')</p>';
+    h += list.length ? '<ul>'+list.map(function(e){
+        return '<li class="'+(e.special?'is-special':'')+'"><b>'+(e.time?esc(e.time):(e.range?'기간':'종일'))+'</b><span>'+esc(e.title)+(e.note?'<small>'+esc(e.note)+'</small>':'')+'</span></li>';
+      }).join('')+'</ul>' : '<p class="cal-none">예정된 일정이 없습니다.</p>';
+    h += '</div>';
+    box.innerHTML = h;
+  }
+
+  box.addEventListener('click', function(e){
+    var t = e.target.closest('button'); if (!t) return;
+    if (t.dataset.go) { view = new Date(view.getFullYear(), view.getMonth() + (+t.dataset.go), 1); render(); }
+    else if (t.hasAttribute('data-today')) { view = new Date(today.getFullYear(), today.getMonth(), 1); sel = new Date(today); render(); }
+    else if (t.dataset.d) { sel = parse(t.dataset.d); render(); }
+  });
+
+  fetch('events.json', { cache: 'no-cache' }).then(function(r){ return r.json(); })
+    .then(function(d){ data = d; render(); })
+    .catch(function(){ box.innerHTML = '<p class="cal-none">일정을 불러오지 못했습니다. 잠시 후 다시 열어 주세요.</p>'; });
+})();
