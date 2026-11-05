@@ -13,20 +13,23 @@
   function esc(s){ return String(s||'').replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
 
   function on(d){
-    var k = key(d), list = [], skip = (data.skip||[]).indexOf(k) > -1;
+    var k = key(d), list = [], replaced = [], skip = (data.skip||[]).indexOf(k) > -1;
     (data.events||[]).forEach(function(e){
       var a = parse(e.date), b = e.end ? parse(e.end) : a;
-      if (d >= a && d <= b) list.push({ time: e.time||'', title: e.title, note: e.note||'', kind: e.kind||'special', range: !!e.end, special: true });
+      if (d >= a && d <= b) {
+        if (e.replace) replaced.push(e.replace);
+        list.push({ time: e.time||'', title: e.title, note: e.note||'', kind: e.kind||'special', range: !!e.end, special: !e.replace && e.kind !== 'season' });
+      }
     });
     if (!skip) {
       (data.monthly||[]).forEach(function(m){
         if (d.getDay() === m.day && Math.ceil(d.getDate()/7) === m.nth) list.push({ time: m.time||'', title: m.title, note: m.note||'', kind: m.kind||'special', special: true });
       });
       (data.weekly||[]).forEach(function(w){
-        if (d.getDay() === w.day) list.push({ time: w.time, title: w.title, note: w.note||'', kind: w.kind||'' });
+        if (d.getDay() === w.day && replaced.indexOf(w.title) < 0) list.push({ time: w.time, title: w.title, note: w.note||'', kind: w.kind||'' });
       });
     }
-    list.sort(function(x,y){ return (x.time||'00:00') < (y.time||'00:00') ? -1 : 1; });
+    list.sort(function(x,y){ var a = x.kind==='season'?'':(x.time||'00:00'), b = y.kind==='season'?'':(y.time||'00:00'); return a < b ? -1 : a > b ? 1 : 0; });
     return list;
   }
 
@@ -52,7 +55,7 @@
     var list = on(sel);
     h += '<div class="cal-list" aria-live="polite"><p class="cal-sel">'+(sel.getMonth()+1)+'월 '+sel.getDate()+'일 ('+WD[sel.getDay()]+')</p>';
     h += list.length ? '<ul>'+list.map(function(e){
-        return '<li class="'+(e.special?'is-special':'')+'"><b>'+(e.time?esc(e.time):(e.range?'기간':'종일'))+'</b><span>'+esc(e.title)+(e.note?'<small>'+esc(e.note)+'</small>':'')+'</span></li>';
+        return '<li class="'+(e.special?'is-special':'')+(e.kind==='season'?' is-season':'')+'"><b>'+(e.time?esc(e.time):(e.kind==='season'?'절기':(e.range?'기간':'종일')))+'</b><span>'+esc(e.title)+(e.note?'<small>'+esc(e.note)+'</small>':'')+'</span></li>';
       }).join('')+'</ul>' : '<p class="cal-none">예정된 일정이 없습니다.</p>';
     h += '</div>';
     box.innerHTML = h;
