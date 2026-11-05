@@ -94,10 +94,11 @@
       "kind": "nextgen"
     },
     {
-      "date": "2026-11-10",
+      "date": "2026-11-09",
       "title": "높은뜻 담임목사 수련회",
       "note": "임영호 목사",
-      "kind": "pastor"
+      "kind": "pastor",
+      "end": "2026-11-10"
     }
   ],
   "skip": []

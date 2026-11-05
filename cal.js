@@ -18,7 +18,7 @@
   function label(e){ return e.time ? esc(e.time) : (e.kind==='season' ? '절기' : (e.last ? '마감' : (e.range ? '기간' : (e.weekly ? '미정' : '종일')))); }
   // 오늘 진행 중인 신청·기간 일정 (달력 위 안내 띠)
   function ongoing(){
-    return (data.events||[]).filter(function(e){ return e.end && parse(e.date) <= today && parse(e.end) >= today; })
+    return (data.events||[]).filter(function(e){ return e.end && (e.kind||'special') === 'special' && parse(e.date) <= today && parse(e.end) >= today; })
       .sort(function(x,y){ return parse(x.end) - parse(y.end); });
   }
   function cls(e){ return (e.special?'is-special':'') + (e.kind==='season'?' is-season':''); }
@@ -29,7 +29,7 @@
       var a = parse(e.date), b = e.end ? parse(e.end) : a;
       if (d >= a && d <= b) {
         if (e.replace) replaced.push(e.replace);
-        list.push({ time: e.time||'', title: e.title, note: e.note||'', kind: e.kind||'special', range: !!e.end, last: !!e.end && +d === +b, special: !e.replace && (e.kind||'special') === 'special' });
+        list.push({ time: e.time||'', title: e.title, note: e.note||'', kind: e.kind||'special', range: !!e.end && (e.kind||'special') === 'special', last: !!e.end && (e.kind||'special') === 'special' && +d === +b, special: !e.replace && (e.kind||'special') === 'special' });
       }
     });
     if (!skip) {
@@ -50,7 +50,7 @@
     return (data.events||[]).map(function(e){
       var a = parse(e.date), b = e.end ? parse(e.end) : a;
       return { e: e, a: a, b: b, show: a < from ? from : a };
-    }).filter(function(x){ return x.b >= from && !(x.e.end && x.a <= today); })
+    }).filter(function(x){ return x.b >= from && !(x.e.end && (x.e.kind||'special') === 'special' && x.a <= today); })
       .sort(function(x,y){ return x.show - y.show || ((x.e.time||'') < (y.e.time||'') ? -1 : 1); })
       .slice(0, n);
   }
@@ -93,7 +93,7 @@
     var up = upcoming(3);
     if (up.length) {
       h += '<div class="cal-up"><p class="cal-sel">다가오는 일정</p><ul>' + up.map(function(x){
-        var e = x.e, ds = x.a < x.show ? '~'+(x.b.getMonth()+1)+'.'+x.b.getDate() : (x.a.getMonth()+1)+'.'+x.a.getDate()+' ('+WD[x.a.getDay()]+')';
+        var e = x.e, ds = x.a < x.show ? '~'+(x.b.getMonth()+1)+'.'+x.b.getDate() : (x.a.getMonth()+1)+'.'+x.a.getDate()+(e.end && +x.b !== +x.a ? '~'+(x.b.getMonth()===x.a.getMonth()?'':(x.b.getMonth()+1)+'.')+x.b.getDate() : ' ('+WD[x.a.getDay()]+')');
         var item = { kind: e.kind||'special', special: !e.replace && (e.kind||'special') === 'special' };
         return '<li class="'+cls(item)+'"><button type="button" class="cal-up-btn" data-jump="'+key(x.show)+'"><b>'+ds+'</b><span>'+esc(e.title)
           + '<small>'+[e.time||'', e.note||''].filter(Boolean).map(esc).join(' · ')+'</small></span></button></li>';
