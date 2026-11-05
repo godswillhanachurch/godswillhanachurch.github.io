@@ -15,7 +15,12 @@
   function key(d){ return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); }
   function parse(s){ var p = s.split('-'); return new Date(+p[0], +p[1]-1, +p[2]); }
   function esc(s){ return String(s||'').replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
-  function label(e){ return e.time ? esc(e.time) : (e.kind==='season' ? '절기' : (e.range ? '기간' : '종일')); }
+  function label(e){ return e.time ? esc(e.time) : (e.kind==='season' ? '절기' : (e.last ? '마감' : (e.range ? '기간' : '종일'))); }
+  // 오늘 진행 중인 신청·기간 일정 (달력 위 안내 띠)
+  function ongoing(){
+    return (data.events||[]).filter(function(e){ return e.end && parse(e.date) <= today && parse(e.end) >= today; })
+      .sort(function(x,y){ return parse(x.end) - parse(y.end); });
+  }
   function cls(e){ return (e.special?'is-special':'') + (e.kind==='season'?' is-season':''); }
 
   function on(d){
@@ -24,7 +29,7 @@
       var a = parse(e.date), b = e.end ? parse(e.end) : a;
       if (d >= a && d <= b) {
         if (e.replace) replaced.push(e.replace);
-        list.push({ time: e.time||'', title: e.title, note: e.note||'', kind: e.kind||'special', range: !!e.end, special: !e.replace && e.kind !== 'season' });
+        list.push({ time: e.time||'', title: e.title, note: e.note||'', kind: e.kind||'special', range: !!e.end, last: !!e.end && +d === +b, special: !e.replace && e.kind !== 'season' });
       }
     });
     if (!skip) {
@@ -45,7 +50,7 @@
     return (data.events||[]).map(function(e){
       var a = parse(e.date), b = e.end ? parse(e.end) : a;
       return { e: e, a: a, b: b, show: a < from ? from : a };
-    }).filter(function(x){ return x.b >= from; })
+    }).filter(function(x){ return x.b >= from && !(x.e.end && x.a <= today); })
       .sort(function(x,y){ return x.show - y.show || ((x.e.time||'') < (y.e.time||'') ? -1 : 1); })
       .slice(0, n);
   }
@@ -54,7 +59,13 @@
     var y = view.getFullYear(), m = view.getMonth();
     var first = new Date(y, m, 1), days = new Date(y, m+1, 0).getDate();
     var atMin = +view <= +MIN;
-    var h = '<div class="cal-head"><button type="button" class="cal-nav" data-go="-1" aria-label="이전 달"'+(atMin?' disabled':'')+'>‹</button>'
+    var h = ongoing().map(function(e){
+      var b = parse(e.end), left = Math.round((b - today) / 864e5);
+      return '<p class="cal-band"><span class="cal-band-tag">'+(/신청/.test(e.title)?'신청 중':'진행 중')+'</span>'
+        + '<b>'+esc(e.title)+'</b><span class="cal-band-when">'+(b.getMonth()+1)+'월 '+b.getDate()+'일까지 <em>'+(left===0?'오늘 마감':'D-'+left)+'</em></span>'
+        + (e.note?'<small>'+esc(e.note)+'</small>':'')+'</p>';
+    }).join('');
+    h += '<div class="cal-head"><button type="button" class="cal-nav" data-go="-1" aria-label="이전 달"'+(atMin?' disabled':'')+'>‹</button>'
       + '<strong class="cal-month">'+y+'년 '+(m+1)+'월</strong>'
       + '<button type="button" class="cal-nav" data-go="1" aria-label="다음 달">›</button>'
       + '<button type="button" class="cal-today" data-today>오늘</button></div>';
@@ -66,7 +77,8 @@
       var c = 'cal-day' + (dt.getDay()===0?' sun':'') + (+dt===+today?' today':'') + (+dt===+sel?' sel':'') + (past?' past':'');
       h += '<button type="button" class="'+c+'" data-d="'+key(dt)+'"'+(past?' disabled aria-label="'+(m+1)+'월 '+d+'일 (지난 날)"':' aria-label="'+(m+1)+'월 '+d+'일 일정 '+ev.length+'개"')+(+dt===+sel?' aria-pressed="true"':'')+'>'
         + '<span class="n">'+d+'</span><span class="cal-dots">'
-        + ev.filter(function(e){ return !e.range; }).map(function(e){ return e.special?'special':e.kind; }).filter(function(k,i,a){ return a.indexOf(k)===i; }).slice(0,4).map(function(k){ return '<i class="k-'+k+'"></i>'; }).join('') + '</span></button>';
+        + ev.filter(function(e){ return !e.range || e.last; }).map(function(e){ return e.special?'special':e.kind; }).filter(function(k,i,a){ return a.indexOf(k)===i; }).slice(0,4).map(function(k){ return '<i class="k-'+k+'"></i>'; }).join('') + '</span></button>';
+      if (ev.some(function(e){ return e.last; })) h = h.replace(/<\/button>$/, '<span class="cal-tag">마감</span></button>');
       if ((first.getDay()+d) % 7 === 0 && d < days) h += '</div><div class="cal-row" role="row">';
     }
     h += '</div></div>';
