@@ -1077,3 +1077,7 @@ nav.menu a:hover,.side-nav a:hover,.side-nav a.on{color:var(--pine)!important}
 .worship-times .time b{flex-shrink:0;white-space:nowrap}
 .worship-times .time span{white-space:nowrap!important;min-width:0}
 @media (max-width:480px){.worship-times .time{gap:.5rem;padding:.65rem .8rem}.worship-times .time span{letter-spacing:-.02em}}
+
+/* 교회소식 목록: 분류(양육·목장·기도)와 제목 사이 간격 */
+.news-v2 .item{column-gap:.9rem!important}
+@media (min-width:481px){.news-v2 .item .cats{margin-right:.15rem!important}}
