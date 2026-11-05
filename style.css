@@ -1161,3 +1161,4 @@ i.k-ministry{background:#8a9a6e!important}
 #people .person.staff:first-child .badge{background:var(--sage-deep)!important;border-color:var(--sage-deep)!important}
 #people .person.staff:first-child .badge b,#people .person.staff:first-child .badge .role{color:#fff!important}
 .cal-day:not(.past):not(.sel){background:var(--sage-bg)}
+.person.staff .badge{border-width:1.25px!important}
