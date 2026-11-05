@@ -1173,3 +1173,9 @@ i.k-ministry{background:#8a9a6e!important}
 i.k-nextgen{background:#d08c74!important}
 i.k-pastor{background:#4f8a8b!important}
 .cal-list li.k-pastor b,.cal-up li.is-pastor b{color:#3f7172}
+
+/* 위로 스크롤할 때 화면 흔들림 방지: 상단이 줄어든 만큼 아래 여백으로 채워 페이지 높이를 그대로 유지 */
+.side{transition:margin-bottom .25s ease}
+@media (min-width:1181px){.side.shrink{margin-bottom:44px}}
+@media (max-width:1180px){.side.shrink{margin-bottom:26px}}
+@media (prefers-reduced-motion:reduce){.side{transition:none}}

@@ -65,7 +65,7 @@ document.querySelectorAll('.m-tags').forEach(function(ul){
 (function(){
   var side=document.getElementById('side'); if(!side) return;
   var on=false;
-  function chk(){var y=scrollY>40; if(y!==on){on=y;side.classList.toggle('shrink',y)}}
+  function chk(){var y=on?scrollY>12:scrollY>64; if(y!==on){on=y;side.classList.toggle('shrink',y)}} // 흔들림 방지: 줄어들 때와 커질 때 기준을 다르게
   addEventListener('scroll',chk,{passive:true}); chk();
 })();
 
