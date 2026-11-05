@@ -3,12 +3,6 @@
   "weekly": [
     {
       "day": 0,
-      "time": "11:45",
-      "title": "주일예배",
-      "kind": "worship"
-    },
-    {
-      "day": 0,
       "time": "14:30",
       "title": "목장모임",
       "kind": "group"
