@@ -115,3 +115,13 @@ document.querySelectorAll('.m-tags').forEach(function(ul){
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function(){ navigator.serviceWorker.register('/sw.js').catch(function(){}); });
 }
+
+// 방문자 통계(GoatCounter): 바닥글에 누적 방문 수 표시
+(function(){
+  var el = document.querySelector('[data-visits]');
+  if (!el || !window.fetch) return;
+  fetch('https://godswillhanachurch.goatcounter.com/counter/TOTAL.json')
+    .then(function(r){ return r.ok ? r.json() : null; })
+    .then(function(d){ if (d && d.count) { el.textContent = d.count; el.closest('.visits').hidden = false; } })
+    .catch(function(){});
+})();
