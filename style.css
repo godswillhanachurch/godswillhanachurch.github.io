@@ -1195,3 +1195,8 @@ i.k-pastor{background:#4f8a8b!important}
 .en-hero{background:var(--mint-band)!important;color:var(--mint-ink)!important}
 .en-hero .eyebrow{color:#8a7140!important}
 .en-hero h1,.en-hero h2,.en-hero p{color:var(--mint-ink)!important}
+
+/* 대표소식 사진 2장 나란히 */
+.ph.has-img.ph-duo img{width:calc(50% - 2px)}
+.ph.has-img.ph-duo img+img{left:calc(50% + 2px)}
+.ph-duo{background:var(--surface)!important}
