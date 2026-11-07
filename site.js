@@ -74,12 +74,15 @@ document.querySelectorAll('.m-tags').forEach(function(ul){
   var img=document.getElementById('lbImg'), cap=document.getElementById('lbCap'), cnt=document.getElementById('lbCount'),
       ttl=document.getElementById('lbTitle'), prev=document.getElementById('lbPrev'), next=document.getElementById('lbNext');
   var list=[], cur=0, last=null;
-  function show(n){cur=n; var p=list[n]; img.src=p.src; img.alt=p.cap||''; cap.textContent=p.cap||'';
+  var vid=document.getElementById('lbVid');
+  function show(n){cur=n; var p=list[n];
+    if(p.embed){img.hidden=true; img.removeAttribute('src'); vid.hidden=false; if(vid.getAttribute('src')!==p.embed) vid.src=p.embed;}
+    else{vid.hidden=true; vid.removeAttribute('src'); img.hidden=false; img.src=p.src; img.alt=p.cap||'';} cap.textContent=p.cap||'';
     cnt.textContent=(n+1)+' / '+list.length; prev.disabled=n===0; next.disabled=n===list.length-1;
     prev.hidden=next.hidden=list.length<2;}
   function open(b){try{list=JSON.parse(b.getAttribute('data-photos'))}catch(e){return}
     last=b; ttl.textContent=b.getAttribute('data-title'); show(0); v.hidden=false; document.body.style.overflow='hidden'; document.getElementById('lbClose').focus();}
-  function close(){v.hidden=true; document.body.style.overflow=''; if(last) last.focus();}
+  function close(){v.hidden=true; vid.hidden=true; vid.removeAttribute('src'); document.body.style.overflow=''; if(last) last.focus();}
   document.querySelectorAll('.album-card').forEach(function(b){b.addEventListener('click',function(){open(b)})});
   prev.onclick=function(){if(cur>0)show(cur-1)}; next.onclick=function(){if(cur<list.length-1)show(cur+1)};
   img.onclick=function(){if(cur<list.length-1)show(cur+1)};
