@@ -1205,3 +1205,5 @@ i.k-pastor{background:#4f8a8b!important}
 .lb-fig iframe{width:min(400px,100%);height:100%;min-height:0;border:0;border-radius:8px;background:#fff;align-self:center}
 .lb-fig iframe[hidden],.lb-fig img[hidden]{display:none}
 @media (max-width:640px){.lb-nav{background:rgba(20,20,20,.55)}}
+.lb-fig video{max-width:100%;max-height:100%;min-height:0;align-self:center;background:#000;border-radius:6px}
+.lb-fig video[hidden]{display:none}
