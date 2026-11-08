@@ -1207,3 +1207,89 @@ i.k-pastor{background:#4f8a8b!important}
 @media (max-width:640px){.lb-nav{background:rgba(20,20,20,.55)}}
 .lb-fig video{max-width:100%;max-height:100%;min-height:0;align-self:center;background:#000;border-radius:6px}
 .lb-fig video[hidden]{display:none}
+
+/* ===== 선교 페이지 (해외선교·한반도선교) ===== */
+.msn{--mint:#dde9e4;--sage:#7a8770;--sage-deep:#5f6c57}
+.msn .msn-hero{background:var(--mint)!important;padding-block:clamp(28px,4vw,44px) clamp(48px,6vw,72px)!important}
+.msn-tabs{display:inline-flex;gap:4px;padding:4px;margin-bottom:clamp(24px,4vw,40px);background:rgba(255,255,255,.55);border-radius:999px}
+.msn-tabs a{padding:.45rem 1.1rem;border-radius:999px;font-weight:600;font-size:.95rem;color:var(--muted);text-decoration:none}
+.msn-tabs a.on{background:var(--surface);color:var(--ink);box-shadow:0 1px 3px rgba(30,40,46,.12)}
+.msn-hero-in{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:clamp(24px,5vw,64px);align-items:center}
+.msn-hero h2{font-family:var(--f-serif);font-weight:700;line-height:1.3;margin:.4rem 0 1rem}
+.msn-hero .eyebrow{color:#8a7140!important}
+.msn .msn-lead{color:var(--ink)!important;max-width:34rem;margin-bottom:1.5rem}
+.msn .btns{display:flex;flex-wrap:wrap;gap:.6rem}
+.msn-emblem{width:min(260px,70%);justify-self:center;color:var(--sage-deep)}
+.msn-hero-ph{margin:0;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);aspect-ratio:4/3}
+.msn-hero-ph img{width:100%;height:100%;object-fit:cover;display:block}
+.msn-goals{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,2vw,24px);list-style:none;padding:0;margin:0}
+.msn-goals.msn-four{grid-template-columns:repeat(4,minmax(0,1fr))}
+.msn-goal{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:clamp(20px,2.4vw,28px)}
+.msn-goal h3{font-size:var(--t-h4);margin:.2rem 0 .5rem}
+.msn .msn-goal p{color:var(--muted);margin:0}
+.msn-no{display:block;font-family:var(--f-serif);font-size:1.6rem;color:var(--sage);line-height:1;margin-bottom:.9rem}
+.msn .msn-en{font-family:var(--f-serif);font-size:.95rem!important;color:#8a7140!important;margin:0 0 .15rem!important;letter-spacing:.01em}
+.msn-goal .msn-en{color:#8a7140!important}
+.msn-ico{width:30px;height:30px;fill:none;stroke:var(--sage-deep);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;margin-bottom:.8rem}
+.msn-work{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:clamp(20px,4vw,48px);align-items:start;padding-block:clamp(28px,4vw,40px);border-top:1px solid var(--line)}
+.msn-work:first-of-type{border-top:0;padding-top:0}
+.msn-work.msn-rev .msn-ph{order:2}
+.msn-ph{margin:0;border-radius:var(--radius);overflow:hidden;aspect-ratio:4/3;background:var(--pine-soft)}
+.msn-ph img{width:100%;height:100%;object-fit:cover;display:block}
+.msn-work h3{font-size:var(--t-h3);margin:0 0 1rem}
+.msn-facts{display:flex;flex-wrap:wrap;gap:.5rem;list-style:none;padding:0;margin:0 0 1.25rem}
+.msn .msn-facts li{background:var(--mint);border-radius:999px;padding:.35rem .9rem;font-size:var(--t-sm)!important}
+.msn-facts b{margin-right:.4rem;color:var(--sage-deep)}
+.msn-steps{list-style:none;padding:0;margin:0 0 1.25rem;display:grid;gap:0;counter-reset:s}
+.msn-steps li{display:grid;grid-template-columns:6.5rem minmax(0,1fr);gap:.75rem;padding:.7rem 0;border-top:1px solid var(--line)}
+.msn-steps li:last-child{border-bottom:1px solid var(--line)}
+.msn-steps b{font-family:var(--f-serif);color:var(--sage-deep);font-size:1.05rem}
+.msn-dl{margin:0;display:grid}
+.msn-dl>div{padding:.85rem 0;border-top:1px solid var(--line)}
+.msn-dl>div:last-child{border-bottom:1px solid var(--line)}
+.msn-dl dt{font-weight:700;margin-bottom:.25rem}
+.msn-dl dd{margin:0;color:var(--muted)}
+.msn-badge{display:inline-block;margin-left:.4rem;padding:.1rem .55rem;border-radius:999px;background:#efe6d3;color:#8a7140;font-family:var(--f-body,inherit);font-size:.75rem;font-weight:700;vertical-align:2px}
+.msn-link{font-weight:600;color:var(--pine);text-decoration:none}
+.msn-link:hover{text-decoration:underline;text-underline-offset:3px}
+.msn-values{list-style:none;padding:0;margin:0 auto;display:flex;justify-content:center;flex-wrap:wrap;max-width:980px}
+.msn-values li{width:clamp(130px,16vw,170px);aspect-ratio:1;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;margin:0 -10px;mix-blend-mode:multiply;text-align:center}
+.msn-values b{font-family:var(--f-serif);font-size:clamp(1.05rem,1.6vw,1.3rem);font-weight:700;color:var(--ink)}
+.msn .msn-values span{font-size:var(--t-sm)!important;color:var(--muted)}
+.msn-values .v1{background:#ead3cf}.msn-values .v2{background:#cfe0e3}.msn-values .v3{background:#d9d4e5}
+.msn-values .v4{background:#d5dccb}.msn-values .v5{background:#dde9e4}.msn-values .v6{background:#eadfc9}
+.msn .msn-join{background:var(--mint)!important}
+.msn-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,2vw,24px)}
+.msn-cards.msn-two{grid-template-columns:repeat(2,minmax(0,1fr));max-width:820px}
+.msn-card{background:var(--surface);border-radius:var(--radius);padding:clamp(20px,2.4vw,28px);box-shadow:var(--shadow);display:flex;flex-direction:column;align-items:flex-start;gap:.6rem}
+.msn-card h3{font-size:var(--t-h4);margin:0}
+.msn .msn-card p{color:var(--muted);margin:0 0 .4rem}
+.msn .msn-card .btn{margin-top:auto}
+.msn-acct{display:flex;align-items:center;gap:.6rem;margin-top:auto}
+.msn-acct code{font-family:inherit;font-weight:700;font-size:1.1rem;letter-spacing:.02em}
+.msn-acct .copy{font:inherit;font-size:var(--t-sm);padding:.3rem .8rem;border:1px solid var(--line);border-radius:999px;background:var(--bg);cursor:pointer}
+.msn-fields{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:clamp(24px,5vw,56px)}
+.msn-sub{font-size:var(--t-h4);margin:0 0 1rem}
+.msn-chips{display:flex;flex-wrap:wrap;gap:.5rem;list-style:none;padding:0;margin:0 0 1rem}
+.msn .msn-chips li{padding:.45rem 1rem;border:1px solid var(--sage);border-radius:999px;color:var(--sage-deep);font-weight:600}
+.msn .msn-note{color:var(--muted)}
+.msn-people{justify-content:flex-start}
+@media (max-width:900px){
+  .msn-goals.msn-four{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:760px){
+  .msn-hero-in,.msn-work,.msn-fields{grid-template-columns:1fr}
+  .msn-work.msn-rev .msn-ph{order:0}
+  .msn-emblem{width:150px;justify-self:start;order:-1}
+  .msn-goals,.msn-cards,.msn-cards.msn-two{grid-template-columns:1fr}
+  .msn-goals.msn-four{grid-template-columns:1fr 1fr}
+  .msn-steps li{grid-template-columns:5.5rem minmax(0,1fr)}
+  .msn-values{max-width:360px}
+  .msn-values li{width:118px;margin:-6px -6px}
+}
+@media (max-width:420px){.msn-goals.msn-four{grid-template-columns:1fr}}
+.msn .msn-people{display:flex!important;flex-wrap:wrap;gap:14px!important;justify-content:flex-start!important;grid-template-columns:none!important}
+.msn .msn-people .person{width:auto!important;flex:0 0 auto}
+.msn .msn-people .badge{width:118px!important;height:118px!important;flex-shrink:0}
+@media (max-width:760px){.msn .msn-people .badge{width:104px!important;height:104px!important}}
+@media (max-width:760px){.msn .msn-people{gap:12px!important}.msn .msn-people .badge{width:76px!important;height:76px!important}.msn .msn-people .badge b{font-size:.85rem}.msn .msn-people .badge .role{font-size:.68rem!important}}
