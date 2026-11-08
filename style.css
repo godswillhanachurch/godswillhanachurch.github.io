@@ -1324,3 +1324,33 @@ i.k-pastor{background:#4f8a8b!important}
   .msn .msn-values li{width:104px}
 }
 @media (max-width:760px){.msn-eb-en{display:none}.msn .msn-values b{font-size:.92rem}.msn .msn-values .v6 b{font-size:.82rem;letter-spacing:-.01em}}
+/* 북한선교: 비전, 사역팀 조직 */
+.msn-vision{display:flex;align-items:center;gap:clamp(20px,4vw,48px);padding-bottom:clamp(32px,5vw,56px);margin-bottom:clamp(32px,5vw,56px);border-bottom:1px solid var(--line)}
+.msn-map{width:clamp(70px,9vw,110px);height:auto;flex-shrink:0;opacity:.85}
+.msn .msn-vision-text{font-family:var(--f-serif);font-size:clamp(1.25rem,2.2vw,1.65rem)!important;line-height:1.6!important;color:var(--ink);margin:.3rem 0 0}
+.msn-lead strong{font-weight:700}
+.msn-org{display:grid;justify-items:center;gap:0}
+.msn-org-top{background:var(--sage-deep);color:#fff;border-radius:var(--radius);padding:1.1rem 1.6rem;text-align:center;position:relative;min-width:min(420px,100%)}
+.msn-org-top .msn-org-role{color:#e6eae2!important}
+.msn-org-role{font-size:var(--t-sm)!important;font-weight:700;letter-spacing:.04em;color:#8a7140!important;margin:0 0 .35rem!important}
+.msn-org-names{list-style:none;display:flex;justify-content:center;flex-wrap:wrap;gap:.4rem 1.2rem;padding:0;margin:0}
+.msn .msn-org-names li{font-size:1.15rem!important;font-weight:700;color:#fff}
+.msn-org-teams{list-style:none;padding:28px 0 0;margin:28px 0 0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(12px,2vw,20px);width:100%;position:relative}
+.msn-org-teams::before{content:"";position:absolute;top:0;left:12.5%;right:12.5%;height:1px;background:var(--sage)}
+.msn-org-teams::after{content:"";position:absolute;top:-28px;left:50%;width:1px;height:28px;background:var(--sage)}
+.msn-org-teams li{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:1rem 1.1rem;text-align:center;display:flex;flex-direction:column;gap:.2rem}
+.msn-org-teams li::before{content:"";position:absolute;top:-29px;left:50%;width:1px;height:28px;background:var(--sage)}
+.msn-org-teams b{font-size:1.15rem}
+.msn .msn-org-teams span{font-size:var(--t-sm)!important;color:var(--muted)}
+.msn .msn-team{font-size:var(--t-sm)!important;color:var(--sage-deep);font-weight:600;margin:-.5rem 0 .8rem!important}
+@media (max-width:760px){
+  .msn-vision{gap:16px;padding-bottom:28px;margin-bottom:28px}
+  .msn-map{width:58px}
+  .pc-br{display:none}
+  .msn-org-top{padding:.9rem 1rem;min-width:0;width:100%}
+  .msn-org-teams{grid-template-columns:1fr 1fr;padding-top:16px;margin-top:16px;gap:10px}
+  .msn-org-teams::before,.msn-org-teams li::before{display:none}
+  .msn-org-teams::after{top:-16px;height:16px}
+  .msn-org-teams li{padding:.8rem .6rem}
+  .msn-org-role{font-size:.8rem!important}
+}
