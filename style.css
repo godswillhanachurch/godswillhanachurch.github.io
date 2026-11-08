@@ -1293,3 +1293,34 @@ i.k-pastor{background:#4f8a8b!important}
 .msn .msn-people .badge{width:118px!important;height:118px!important;flex-shrink:0}
 @media (max-width:760px){.msn .msn-people .badge{width:104px!important;height:104px!important}}
 @media (max-width:760px){.msn .msn-people{gap:12px!important}.msn .msn-people .badge{width:76px!important;height:76px!important}.msn .msn-people .badge b{font-size:.85rem}.msn .msn-people .badge .role{font-size:.68rem!important}}
+/* 선교 페이지: 키워드 선택형(휴대폰), 반찬사역, 연합·교육 카드 */
+.msn-mo{display:none}
+.msn .m-tag.on{background:var(--sage-deep);border-color:var(--sage-deep)}
+.msn .m-tag:hover{border-color:var(--sage-deep);color:var(--sage-deep)}
+.msn .m-tag.on:hover{color:#fff}
+.msn .m-say{margin-top:.75rem!important;padding:1rem 1.1rem;background:var(--surface);border:1px solid var(--line);border-radius:10px;min-height:0;color:var(--ink)}
+.msn-h4{font-size:var(--t-sm);font-weight:700;color:var(--muted);margin:1.4rem 0 .6rem;letter-spacing:.02em}
+.msn-work .msn-h4:first-of-type{margin-top:.2rem}
+.msn-say{margin-bottom:.25rem}
+.msn-work .btns{margin-top:1.25rem}
+.msn-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(14px,2vw,24px);margin-top:clamp(20px,3vw,32px)}
+.msn-mini{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:clamp(20px,2.4vw,28px)}
+.msn-mini h3{font-size:var(--t-h3);margin:0 0 .9rem}
+.msn-mini .msn-dl>div:last-child{border-bottom:0;padding-bottom:0}
+@media (max-width:760px){
+  .msn-mo{display:block}
+  .msn-pc{display:none!important}
+  .msn-pair{grid-template-columns:1fr}
+  .msn .msn-hero{padding-block:20px 40px!important}
+  .msn-tabs{margin-bottom:20px}
+  .msn-emblem{width:96px}
+  .msn-hero-ph{aspect-ratio:16/9}
+  .msn-work{padding-block:0 24px}
+  .msn-ph{aspect-ratio:16/9}
+  .msn-mini{padding:18px}
+  .msn-mini h3{margin-bottom:.6rem}
+  .msn-card{padding:18px;gap:.4rem}
+  .msn-cards{gap:12px}
+  .msn .msn-values li{width:104px}
+}
+@media (max-width:760px){.msn-eb-en{display:none}.msn .msn-values b{font-size:.92rem}.msn .msn-values .v6 b{font-size:.82rem;letter-spacing:-.01em}}
