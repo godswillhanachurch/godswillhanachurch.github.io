@@ -1354,3 +1354,9 @@ i.k-pastor{background:#4f8a8b!important}
   .msn-org-teams li{padding:.8rem .6rem}
   .msn-org-role{font-size:.8rem!important}
 }
+.msn-more{margin-top:clamp(20px,3vw,28px)}
+.msn-more a{font-weight:600;color:var(--pine);text-underline-offset:3px}
+.nbm-points{margin:.5rem 0 0;padding-left:1.1rem;display:grid;gap:.25rem}
+.msn .nbm-points li{font-size:.95rem!important;color:var(--muted)}
+.msn-steps b small{display:block;font-size:.75rem;color:var(--muted);font-weight:500}
+.msn-card .btns{margin-top:auto}
