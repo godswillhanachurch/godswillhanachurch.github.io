@@ -33,6 +33,6 @@ jobs:
           if git diff --quiet; then echo "변경 없음"; exit 0; fi
           git config user.name "godswillhanachurch"
           git config user.email "godswillhanachurch@users.noreply.github.com"
-          git add index.html images/sermon-thumb.jpg
+          git add index.html images/sermon-thumb.jpg images/sermon-slide-*.jpg
           git commit -m "설교 영상 자동 갱신"
           git push

@@ -115,6 +115,14 @@ def field(desc, *labels):
     return ""
 
 
+def thumb_src(day, vid):
+    """설교 슬라이드 첫 화면(images/sermon-slide-YYYYMMDD.jpg)이 있으면 그것을, 없으면 유튜브 썸네일을 씁니다."""
+    slide = f"images/sermon-slide-{day:%Y%m%d}.jpg"
+    if os.path.exists(os.path.join(ROOT, slide)):
+        return slide
+    return f"images/sermon-thumb.jpg?v={vid}"
+
+
 def render(v):
     dm = re.search(r"(\d{2,4})\.\s*(\d{1,2})\.\s*(\d{1,2})", v["title"])
     if dm:  # 제목의 '26. 11. 01.' 같은 날짜를 우선 사용
@@ -138,7 +146,7 @@ def render(v):
     url = f"https://www.youtube.com/watch?v={v['id']}"
     return (
         f'          <a class="thumb" href="{url}" target="_blank" rel="noopener" aria-label="{day.month}월 {day.day}일 주일예배 영상 보기 (유튜브)">\n'
-        f'            <img class="thumb-img" src="images/sermon-thumb.jpg?v={v["id"]}" alt="" loading="lazy" onload="this.parentNode.classList.add(\'has-img\')" onerror="this.remove()">\n'
+        f'            <img class="thumb-img" src="{thumb_src(day, v["id"])}" alt="" loading="lazy" onload="this.parentNode.classList.add(\'has-img\')" onerror="this.remove()">\n'
         f'            <span class="thumb-date">{day.year}. {day.month}. {day.day} 주일예배</span>\n'
         f'            <strong>{e(title)}</strong>\n'
         + (f'            <span class="thumb-meta">{e(meta_short)}</span>\n' if meta_short else "")
