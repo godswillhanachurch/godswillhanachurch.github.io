@@ -1,0 +1,93 @@
+# 높은뜻 하나되는 교회 홈페이지 — 작업 안내
+
+이 저장소는 https://godswillhana.org 에 게시되는 교회 홈페이지입니다 (GitHub Pages, main 브랜치에서 바로 게시, 도메인은 가비아).
+자매 사이트인 뉴포트 브릿지 미니스트리 홈페이지(https://bridge.godswillhana.org, 저장소 godswillhanachurch/bridge)가 이 저장소의 style.css·site.js·events.json을 그대로 불러 씁니다. 여기서 고치면 브릿지 사이트에도 영향이 갑니다.
+
+## 작업 방식 (꼭 지킬 것)
+- 작은 수정은 바로 main에 올려 실제 사이트에 반영합니다.
+- 큰 변경(새 페이지, 구성·디자인 변경)은 먼저 미리보기를 보여 주고, 사용자가 "적용해줘"라고 하면 올립니다.
+- 고칠 때마다 두 가지를 함께 올립니다. 휴대폰과 홈 화면 앱(PWA)에 바로 반영되게 하기 위해서입니다.
+  1. 모든 html의 `style.css?v=YYYYMMDD` (같은 날 두 번째면 뒤에 b, c …)
+  2. sw.js의 `CACHE = 'hana-vNN'` 숫자 (CORE 목록 안의 표기도 함께)
+- 새 html 페이지를 만들면 sw.js의 CORE 목록에 추가하고, 모든 페이지의 메뉴(데스크톱·모바일)와 바닥글에 넣습니다.
+- 작업 전 `git pull` — 주보 예약 작업과 설교 자동 갱신이 수시로 커밋합니다.
+- 커밋 작성자는 godswillhanachurch 계정으로, 메시지는 한국어로 무엇을 바꿨는지 한 줄로 씁니다.
+- 사용자에게 설명할 때는 쉬운 말로, 코드·경로는 꼭 필요할 때만 씁니다.
+
+## 페이지 구성
+| 파일 | 메뉴 이름 | 내용 |
+|---|---|---|
+| index.html | 홈 | 슬라이드, 예배 시간, 최신 설교(자동 갱신), 교회 일정 달력, 소식, 헌금·오시는 길 |
+| about.html | 교회비전 | 교회 정체성·비전, 높은뜻 정신, FAQ |
+| greeting.html | 인사말 | 담임목사 인사 |
+| welcome.html | 처음 오신 분 | 새가족 안내 |
+| news.html | 교회소식 | 소식 목록, 주보 목록·보기(최근 4주), 앨범 |
+| mission.html | 해외선교 | FaithMission, 아웃리치, 파송·협력 선교사, 후원 |
+| nk.html | 북한선교 | 뉴포트 브릿지 미니스트리(NBM)와의 연합 사역, 목표, 4E 프로세스, 함께하기 |
+| en.html | English | 영어 안내 |
+
+- 공통 스크립트 site.js: 메뉴, 스크롤 시 헤더 줄이기, 슬라이드, 모바일 키워드 버튼, 주보 목록(`var B`), 바닥글 누적 방문 수.
+- cal.js + events.json: 홈의 교회 일정 달력.
+- sw.js(PWA, 네트워크 우선), manifest.webmanifest, icons/: 홈 화면 앱.
+
+## 디자인 원칙
+- 주 색: 차분한 청회색 `--pine`. 보조로 세이지 `#5f6c57`(sage-deep), 세이지 바탕 `#e6eae2`(교역자 원, 달력 칸).
+- 옅은 민트 `#dde9e4`: 헌금·오시는 길 띠(#offering), 영어 페이지 상단, 선교 페이지 상단(.msn-hero). 밤색 띠는 어울리지 않는다고 해서 바꿨습니다.
+- 작은 머리말(eyebrow)은 모래·금색 `#8a7140`.
+- 교회 비전 띠는 원래 모습 그대로 둡니다.
+- 글꼴: Pretendard(본문), Gowun Batang(`--f-serif`, 제목) — 둘 다 무료(OFL).
+- 휴대폰에서는 길이를 줄입니다: 설명 카드는 `.msn-pc`(데스크톱용)와 `.msn-mo`(모바일용: `ul.m-tags`의 버튼 `data-d` + `p.m-say`)로 나누어, 키워드를 누르면 설명이 나오게 합니다. 처리 코드는 site.js에 있습니다.
+- 데스크톱에서 예배 시간 카드는 시간과 내용을 한 줄로 맞춥니다.
+
+## 용어와 문구 (사용자가 정한 것)
+- 교회 정체성: "높은뜻 하나되는 교회는 한반도 선교와 통일을 위해 준비하라는 하나님의 부르심에 순종하여 세워진 교회입니다." — '북한 선교' 대신 '한반도 선교'(영어: mission to the Korean Peninsula).
+- 메뉴는 '해외선교'와 '북한선교'(nk.html).
+- 북한선교 첫 화면 제목: "높은뜻 하나되는 교회는 뉴포트 브릿지 미니스트리와 연합으로 사역합니다".
+- 사람을 가리킬 때는 '북향민'. 달력 일정 이름은 '탈북민사역 (반찬사역)'으로 둡니다.
+- 사역 단계 제목: "북향민 돌봄 사역 4E 프로세스" (4E 각 문구는 사용자의 원문 그대로).
+- 돌봄 가정: "21가정", 지역 순서는 "다대포 · 지사동". 출발: "매주 금요일 오전 10시 교회 사무실 출발".
+- FAQ 마무리: "더 궁금하신 점은 예배 후 목회자에게 편하게 문의해 주세요."
+- 계좌: 일반·선교 후원 농협 355-0602-8923-33 (높은뜻하나되는 교회), 반찬사역 후원 농협 355-0078-6149-33 (높은뜻 하나되는선교회).
+- 자원봉사 신청: https://forms.gle/i7a1xs93xtiHdKUM9
+- 바깥 링크: 유튜브 https://www.youtube.com/@Godwillhanachurch (지난 설교는 /streams), 인스타그램 @godswillhanachurch, 페이스북 godswillhanachurch, NBM 인스타그램 @newportbridgeministry.
+
+## 교회 일정 달력 (events.json, cal.js)
+- `weekly`(요일 0=일 … 6=토), `monthly`(n번째 요일), `events`(날짜·기간), `skip`(그날 매주·매월 일정을 모두 숨김).
+- events 항목: `date`, 선택 `end`(여러 날), `time`, `title`, `note`, `kind`, `replace`(같은 이름의 매주 일정을 그날 대신함).
+- kind와 색: worship 예배, group 목장, prayer 기도, ministry 사역, nextgen 다음세대, pastor 목회자, season 절기, special 특별.
+- 여러 날 일정: kind가 special이면 달력 위에 "신청 중 · D-n" 띠와 마지막 날 "마감" 표시(심방 신청처럼 기간을 두고 받는 일정). 그 밖의 kind는 칸을 가로지르는 막대(.cal-bar)로 표시.
+- 2026년 11월부터만 보이고, 지난 달로는 넘어가지 않으며, 지난 날짜는 흐리게 표시합니다. 데스크톱에서는 달력 옆에 다가오는 일정 3개만 보입니다(모바일은 숨김).
+- 넣지 않는 것: 주일예배, 목장모임(매주 있는 일이라 뺌). 연합목장모임(월 1회)은 넣습니다.
+- 현재 매주 일정: 금 10:00 탈북민사역(반찬사역, 오전 10시~오후 2시), 금 20:00 금요일밤 기도회, 토 원키즈·원틴즈 예배팀 모임(시간 미정).
+
+## 자동화
+### 설교 영상 자동 갱신 (GitHub Actions)
+- .github/workflows/update-sermon.yml → .github/scripts/update_sermon.py
+- 주일 오후 1시~밤 11시 매시간, 평일·토요일 정오 한 번(한국 시간). Actions 탭에서 직접 실행 가능(preview 옵션은 바꾸지 않고 결과만 출력).
+- 유튜브 RSS를 읽고, 안 되면 채널의 streams·videos 화면에서 찾습니다. 제목에 '예배'가 든 최신 영상을 고릅니다.
+- 날짜는 영상 제목의 "26. 11. 08. | 주일 예배" 형식에서, 제목·본문·설교자는 설명란의 `제목:`·`본문:`·`설교자:` 줄에서 읽습니다.
+- index.html의 `<!-- sermon:start -->` ~ `<!-- sermon:end -->` 사이만 바꿉니다. 이 표시는 지우지 마세요.
+- 설교 카드 이미지: `images/sermon-slide-YYYYMMDD.jpg`(그 주 설교 슬라이드 첫 화면)가 있으면 그것을, 없으면 유튜브 썸네일(images/sermon-thumb.jpg)을 씁니다.
+
+### 주보·설교 슬라이드 정기 반영 (Claude 예약 작업)
+- 예약 작업 "주보 홈페이지 반영" (trig_01EaFnb7fa2zKVsmqZCeNerD) — 토·일 오전 7:51, 오후 7:51(한국 시간).
+- A. 설교 슬라이드: Google 드라이브 '주일 예배' 폴더(1A3LCyaemCZUITSGB6UGd8S3TvHUTHgpa)의 "YYYY년 M월 D일 주일예배 설교 피피티.pptx" 첫 장 → images/sermon-slide-YYYYMMDD.jpg (최근 2개만 유지).
+- B. 주보: 드라이브 '주보모음'(1EtINnXzQiCXV51iWvgbT79JITscg4jIg) / '2026년'(18YJYDZJQ3z-CUKhgkdVyp2931BWQM-kT)의 `하나되는주보_NNN_MMDD.pdf` → bulletin-NNN-1.jpg·-2.jpg, site.js `var B`(최근 4호), news.html 주보 표·보기, 바닥글, 소식 3개, events.json 갱신.
+- 주보는 출석·헌금 내역까지 원본 그대로 이미지로 공개합니다(사용자 허락).
+- 드라이브의 주소록 등 개인정보 파일은 열지 않습니다.
+
+## 방문자 통계
+- GoatCounter (godswillhanachurch.goatcounter.com). 바닥글의 "누적 방문"은 /counter/TOTAL.json을 읽습니다(GoatCounter 쪽 캐시로 최대 몇 시간 늦게 반영).
+- 브릿지 사이트는 경로 앞에 "bridge"를 붙여 같은 계정에 집계합니다.
+
+## 하지 말 것 / 보류 중
+- 북향민 얼굴이 나오는 사진은 올리지 않습니다. 반찬·선물 등 얼굴 없는 사진만 씁니다.
+- 사역팀 조직(공동리더십·지역팀 등)은 준비될 때까지 홈페이지에서 뺍니다. 사용자가 다시 요청하면 넣습니다.
+- 교회 전화·팩스 번호는 넣지 않습니다.
+- 배경음악(BGM)은 보류.
+- 새 로고는 아직 결정 전입니다(후보: 로고 시안 C·D).
+
+## 환경 메모
+- GitHub Pages 설정(켜기, 도메인, Enforce HTTPS)은 이 작업 환경에서 API로 바꿀 수 없어 사용자가 직접 합니다. 새 저장소도 사용자가 만들고 Claude GitHub App 접근 권한을 줘야 올릴 수 있습니다.
+- 작업 환경에서 godswillhana.org에 직접 접속이 안 될 수 있습니다. 로컬 확인은 Playwright로 `https://godswillhana.org/**` 요청을 이 저장소 파일로 연결해서 봅니다.
+- 이 파일(CLAUDE.md)은 _config.yml에서 게시 대상에서 뺐습니다.
