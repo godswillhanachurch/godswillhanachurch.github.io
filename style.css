@@ -1436,3 +1436,9 @@ i.k-pastor{background:#4f8a8b!important}
   .s-af .af-say{font-size:.61rem;line-height:1.75}
   .af-time b{display:inline-flex;align-items:center;justify-content:center;width:3.2em;min-width:0;height:1.9em;padding:0;line-height:1;text-align:center}
 }
+@media (max-width:860px){
+  .s-af{justify-content:center;padding-top:28px}
+  .af-time li,.af-time span{font-weight:400}
+  .af-tag{font-size:.5625rem}
+}
+@media (max-width:420px){.af-tag{font-size:.52rem}}
