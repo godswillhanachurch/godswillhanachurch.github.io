@@ -1430,3 +1430,5 @@ i.k-pastor{background:#4f8a8b!important}
   .af-time span::before{margin-right:.3rem}
   .af-cards div>time{display:none!important}
 }
+.af-say{display:none}
+@media (max-width:860px){.s-af .af-say{display:block;font-family:var(--f-serif);font-size:.875rem;line-height:1.7;color:#3a464d;margin-top:.5rem}}
