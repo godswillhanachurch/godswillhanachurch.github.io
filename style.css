@@ -1442,3 +1442,5 @@ i.k-pastor{background:#4f8a8b!important}
   .af-tag{font-size:.5625rem}
 }
 @media (max-width:420px){.af-tag{font-size:.52rem}}
+@media (max-width:860px){.af-tag{display:inline-flex;align-items:center;justify-content:center;height:1.9em;padding:0 .7em;line-height:1;text-align:center}}
+@media (max-width:420px){.af-tag{padding:0 .7em}}
