@@ -130,3 +130,23 @@ if ('serviceWorker' in navigator) {
     .then(function(d){ if (d && d.count) { el.textContent = d.count; el.closest('.visits').hidden = false; } })
     .catch(function(){});
 })();
+
+/* 교회이야기 대표 소식: 배너처럼 넘겨 보기 */
+(function(){
+  document.querySelectorAll('.fs').forEach(function(box){
+    var sl=[].slice.call(box.querySelectorAll('.fs-slide')), dots=[].slice.call(box.querySelectorAll('.fs-dots button')), i=0, t=null;
+    if(sl.length<2) return;
+    function show(n){i=(n+sl.length)%sl.length; sl.forEach(function(s,k){s.classList.toggle('on',k===i); if(k===i) s.removeAttribute('inert'); else s.setAttribute('inert','')}); dots.forEach(function(d,k){d.classList.toggle('on',k===i); d.setAttribute('aria-current',k===i?'true':'false')})}
+    function play(){stop(); if(!matchMedia('(prefers-reduced-motion: reduce)').matches&&!matchMedia('(max-width:900px)').matches) t=setInterval(function(){show(i+1)},7000)}
+    function stop(){if(t){clearInterval(t); t=null}}
+    box.querySelector('.fs-prev').onclick=function(){show(i-1); play()};
+    box.querySelector('.fs-next').onclick=function(){show(i+1); play()};
+    dots.forEach(function(d,k){d.onclick=function(){show(k); play()}});
+    box.addEventListener('mouseenter',stop); box.addEventListener('mouseleave',play);
+    box.addEventListener('focusin',stop);
+    var sx=null; box.addEventListener('touchstart',function(e){sx=e.touches[0].clientX},{passive:true});
+    box.addEventListener('touchend',function(e){if(sx===null)return; var dx=e.changedTouches[0].clientX-sx; sx=null; if(Math.abs(dx)>40){show(dx<0?i+1:i-1); play()}});
+    var h=location.hash&&box.querySelector(location.hash); var start=0; sl.forEach(function(s,k){if(s===h) start=k});
+    show(start); play();
+  });
+})();

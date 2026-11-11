@@ -1476,3 +1476,21 @@ i.k-pastor{background:#4f8a8b!important}
 .past-open:hover{color:var(--pine);text-decoration:underline;text-underline-offset:3px}
 .past-open:focus-visible{outline:2px solid var(--amber);outline-offset:3px;border-radius:4px}
 .past-hint{font-family:var(--f-body);font-size:var(--t-sm);font-weight:600;color:#8a7140;white-space:nowrap}
+
+/* 교회이야기 대표 소식 넘겨 보기 (.fs) */
+.fs{position:relative}
+.fs-slides{display:grid;flex:1 1 auto;min-height:0}
+.fs-slide{grid-area:1/1;display:flex;flex-direction:column;opacity:0;visibility:hidden;transition:opacity .6s ease,visibility .6s;scroll-margin-top:110px}
+.fs-slide.on{opacity:1;visibility:visible}
+.news-v2 .fs-slide>.ph{flex:1 1 auto;margin:0!important;aspect-ratio:auto!important;min-height:260px}
+.fs-slide .feature-body{flex:none}
+@media (max-width:900px){.news-v2 .fs-slide>.ph{aspect-ratio:16/9!important;min-height:0;flex:none}}
+.fs-nav{display:flex;align-items:center;justify-content:center;gap:14px;padding:.2rem 0 1rem}
+.fs-nav>button{all:unset;cursor:pointer;width:32px;height:32px;display:grid;place-items:center;border-radius:50%;border:1px solid var(--line);color:var(--pine);font-size:1.3rem;line-height:1;background:var(--bg)}
+.fs-nav>button:hover{border-color:var(--pine)}
+.fs-nav>button:focus-visible,.fs-dots button:focus-visible{outline:2px solid var(--amber);outline-offset:2px}
+.fs-dots{display:flex;gap:8px}
+.fs-dots button{all:unset;cursor:pointer;width:9px;height:9px;border-radius:50%;border:1.5px solid var(--pine);box-sizing:border-box}
+.fs-dots button.on{background:var(--pine)}
+@media (prefers-reduced-motion:reduce){.fs-slide{transition:none}}
+@media (max-width:900px){.fs-slide{display:none}.fs-slide.on{display:flex}}
