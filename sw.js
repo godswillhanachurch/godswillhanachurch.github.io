@@ -3,7 +3,7 @@
 const CACHE = 'hana-v47';
 const CORE = ['/', '/index.html', '/greeting.html', '/about.html', '/news.html', '/mission.html',
   '/nk.html', '/welcome.html', '/en.html',
-  '/style.css?v=20261109b', '/site.js?v=20261107c', '/logo.svg', '/logo-header.svg', '/logo-header-m.svg', '/icons/icon-192.png'];
+  '/style.css?v=20261111', '/site.js?v=20261107c', '/logo.svg', '/logo-header.svg', '/logo-header-m.svg', '/icons/icon-192.png'];
 
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(CORE)).catch(() => {}));
