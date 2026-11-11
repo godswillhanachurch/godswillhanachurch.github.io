@@ -854,7 +854,7 @@ details.spirit-item h3{font-size:var(--t-h4)!important}
 .explore-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
 .explore-card:hover .explore-img img{transform:scale(1.04)}
 .explore-card b{font-size:var(--t-h4);margin-top:.35rem}
-.explore-card b::after{content:" →";color:var(--pine)}
+.explore-card b::after{content:none}
 .explore-card span:last-child{font-size:var(--t-sm);color:var(--muted);line-height:var(--lh-sm)}
 .explore-card:hover b{color:var(--pine)}
 @media (max-width:1060px){.explore-grid{grid-template-columns:repeat(2,1fr)}}
@@ -1452,8 +1452,8 @@ i.k-pastor{background:#4f8a8b!important}
 .slide-link:focus-visible{outline:3px solid var(--amber);outline-offset:-6px}
 .s-af{cursor:pointer}
 .af-more{font-size:.875rem;font-weight:600;color:#596871;margin-top:.5rem!important}
-.af-more span{display:inline-block;transition:transform .2s}
-.s-af:hover .af-more span{transform:translateX(3px)}
+
+
 @media (max-width:860px){.af-more{display:none}}
 
 /* 교회이야기 대표 소식: 아프리카 선교 특별 시리즈 */
@@ -1494,3 +1494,21 @@ i.k-pastor{background:#4f8a8b!important}
 .fs-dots button.on{background:var(--pine)}
 @media (prefers-reduced-motion:reduce){.fs-slide{transition:none}}
 @media (max-width:900px){.fs-slide{display:none}.fs-slide.on{display:flex}}
+
+/* '더보기' 버튼 모양 통일 (화살표 → + 더보기, 2026-11-12) */
+.more-pill,.explore-card::after,.sp-more{display:inline-flex;align-items:center;gap:.35em;justify-self:start;align-self:start;width:max-content;padding:.42em 1em .38em;border:1px solid color-mix(in srgb,var(--pine) 45%,transparent);border-radius:999px;background:var(--bg);color:var(--pine)!important;font-family:var(--f-body);font-size:var(--t-sm)!important;font-weight:600;line-height:1.3!important;text-decoration:none!important;white-space:nowrap;transition:background .2s,color .2s,border-color .2s}
+.more-pill::before,.explore-card::after{font-weight:700}
+.more-pill::before{content:"+";font-size:1.1em;line-height:1}
+.more-pill.no-plus::before{content:none}
+.explore-card::after{content:"+  더보기";white-space:pre;margin-top:.35rem}
+.more-pill:hover,.explore-card:hover::after,summary:hover .sp-more{background:var(--pine);border-color:var(--pine);color:#fff!important}
+.more-pill:focus-visible{outline:2px solid var(--amber);outline-offset:2px}
+.sp-more::after{content:none!important}
+.sp-more::before{content:"+";font-weight:700;font-size:1.1em;line-height:1}
+details[open] .sp-more::before{content:"−"}
+/* 사진 보기 창(어두운 바탕) */
+.lb-more.more-pill,.lb .more-pill{background:transparent;border-color:rgba(241,210,122,.6);color:#f1d27a!important}
+.lb .more-pill:hover{background:#f1d27a;color:#1f2427!important}
+/* 홈 배너 */
+.af-more .more-pill{background:rgba(255,255,255,.7)}
+.s-af:hover .af-more .more-pill{background:var(--pine);border-color:var(--pine);color:#fff!important}
