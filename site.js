@@ -83,9 +83,9 @@ document.querySelectorAll('.m-tags').forEach(function(ul){
     cnt.textContent=(n+1)+' / '+list.length; prev.disabled=n===0; next.disabled=n===list.length-1;
     prev.hidden=next.hidden=list.length<2;}
   function open(b){try{list=JSON.parse(b.getAttribute('data-photos'))}catch(e){return}
-    last=b; ttl.textContent=b.getAttribute('data-title'); show(0); v.hidden=false; document.body.style.overflow='hidden'; document.getElementById('lbClose').focus();}
+    last=b; ttl.textContent=b.getAttribute('data-title'); var more=v.querySelector('.lb-more'); if(more) more.hidden=b.classList.contains('past-open'); show(0); v.hidden=false; document.body.style.overflow='hidden'; document.getElementById('lbClose').focus();}
   function close(){v.hidden=true; stopMedia(); document.body.style.overflow=''; if(last) last.focus();}
-  document.querySelectorAll('.album-card').forEach(function(b){b.addEventListener('click',function(){open(b)})});
+  document.querySelectorAll('.album-card,.past-open').forEach(function(b){b.addEventListener('click',function(){open(b)})});
   prev.onclick=function(){if(cur>0)show(cur-1)}; next.onclick=function(){if(cur<list.length-1)show(cur+1)};
   img.onclick=function(){if(cur<list.length-1)show(cur+1)};
   document.getElementById('lbClose').onclick=close;

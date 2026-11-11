@@ -81,6 +81,10 @@
 - GoatCounter (godswillhanachurch.goatcounter.com). 바닥글의 "누적 방문"은 /counter/TOTAL.json을 읽습니다(GoatCounter 쪽 캐시로 최대 몇 시간 늦게 반영).
 - 브릿지 사이트는 경로 앞에 "bridge"를 붙여 같은 계정에 집계합니다.
 
+## 교회이야기 대표 소식 (2026-11-12)
+- 대표 소식(news.html `article.feature#africa`)은 아프리카 선교 특별 시리즈(11/15 에티오피아 유데비 선교사, 11/22 케냐 이관영 선교사). 홈 배너 2번(.s-af)을 누르면 news.html#africa로 이동. 홈 '교회이야기' 바로가기 카드 사진은 images/explore-africa.jpg.
+- 소식 목록 맨 끝의 `article.item-past`(얼감감 프로젝트)는 누르면 사진·내용이 열리는 지난 소식. 주보 예약 작업이 소식 3개를 바꿀 때도 이 줄은 남겨 둠. 처리 코드는 site.js의 앨범 보기(.past-open).
+
 ## 하지 말 것 / 보류 중
 - 브릿지 홈페이지 링크 잠시 닫음(2026-11-11): nk.html의 브릿지 링크 3곳을 `<!--BRIDGE-CLOSED ... BRIDGE-CLOSED-->` 주석으로 가림. 사용자가 "브릿지 열어줘" 하면 이 표시만 지워 되살림.
 - 북향민 얼굴이 나오는 사진은 올리지 않습니다. 반찬·선물 등 얼굴 없는 사진만 씁니다.

@@ -1470,3 +1470,9 @@ i.k-pastor{background:#4f8a8b!important}
 .af-news-list b{white-space:nowrap}
 @media (max-width:640px){.af-news-list li{grid-template-columns:4.9em minmax(0,1fr);font-size:.8125rem!important}.af-news-list i{display:none}}
 .af-news-list .nw{white-space:nowrap}
+
+/* 교회이야기: 지난 소식 한 줄 — 누르면 사진·내용 */
+.past-open{all:unset;cursor:pointer;font:inherit;color:inherit}
+.past-open:hover{color:var(--pine);text-decoration:underline;text-underline-offset:3px}
+.past-open:focus-visible{outline:2px solid var(--amber);outline-offset:3px;border-radius:4px}
+.past-hint{font-family:var(--f-body);font-size:var(--t-sm);font-weight:600;color:#8a7140;white-space:nowrap}
