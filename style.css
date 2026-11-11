@@ -1529,3 +1529,22 @@ i.k-special{background:var(--k-special)!important}.cal-bar.k-special{background:
 i.k-season{background:var(--k-season)!important}.cal-bar.k-season{background:var(--k-season)!important}
 .cal-list li.is-season b,.cal-list li.is-season span,.cal-up li.is-season b,.cal-up li.is-season span{color:var(--k-season)!important}
 .cal-list li.k-pastor b,.cal-up li.is-pastor b{color:#b83f74!important}
+
+/* 북한선교: '우리가 바라보는 것' (브릿지 홈페이지와 같게, 2026-11-12) */
+.nbm-hope-box{margin:0 0 clamp(28px,4vw,44px);padding-bottom:clamp(24px,3vw,36px);border-bottom:1px solid var(--line)}
+.nbm-hope-box .eyebrow{margin-bottom:.7rem}
+.nbm-hope{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,2vw,22px)}
+.nbm-hope>li>div{width:100%}
+.nbm-hope>li{display:flex;flex-direction:column;align-items:flex-start;gap:0;padding:clamp(18px,2vw,24px);background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 6px 20px rgba(34,48,58,.06)}
+.nbm-hope svg{width:26px;height:26px;padding:11px;box-sizing:content-box;border-radius:50%;background:#e9eef0;fill:none;stroke:var(--pine);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;margin:0 0 .7rem}
+.nbm-hope h3{font-size:1.25rem!important;color:var(--ink);margin:0;line-height:1.35!important}
+.msn .nbm-hope-ref{font-size:.82rem!important;font-weight:600;color:#8a7140!important;margin:.2rem 0 .6rem!important;letter-spacing:.01em}
+.msn .nbm-hope p:last-child{font-family:var(--f-serif);font-size:.98rem!important;line-height:1.6!important;color:var(--ink);margin:0;padding-top:.6rem;border-top:1px solid var(--line);width:100%}
+@media (max-width:760px){
+  .nbm-hope{grid-template-columns:1fr}
+  .nbm-hope>li{padding:18px 18px 20px;display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:14px}
+  .nbm-hope>li>div{display:contents}
+  .nbm-hope svg{grid-row:1 / span 2;margin:0}
+  .nbm-hope h3,.msn .nbm-hope-ref{grid-column:2}
+  .msn .nbm-hope p:last-child{grid-column:1 / -1;margin-top:.2rem}
+}
