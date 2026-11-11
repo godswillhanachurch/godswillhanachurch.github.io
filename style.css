@@ -1432,3 +1432,7 @@ i.k-pastor{background:#4f8a8b!important}
 }
 .af-say{display:none}
 @media (max-width:860px){.s-af .af-say{display:block;font-family:var(--f-serif);font-size:.875rem;line-height:1.7;color:#3a464d;margin-top:.5rem}}
+@media (max-width:860px){
+  .s-af .af-say{font-size:.61rem;line-height:1.75}
+  .af-time b{display:inline-flex;align-items:center;justify-content:center;width:3.2em;min-width:0;height:1.9em;padding:0;line-height:1;text-align:center}
+}
