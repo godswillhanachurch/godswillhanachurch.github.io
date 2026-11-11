@@ -1416,3 +1416,17 @@ i.k-pastor{background:#4f8a8b!important}
   .af-cards b{font-size:1.05rem}.af-cards b small{display:none}
 }
 @media (max-width:420px){.af-cards li{grid-template-columns:44px minmax(0,1fr);gap:8px}.af-cards div>time{font-size:.75rem!important;line-height:1.3!important}.af-cards time small{font-size:.6875rem;margin-left:.1rem}.af-cards img{width:44px;height:44px}.af-tag{font-size:.6875rem;padding:.05rem .45rem}}
+/* 아프리카 배너: 휴대폰에서 일시 줄 추가, 카드 날짜 숨김 (2026-11-12) */
+.af-time i{font-style:normal}
+.af-day,.af-mo{display:none!important}
+@media (max-width:860px){
+  .s-af{justify-content:flex-start;padding-top:18px}
+  .af-pc{display:none!important}.af-mo{display:inline!important}
+  .af-day{display:flex!important}
+  .af-time{gap:.3rem}
+  .af-time li{font-size:.61rem;gap:.35rem}
+  .af-time b{font-size:.53rem;padding:0 .4rem;min-width:2.6em;text-align:center}
+  .af-day b{background:#8a7140}
+  .af-time span::before{margin-right:.3rem}
+  .af-cards div>time{display:none!important}
+}
