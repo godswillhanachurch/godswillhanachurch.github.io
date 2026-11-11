@@ -1444,3 +1444,5 @@ i.k-pastor{background:#4f8a8b!important}
 @media (max-width:420px){.af-tag{font-size:.52rem}}
 @media (max-width:860px){.af-tag{display:inline-flex;align-items:center;justify-content:center;height:1.9em;padding:0 .7em;line-height:1;text-align:center}}
 @media (max-width:420px){.af-tag{padding:0 .7em}}
+/* 블록 속 한글이 위로 떠 보이는 것 보정 (2026-11-12) */
+@media (max-width:860px){.af-time b{padding-top:.48em}.af-tag{padding-top:.41em}}
