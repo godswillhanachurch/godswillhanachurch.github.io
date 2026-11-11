@@ -1372,3 +1372,39 @@ i.k-pastor{background:#4f8a8b!important}
 @media (max-width:1000px){.msn-4e{grid-template-columns:repeat(2,minmax(0,1fr))}.msn-4e>li::after{display:none}}
 @media (max-width:760px){.msn-4e{grid-template-columns:1fr;gap:10px}.msn-4e>li{display:grid;grid-template-columns:34px minmax(0,1fr);column-gap:14px;row-gap:.15rem;padding:16px}.msn-4e-no{grid-row:1/4;margin:0}.msn-4e h3{margin:0 0 .3rem}}
 
+
+/* 아프리카 선교 특별 시리즈 배너 (2026-11) */
+.s-af{justify-content:space-between;gap:clamp(20px,4vw,56px);padding-inline:max(72px,8%)}
+.s-af .slide-title,.s-af .slide-body,.s-af .af-pre{text-shadow:none}
+.s-af .af-text{text-align:left;padding:0;max-width:540px;gap:.45rem}
+.s-af .slide-eyebrow{color:#8a7140}
+.s-af .slide-eyebrow::before{background:#b59b6b}
+.s-af .af-pre{font-family:var(--f-serif);font-weight:700;font-size:clamp(1.15rem,.9rem + 1vw,1.6rem);color:#3a464d;line-height:1.3}
+.s-af .slide-title{color:#8a6a3e;font-size:clamp(2.4rem,5.4vw,4.2rem)}
+.s-af .slide-body{color:#3a464d}
+.af-time{list-style:none;margin:.5rem 0 0;padding:.75rem 0 0;border-top:1px solid rgba(89,104,113,.25);display:grid;gap:.4rem}
+.af-time li{display:flex;align-items:center;gap:.6rem;font-size:max(15px,var(--t-sm));font-weight:600;color:#3a464d;white-space:nowrap}
+.af-time b{flex:none;font-size:.75rem;padding:.12rem .55rem;border-radius:999px;background:#596871;color:#fff}
+.af-time span{color:#8a7140;font-weight:700;margin-left:.2rem}
+.af-time span::before{content:"·";margin-right:.45rem;color:#b3bcc0}
+.af-cards{position:relative;list-style:none;margin:0;padding:0;display:grid;gap:14px;flex:0 1 400px;min-width:0}
+.af-cards li{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:16px;padding:14px 20px 14px 14px;border-radius:16px;background:rgba(255,255,255,.82);border:1px solid #e3ddd1;box-shadow:0 8px 24px rgba(60,50,35,.08)}
+.af-cards img{width:84px;height:84px;border-radius:50%;object-fit:cover;border:3px solid #fff;box-shadow:0 2px 8px rgba(60,50,35,.15)}
+.af-cards div{display:grid;justify-items:start;gap:.3rem}
+.af-tag{font-size:.75rem;font-weight:700;padding:.15rem .6rem;border-radius:6px;background:#dde9e4;color:#3f5a52}
+.af-tag.ke{background:#efe6d3;color:#7a5f30}
+.af-cards b{font-family:var(--f-serif);font-size:1.45rem;color:#1f2427;line-height:1.2}
+.af-cards b small,.af-cards time small{font-family:var(--f-body);font-size:.8rem;font-weight:500;color:#5a544c}
+.af-cards time{font-weight:700;font-size:1rem;color:#596871;white-space:nowrap;text-align:right;line-height:1.3}
+.af-cards time small{display:block}
+@media (max-width:1000px){.s-af{padding-inline:56px}.af-cards{flex-basis:340px}.af-cards img{width:68px;height:68px}.af-cards li{gap:12px}}
+@media (max-width:860px){
+  .s-af{height:auto;min-height:clamp(320px,38vw,470px);flex-direction:column;align-items:stretch;justify-content:center;gap:16px;padding:26px 44px 52px}
+  .s-af .slide-body{display:none}
+  .af-cards{flex:none;grid-template-columns:1fr 1fr;gap:10px}
+  .af-cards li{grid-template-columns:auto 1fr;padding:10px;gap:10px;border-radius:12px}
+  .af-cards img{width:52px;height:52px;border-width:2px}
+  .af-cards b{font-size:1.1rem}.af-cards b small{display:none}
+  .af-cards time{grid-column:1/-1;text-align:left;font-size:.85rem}.af-cards time small{display:inline}
+}
+@media (max-width:420px){.af-time li{font-size:14px;gap:.45rem}.af-time li span{margin-left:auto}.af-time span::before{display:none}.af-cards img{width:44px;height:44px}.af-cards b{font-size:1rem}.af-tag{font-size:.7rem;padding:.1rem .45rem}}
