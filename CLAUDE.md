@@ -55,7 +55,7 @@
 ## 교회 일정 달력 (events.json, cal.js)
 - `weekly`(요일 0=일 … 6=토), `monthly`(n번째 요일), `events`(날짜·기간), `skip`(그날 매주·매월 일정을 모두 숨김).
 - events 항목: `date`, 선택 `end`(여러 날), `time`, `title`, `note`, `kind`, `replace`(같은 이름의 매주 일정을 그날 대신함).
-- kind와 색: worship 예배, group 목장, prayer 기도, ministry 사역, nextgen 다음세대, pastor 목회자, season 절기, special 특별.
+- kind와 색(2026-11-12 서로 구별되게 바꿈, style.css 끝 --k-*): worship 예배 파랑, group 목장 초록, prayer 기도 청록, ministry 사역 갈색, nextgen 다음세대 주황, pastor 목회자 분홍, season 절기 보라, special 특별 빨강.
 - 여러 날 일정: kind가 special이면 달력 위에 "신청 중 · D-n" 띠와 마지막 날 "마감" 표시(심방 신청처럼 기간을 두고 받는 일정). 그 밖의 kind는 칸을 가로지르는 막대(.cal-bar)로 표시.
 - 2026년 11월부터만 보이고, 지난 달로는 넘어가지 않으며, 지난 날짜는 흐리게 표시합니다. 데스크톱에서는 달력 옆에 다가오는 일정 3개만 보입니다(모바일은 숨김).
 - 넣지 않는 것: 주일예배, 목장모임(매주 있는 일이라 뺌). 연합목장모임(월 1회)은 넣습니다.

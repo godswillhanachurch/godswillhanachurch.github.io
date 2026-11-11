@@ -1512,3 +1512,20 @@ details[open] .sp-more::before{content:"−"}
 /* 홈 배너 */
 .af-more .more-pill{background:rgba(255,255,255,.7)}
 .s-af:hover .af-more .more-pill{background:var(--pine);border-color:var(--pine);color:#fff!important}
+
+/* 달력 분류 색: 서로 확실히 구별되게 (2026-11-12) */
+.cal{--k-worship:#2c5aa0;--k-group:#3d9a4f;--k-prayer:#13a09c;--k-ministry:#9a6431;--k-nextgen:#f08c1e;--k-pastor:#d6528f;--k-special:#d63c35;--k-season:#7d4fb8}
+.cal-wrap{--k-worship:#2c5aa0;--k-group:#3d9a4f;--k-prayer:#13a09c;--k-ministry:#9a6431;--k-nextgen:#f08c1e;--k-pastor:#d6528f;--k-special:#d63c35;--k-season:#7d4fb8}
+.cal-legend i,.cal-day .cal-dots i{width:9px!important;height:9px!important}
+.cal-day .cal-dots{gap:4px!important;min-height:9px!important}
+.cal-legend i{width:10px!important;height:10px!important}
+i.k-worship{background:var(--k-worship)!important}.cal-bar.k-worship{background:var(--k-worship)!important}
+i.k-group{background:var(--k-group)!important}.cal-bar.k-group{background:var(--k-group)!important}
+i.k-prayer{background:var(--k-prayer)!important}.cal-bar.k-prayer{background:var(--k-prayer)!important}
+i.k-ministry{background:var(--k-ministry)!important}.cal-bar.k-ministry{background:var(--k-ministry)!important}
+i.k-nextgen{background:var(--k-nextgen)!important}.cal-bar.k-nextgen{background:var(--k-nextgen)!important}
+i.k-pastor{background:var(--k-pastor)!important}.cal-bar.k-pastor{background:var(--k-pastor)!important}
+i.k-special{background:var(--k-special)!important}.cal-bar.k-special{background:var(--k-special)!important}
+i.k-season{background:var(--k-season)!important}.cal-bar.k-season{background:var(--k-season)!important}
+.cal-list li.is-season b,.cal-list li.is-season span,.cal-up li.is-season b,.cal-up li.is-season span{color:var(--k-season)!important}
+.cal-list li.k-pastor b,.cal-up li.is-pastor b{color:#b83f74!important}
