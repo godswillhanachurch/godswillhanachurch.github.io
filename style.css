@@ -1906,3 +1906,12 @@ i.k-season{background:var(--k-season)!important}.cal-bar.k-season{background:var
   #notice .row-grid>.latest>.latest-btns{grid-row:3!important;grid-column:1/-1!important;justify-self:center!important;margin:0!important}
   #notice .latest .latest-btns .more-pill{width:140px!important;height:34px!important;padding:0 10px!important;font-size:13px!important}
 }
+/* 홈 배너 3: 매주 금요일 반찬사역 (2026-11-13) */
+.s-nk .ph-hero img{object-position:70% 50%}
+.s-nk .slide-ref{font-size:var(--t-sm)!important;margin-top:.2rem}
+.slide-btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:1.1rem;position:relative;z-index:3}
+.sbtn{display:inline-flex;align-items:center;justify-content:center;height:42px;padding:0 20px;border-radius:999px;border:1px solid rgba(255,255,255,.75);color:#fff!important;font-size:var(--t-sm);font-weight:600;text-decoration:none;background:rgba(255,255,255,.06)}
+.sbtn:hover{background:rgba(255,255,255,.16)}
+.sbtn.sbtn-fill{background:#f0c24b;border-color:#f0c24b;color:#1f2427!important}
+.sbtn.sbtn-fill:hover{background:#f5d06a}
+@media (max-width:640px){.sbtn{height:38px;padding:0 16px;font-size:13px}}
