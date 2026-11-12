@@ -69,7 +69,7 @@
 - 유튜브 RSS를 읽고, 안 되면 채널의 streams·videos 화면에서 찾습니다. 제목에 '예배'가 든 최신 영상을 고릅니다.
 - 날짜는 영상 제목의 "26. 11. 08. | 주일 예배" 형식에서, 제목·본문·설교자는 설명란의 `제목:`·`본문:`·`설교자:` 줄에서 읽습니다.
 - index.html의 `<!-- sermon:start -->` ~ `<!-- sermon:end -->` 사이만 바꿉니다. 이 표시는 지우지 마세요.
-- 숏츠(2026-11-12): 같은 스크립트의 update_shorts()가 채널 RSS의 /shorts/ 링크(안 되면 @Godwillhanachurch/shorts 화면)에서 최신 숏츠를 찾아 `<!-- shorts:start -->` ~ `<!-- shorts:end -->` 사이와 images/shorts-thumb.jpg를 바꿉니다. 매일 오전 6시 10분에도 돌며 '하루 하나씩' 바꿉니다: 새 숏츠가 올라왔으면 그것을, 아니면 날짜에 따라 채널 숏츠 목록을 돌아가며 보여 줌(기록: shorts-state.json). 홈 표기는 '[1분 메시지]'(사용자 요청). 홈의 1분 메시지 화면은 사진 대신 주일설교 슬라이드처럼 남색 바탕·금색 세로줄·흰 제목으로 그림(CSS .thumb-short, 사진 파일은 받아 두지만 숨김). 설교·숏츠 아래 줄은 subgrid로 두 칸의 제목 줄·버튼 줄을 맞춤.
+- 숏츠(2026-11-12): 같은 스크립트의 update_shorts()가 채널 RSS의 /shorts/ 링크(안 되면 @Godwillhanachurch/shorts 화면)에서 최신 숏츠를 찾아 `<!-- shorts:start -->` ~ `<!-- shorts:end -->` 사이와 images/shorts-thumb.jpg를 바꿉니다. 매일 밤 12시(한국 시간, 0:01과 0:31 두 번)에도 돌며 '하루 하나씩' 바꿉니다: 새 숏츠가 올라왔으면 그것을, 아니면 날짜에 따라 채널 숏츠 목록을 돌아가며 보여 줌(기록: shorts-state.json). 홈 표기는 '[1분 메시지]'(사용자 요청). 홈의 1분 메시지 화면은 사진 대신 주일설교 슬라이드처럼 남색 바탕·금색 세로줄·흰 제목으로 그림(CSS .thumb-short, 사진 파일은 받아 두지만 숨김). 설교·숏츠 아래 줄은 subgrid로 두 칸의 제목 줄·버튼 줄을 맞춤.
 - 설교 카드 이미지: `images/sermon-slide-YYYYMMDD.jpg`(그 주 설교 슬라이드 첫 화면)가 있으면 그것을, 없으면 유튜브 썸네일(images/sermon-thumb.jpg)을 씁니다.
 
 ### 주보·설교 슬라이드 정기 반영 (Claude 예약 작업)
