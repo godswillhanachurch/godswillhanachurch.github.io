@@ -200,5 +200,87 @@ def main():
     print("새 영상으로 갱신:", v["title"])
 
 
+SHORTS_THUMB = os.path.join(ROOT, "images", "shorts-thumb.jpg")
+
+
+def latest_short():
+    """가장 최근 숏츠 영상(id, 제목)을 찾습니다. RSS의 /shorts/ 링크 → 채널 숏츠 화면 순서로 봅니다."""
+    try:
+        cid = channel_id()
+        root = ET.fromstring(get(f"https://www.youtube.com/feeds/videos.xml?channel_id={cid}"))
+        best = None
+        for e in root.findall("a:entry", NS):
+            link = e.find("a:link", NS)
+            href = link.get("href", "") if link is not None else ""
+            if "/shorts/" in href:
+                item = {"id": e.findtext("yt:videoId", "", NS), "title": (e.findtext("a:title", "", NS) or "").strip(),
+                        "published": e.findtext("a:published", "", NS)}
+                if not best or item["published"] > best["published"]:
+                    best = item
+        if best:
+            return best
+    except BaseException as ex:
+        print("숏츠 RSS 실패:", ex)
+    try:
+        page = get(f"https://www.youtube.com/@{HANDLE}/shorts")
+        m = re.search(r'/shorts/([\w-]{11})', page) or re.search(r'"videoId":"([\w-]{11})"', page)
+        if m:
+            near = page[m.start():m.start() + 6000]
+            t = (re.search(r'"primaryText":\{"content":"((?:[^"\\]|\\.)*)"', near)
+                 or re.search(r'"accessibilityText":"((?:[^"\\]|\\.)*)"', near))
+            title = json.loads('"' + t.group(1) + '"') if t else ""
+            return {"id": m.group(1), "title": title, "published": ""}
+    except Exception as ex:
+        print("숏츠 화면을 읽지 못함:", ex)
+    return None
+
+
+def render_short(v):
+    e = html.escape
+    title = re.sub(r"\s*#\S+", "", v["title"]).strip() or "이번 주 설교 숏츠"
+    url = f"https://www.youtube.com/shorts/{v['id']}"
+    return (
+        f'          <a class="thumb thumb-short" href="{url}" target="_blank" rel="noopener" aria-label="설교 숏츠 보기 (유튜브)">\n'
+        f'            <img class="thumb-img" src="images/shorts-thumb.jpg?v={v["id"]}" alt="" loading="lazy" onload="this.parentNode.classList.add(\'has-img\')" onerror="this.remove()">\n'
+        '            <span class="thumb-date">설교 숏츠</span>\n'
+        f'            <strong>{e(title)}</strong>\n'
+        '            <span class="play" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span>\n'
+        '          </a>\n'
+        f'          <h2 class="latest-title">[숏츠] {e(title)}</h2>\n'
+    )
+
+
+def update_shorts():
+    v = latest_short()
+    if not v:
+        print("숏츠를 찾지 못해 그대로 둡니다.")
+        return
+    print("최신 숏츠:", v["id"], v["title"])
+    if os.environ.get("PREVIEW"):
+        print("숏츠 미리보기:\n" + render_short(v))
+        return
+    page = open(INDEX, encoding="utf-8").read()
+    m = re.search(r"(<!-- shorts:start[^>]*-->\n)(.*?)(<!-- shorts:end -->)", page, re.S)
+    if not m:
+        print("index.html에 shorts 표시가 없어 숏츠는 건너뜁니다.")
+        return
+    if f"/shorts/{v['id']}\"" in m.group(2):
+        print("이미 최신 숏츠입니다.")
+        return
+    for size in ("oar2", "oardefault", "hq720", "hqdefault"):
+        try:
+            img = get(f"https://i.ytimg.com/vi/{v['id']}/{size}.jpg", binary=True)
+            if len(img) > 5000:
+                open(SHORTS_THUMB, "wb").write(img)
+                print("숏츠 썸네일:", size)
+                break
+        except Exception:
+            continue
+    page = page[:m.start(2)] + render_short(v) + page[m.end(2):]
+    open(INDEX, "w", encoding="utf-8").write(page)
+    print("숏츠 갱신:", v["title"])
+
+
 if __name__ == "__main__":
     main()
+    update_shorts()
