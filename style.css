@@ -1880,3 +1880,5 @@ i.k-season{background:var(--k-season)!important}.cal-bar.k-season{background:var
 .msn-mini h3+.msn-en{margin:.15rem 0 0!important}
 .msn-mini h3 .msn-badge{vertical-align:middle;margin-left:.4rem}
 .msn-mini h3+.msn-en{margin:.2rem 0 1rem!important}
+/* 영어 페이지 선교 소개 (2026-11-12) */
+.en-sub{color:#8a7140;font-weight:700;font-size:var(--t-sm);margin:-.6rem 0 .7rem!important;letter-spacing:.02em}
