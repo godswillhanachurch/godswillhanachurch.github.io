@@ -1794,3 +1794,21 @@ i.k-season{background:var(--k-season)!important}.cal-bar.k-season{background:var
 @media (min-width:761px){.home-row .row-grid>.latest:not(.latest-short)>.latest-btns{grid-column:1/-1;justify-self:start}}
 @media (max-width:760px){.latest-title .latest-sub{display:block;margin:.3rem 0 0;white-space:normal}}
 .latest-btns .more-pill{width:200px;justify-content:center;font-size:var(--t-sm)!important;font-weight:600}
+
+/* 1분 메시지 화면을 주일설교 화면처럼(남색 바탕 · 금색 세로줄 · 흰 제목) (2026-11-12) */
+.thumb.thumb-short{background:#10243d!important;color:#fff;padding:0!important;display:block;overflow:hidden}
+.thumb-short .thumb-img{display:none!important}
+.thumb-short::before{content:"";position:absolute;left:12%;top:16%;bottom:16%;width:4px;background:#d4a64a;border-radius:2px}
+.thumb.thumb-short .thumb-date,.thumb.thumb-short strong,.thumb.thumb-short .thumb-meta{display:block!important;position:absolute;left:calc(12% + 18px);right:10%}
+.thumb-short .thumb-date{top:16%;color:#d4a64a!important;font-weight:700;font-size:var(--t-xs)!important;letter-spacing:.04em}
+.thumb-short strong{top:28%;color:#fff;font-family:var(--f-body)!important;font-weight:800!important;font-size:clamp(1.25rem,1.9vw,1.75rem)!important;line-height:1.3!important;letter-spacing:-.02em!important;word-break:keep-all}
+.thumb-short .thumb-meta{bottom:16%;color:#6fc3b4!important;font-weight:600;font-size:var(--t-xs)!important}
+.thumb.thumb-short .play{position:absolute!important;left:50%!important;top:auto!important;bottom:30%!important;transform:translateX(-50%)!important}
+.thumb-short strong{text-wrap:balance}
+.thumb-short .thumb-meta{white-space:nowrap}
+@media (max-width:760px){
+  .thumb.thumb-short .play{bottom:auto!important;top:58%!important;transform:translate(-50%,-50%) scale(.85)!important}
+  .thumb-short .thumb-meta{font-size:11px!important}
+  .latest-short .latest-btns .more-pill{width:auto;padding:0 18px!important}
+}
+@media (max-width:760px){#notice .thumb.thumb-short .thumb-meta{font-size:11px!important;letter-spacing:-.01em}}

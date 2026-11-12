@@ -264,6 +264,7 @@ def render_short(v):
         f'            <img class="thumb-img" src="images/shorts-thumb.jpg?v={v["id"]}" alt="" loading="lazy" onload="this.parentNode.classList.add(\'has-img\')" onerror="this.remove()">\n'
         '            <span class="thumb-date">1분 메시지</span>\n'
         f'            <strong>{e(title)}</strong>\n'
+        '            <span class="thumb-meta">높은뜻 하나되는 교회</span>\n'
         '            <span class="play" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span>\n'
         '          </a>\n'
         f'          <h2 class="latest-title">[1분 메시지] {e(title)}</h2>\n'
