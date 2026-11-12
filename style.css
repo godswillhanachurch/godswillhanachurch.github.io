@@ -1744,3 +1744,4 @@ i.k-season{background:var(--k-season)!important}.cal-bar.k-season{background:var
 .outreach-apply[aria-disabled="true"]{opacity:.55;cursor:default;pointer-events:none}
 .outreach-apply small{font-size:.85em;font-weight:500}
 .msn .msn-card .btns{display:flex;flex-wrap:wrap;gap:10px;align-items:center}.msn .msn-card .btns .btn{margin:0!important}
+.latest-btns .more-pill{box-sizing:border-box;height:48px;padding:0 25.6px!important;line-height:1.5!important;align-self:center}
