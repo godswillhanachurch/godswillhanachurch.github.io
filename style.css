@@ -1899,3 +1899,10 @@ i.k-season{background:var(--k-season)!important}.cal-bar.k-season{background:var
 .nbm-hope-box .msn-goals-head h2,.msn-goals-head h2{margin:0!important}
 .msn .nbm-hope p:last-child,.nbm-hope p:last-child{font-family:var(--f-body)!important;font-size:1rem!important;line-height:1.65!important;color:var(--ink)}
 @media (max-width:760px){.msn-goals.msn-pc:has(>.nbm-goals){display:none!important}}
+/* 노트북 홈: 제목 줄을 영상 위로, 더보기 버튼은 영상 아래 가운데·70% 크기 (2026-11-12) */
+@media (min-width:761px){
+  #notice .row-grid>.latest>.latest-title{grid-row:1!important;align-self:end!important;margin:0!important}
+  #notice .row-grid>.latest>.thumb{grid-row:2!important}
+  #notice .row-grid>.latest>.latest-btns{grid-row:3!important;grid-column:1/-1!important;justify-self:center!important;margin:0!important}
+  #notice .latest .latest-btns .more-pill{width:140px!important;height:34px!important;padding:0 10px!important;font-size:13px!important}
+}
