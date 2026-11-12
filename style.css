@@ -1850,3 +1850,13 @@ i.k-season{background:var(--k-season)!important}.cal-bar.k-season{background:var
 .msn .msn-chips.msn-chips-3 li{text-align:center}
 .msn-chips.msn-chips-3{grid-template-columns:repeat(3,108px)}
 .msn .msn-chips.msn-chips-3 li{display:flex;align-items:center;justify-content:center;height:44px;padding:0 .5rem!important;line-height:1;box-sizing:border-box}
+
+/* 가치 꽃: 70% 크기, 원 안 단어 가운데 정렬 (2026-11-12, 교회 style.css·브릿지 nbm.css 같은 블록) */
+.nbm-vwrap{grid-template-columns:minmax(0,294px) minmax(0,1fr)!important}
+.nbm-vflower{max-width:294px}
+.nbm-vflower li>button>*,.nbm-vflower li>*{transform:none!important}
+.nbm-vflower .nbm-vtip,.nbm-vtip{display:none!important}
+@media (max-width:760px){.nbm-vwrap{grid-template-columns:1fr!important}.nbm-vflower{max-width:238px!important}}
+.nbm-vflower .nbm-vcore{left:33%!important;top:33%!important;width:34%!important}
+.nbm-vflower .nbm-vcore b{font-size:6.6cqw!important}.nbm-vflower .nbm-vcore small{font-size:2.4cqw!important}
+.nbm-vflower .v6 b{font-size:3.8cqw!important}
