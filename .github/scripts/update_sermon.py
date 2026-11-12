@@ -140,8 +140,7 @@ def render(v):
     preacher = field(v["desc"], "설교자", "설교")
     e = html.escape
     meta_short = " · ".join(x for x in (passage, preacher) if x)
-    meta_long = " / ".join(x for x in (f"{day.year}년 {day.month}월 {day.day}일 주일예배",
-                                         f"본문: {passage}" if passage else "",
+    meta_long = " · ".join(x for x in (f"본문: {passage}" if passage else "",
                                          f"설교자: {preacher}" if preacher else "") if x)
     url = f"https://www.youtube.com/watch?v={v['id']}"
     return (
@@ -152,8 +151,9 @@ def render(v):
         + (f'            <span class="thumb-meta">{e(meta_short)}</span>\n' if meta_short else "")
         + '            <span class="play" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span>\n'
         '          </a>\n'
-        f'          <h2 class="latest-title">{e(head)}</h2>\n'
-        f'          <p class="latest-meta">{e(meta_long)}</p>\n'
+        f'          <h2 class="latest-title">{e(head)}'
+        + (f' <span class="latest-sub">{e(meta_long)}</span>' if meta_long else "")
+        + '</h2>\n'
     )
 
 
