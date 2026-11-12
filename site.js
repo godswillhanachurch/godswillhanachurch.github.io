@@ -162,3 +162,18 @@ if ('serviceWorker' in navigator) {
   fit(); addEventListener('resize',fit);
   if(document.fonts&&document.fonts.ready) document.fonts.ready.then(fit);
 })();
+
+/* 휴대폰 홈: 설교·1분 메시지 제목을 버튼 옆 한 줄에 맞춰 글자 크기 조절 */
+(function(){
+  var ts=document.querySelectorAll('#notice .latest-title'); if(!ts.length) return;
+  function fit(){
+    ts.forEach(function(t){
+      t.style.removeProperty('font-size');
+      if(innerWidth>760) return;
+      var fs=parseFloat(getComputedStyle(t).fontSize), n=0;
+      while(t.scrollWidth>t.clientWidth+1 && fs>12 && n++<40){fs-=.5; t.style.setProperty('font-size',fs+'px','important');}
+    });
+  }
+  fit(); addEventListener('resize',fit);
+  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(fit);
+})();

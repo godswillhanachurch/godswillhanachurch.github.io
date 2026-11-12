@@ -1833,3 +1833,15 @@ i.k-season{background:var(--k-season)!important}.cal-bar.k-season{background:var
   #notice .thumb.thumb-short .thumb-meta{bottom:15%;font-size:12px!important}
   #notice .thumb.thumb-short .play{top:50%!important;left:80%!important;transform:translate(-50%,-50%)!important}
 }
+/* 휴대폰: 설교 제목 아래 본문·설교자 숨기고 제목 한 줄 + 지난 설교 더보기 (2026-11-12) */
+@media (max-width:760px){
+  #notice .latest:not(.latest-short) .latest-title .latest-sub{display:none!important}
+  #notice .latest .latest-title{font-size:var(--t-h4)!important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;align-self:center}
+  #notice .latest:not(.latest-short)>.latest-title,#notice .latest:not(.latest-short)>.latest-btns{margin-top:.9rem!important}
+  #notice .latest>.latest-btns{align-self:center;margin-top:.9rem!important}
+}
+@media (max-width:760px){
+  #notice .latest .latest-btns .more-pill{height:30px;padding:0 10px!important;font-size:13px!important;letter-spacing:-.02em}
+  #notice .latest.latest-short,#notice .latest:not(.latest-short){column-gap:8px}
+  #notice .latest .latest-title{text-overflow:clip;letter-spacing:-.03em}
+}
