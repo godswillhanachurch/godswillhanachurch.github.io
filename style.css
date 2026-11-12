@@ -1895,7 +1895,7 @@ i.k-season{background:var(--k-season)!important}.cal-bar.k-season{background:var
 }
 /* 우리가 바라보는 것·우리의 목표 통일: 같은 제목 크기, 같은 아이콘 카드, 설명 글꼴 하나로 (2026-11-12) */
 #hope .msn-goals-head,.msn-goals-head{margin-bottom:clamp(18px,2.5vw,28px)!important}
-.msn-goals.msn-pc{display:block!important}
+.msn-goals.msn-pc:has(>.nbm-goals){display:block!important}
 .nbm-hope-box .msn-goals-head h2,.msn-goals-head h2{margin:0!important}
 .msn .nbm-hope p:last-child,.nbm-hope p:last-child{font-family:var(--f-body)!important;font-size:1rem!important;line-height:1.65!important;color:var(--ink)}
-@media (max-width:760px){.msn-goals.msn-pc{display:none!important}}
+@media (max-width:760px){.msn-goals.msn-pc:has(>.nbm-goals){display:none!important}}
