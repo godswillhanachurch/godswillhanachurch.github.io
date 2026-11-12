@@ -1848,3 +1848,5 @@ i.k-season{background:var(--k-season)!important}.cal-bar.k-season{background:var
 /* 아웃리치 장소: 3개씩 두 줄 (2026-11-12) */
 .msn-chips.msn-chips-3{display:grid;grid-template-columns:repeat(3,max-content);justify-content:start}
 .msn .msn-chips.msn-chips-3 li{text-align:center}
+.msn-chips.msn-chips-3{grid-template-columns:repeat(3,108px)}
+.msn .msn-chips.msn-chips-3 li{display:flex;align-items:center;justify-content:center;height:44px;padding:0 .5rem!important;line-height:1;box-sizing:border-box}
