@@ -1793,3 +1793,4 @@ i.k-season{background:var(--k-season)!important}.cal-bar.k-season{background:var
 .latest-title .latest-sub{font-family:var(--f-body);font-size:var(--t-sm);font-weight:500;color:var(--muted);margin-left:.5em;letter-spacing:0;white-space:nowrap}
 @media (min-width:761px){.home-row .row-grid>.latest:not(.latest-short)>.latest-btns{grid-column:1/-1;justify-self:start}}
 @media (max-width:760px){.latest-title .latest-sub{display:block;margin:.3rem 0 0;white-space:normal}}
+.latest-btns .more-pill{width:200px;justify-content:center;font-size:var(--t-sm)!important;font-weight:600}
