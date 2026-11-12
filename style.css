@@ -1782,3 +1782,9 @@ i.k-season{background:var(--k-season)!important}.cal-bar.k-season{background:var
   .home-row .row-grid>.latest-short>.latest-btns{grid-column:1}
   .home-row .row-grid>.latest .latest-title{font-size:var(--t-h4)!important;align-self:start}
 }
+/* 숏츠 칸 가로 30% 넓힘(높이는 설교 화면과 같게 유지, 사진은 가운데 기준으로 채움) */
+@media (min-width:761px){
+  .home-row .row-grid{grid-template-columns:1fr .4113fr!important}
+  .thumb-short{aspect-ratio:11.7/16}
+  .thumb-short .thumb-img{object-fit:cover;object-position:center}
+}
