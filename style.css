@@ -1733,3 +1733,9 @@ i.k-season{background:var(--k-season)!important}.cal-bar.k-season{background:var
 :root body main .msn-badge,:root body main .role,:root body main .person .badge .role,:root body main .album-count,:root body main .af-fig-btn,:root body main .cal-row span,:root body main .slide-goals b,:root body main .nbm-history small{font-size:var(--t-xs)!important}
 :root body main figcaption:not(#lbCap),:root body main .nbm-gallery b{font-size:var(--t-sm)!important}
 :root body main .person .badge b{font-size:var(--t-h4)!important}
+
+/* 높은뜻 형제교회 로고: 누르면 각 교회 홈페이지로 (2026-11-12) */
+.bro-map{position:relative;display:block;max-width:760px;margin:0 auto}
+.bro-map img{display:block;width:100%;height:auto}
+.bro-map a{position:absolute;border-radius:8px;transition:background .2s,box-shadow .2s}
+.bro-map a:hover,.bro-map a:focus-visible{background:rgba(89,104,113,.08);box-shadow:0 0 0 2px rgba(89,104,113,.35);outline:none}
