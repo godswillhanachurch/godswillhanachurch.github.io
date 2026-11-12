@@ -1771,3 +1771,14 @@ i.k-season{background:var(--k-season)!important}.cal-bar.k-season{background:var
 }
 /* 숏츠 높이를 주일설교 화면과 같게: 숏츠 너비 = 설교 너비 × (9/16)² */
 @media (min-width:761px){.home-row .row-grid{grid-template-columns:1fr .3164fr!important;column-gap:28px!important}}
+/* 설교·숏츠 아래 줄 맞춤: 제목 줄과 버튼 줄을 두 칸이 함께 씀(subgrid). 설교는 설명과 버튼을 한 줄에 */
+@media (min-width:761px){
+  .home-row .row-grid{grid-template-rows:auto auto auto;row-gap:.8rem!important}
+  .home-row .row-grid>.latest{grid-row:span 3;display:grid;grid-template-rows:subgrid;column-gap:22px;grid-template-columns:minmax(0,max-content) auto 1fr}
+  .home-row .row-grid>.latest>.thumb,.home-row .row-grid>.latest>.latest-title{grid-column:1/-1;margin:0!important}
+  .home-row .row-grid>.latest>.latest-meta{grid-column:1;align-self:center;margin:0!important}
+  .home-row .row-grid>.latest>.latest-btns{grid-column:2;align-self:center;margin:0!important}
+  .home-row .row-grid>.latest-short{grid-template-columns:minmax(0,1fr)}
+  .home-row .row-grid>.latest-short>.latest-btns{grid-column:1}
+  .home-row .row-grid>.latest .latest-title{font-size:var(--t-h4)!important;align-self:start}
+}

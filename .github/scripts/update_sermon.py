@@ -203,50 +203,70 @@ def main():
 SHORTS_THUMB = os.path.join(ROOT, "images", "shorts-thumb.jpg")
 
 
+STATE = os.path.join(ROOT, "shorts-state.json")
+
+
+def short_list():
+    """채널 숏츠 화면에서 숏츠 목록(최신 순)을 가져옵니다. [{id, title}]"""
+    page = get(f"https://www.youtube.com/@{HANDLE}/shorts")
+    out, seen = [], set()
+    for m in re.finditer(r'/shorts/([\w-]{11})', page):
+        vid = m.group(1)
+        if vid in seen:
+            continue
+        seen.add(vid)
+        near = page[m.start():m.start() + 6000]
+        t = (re.search(r'"primaryText":\{"content":"((?:[^"\\]|\\.)*)"', near)
+             or re.search(r'"accessibilityText":"((?:[^"\\]|\\.)*)"', near))
+        title = json.loads('"' + t.group(1) + '"') if t else ""
+        title = re.sub(r",?\s*(조회수|[0-9.,]+\s*(만|천)?\s*회).*$", "", title).strip()
+        out.append({"id": vid, "title": title})
+    return out
+
+
 def latest_short():
-    """가장 최근 숏츠 영상(id, 제목)을 찾습니다. RSS의 /shorts/ 링크 → 채널 숏츠 화면 순서로 봅니다."""
+    """매일 하나씩: 새로 올라온 숏츠가 있으면 그것을, 없으면 날짜에 따라 목록을 돌아가며 고릅니다."""
     try:
-        cid = channel_id()
-        root = ET.fromstring(get(f"https://www.youtube.com/feeds/videos.xml?channel_id={cid}"))
-        best = None
-        for e in root.findall("a:entry", NS):
-            link = e.find("a:link", NS)
-            href = link.get("href", "") if link is not None else ""
-            if "/shorts/" in href:
-                item = {"id": e.findtext("yt:videoId", "", NS), "title": (e.findtext("a:title", "", NS) or "").strip(),
-                        "published": e.findtext("a:published", "", NS)}
-                if not best or item["published"] > best["published"]:
-                    best = item
-        if best:
-            return best
-    except BaseException as ex:
-        print("숏츠 RSS 실패:", ex)
-    try:
-        page = get(f"https://www.youtube.com/@{HANDLE}/shorts")
-        m = re.search(r'/shorts/([\w-]{11})', page) or re.search(r'"videoId":"([\w-]{11})"', page)
-        if m:
-            near = page[m.start():m.start() + 6000]
-            t = (re.search(r'"primaryText":\{"content":"((?:[^"\\]|\\.)*)"', near)
-                 or re.search(r'"accessibilityText":"((?:[^"\\]|\\.)*)"', near))
-            title = json.loads('"' + t.group(1) + '"') if t else ""
-            return {"id": m.group(1), "title": title, "published": ""}
+        items = short_list()
     except Exception as ex:
         print("숏츠 화면을 읽지 못함:", ex)
-    return None
+        return None
+    print("숏츠 목록:", len(items), [x["id"] for x in items[:5]])
+    if not items:
+        return None
+    try:
+        state = json.load(open(STATE, encoding="utf-8"))
+    except Exception:
+        state = {}
+    today = dt.datetime.now(KST).date()
+    if items[0]["id"] != state.get("newest"):
+        pick = items[0]
+        state["newest"] = items[0]["id"]
+    elif state.get("date") == today.isoformat() and state.get("shown"):
+        pick = next((x for x in items if x["id"] == state["shown"]), items[0])
+    else:
+        n = (today - dt.date(2026, 1, 1)).days % len(items)
+        pick = items[n]
+        if pick["id"] == state.get("shown") and len(items) > 1:
+            pick = items[(n + 1) % len(items)]
+    state.update({"date": today.isoformat(), "shown": pick["id"]})
+    if not os.environ.get("PREVIEW"):
+        json.dump(state, open(STATE, "w", encoding="utf-8"), ensure_ascii=False)
+    return pick
 
 
 def render_short(v):
     e = html.escape
-    title = re.sub(r"\s*#\S+", "", v["title"]).strip() or "이번 주 설교 숏츠"
+    title = re.sub(r"\s*#\S+", "", v["title"]).strip() or "1분 메시지"
     url = f"https://www.youtube.com/shorts/{v['id']}"
     return (
         f'          <a class="thumb thumb-short" href="{url}" target="_blank" rel="noopener" aria-label="설교 숏츠 보기 (유튜브)">\n'
         f'            <img class="thumb-img" src="images/shorts-thumb.jpg?v={v["id"]}" alt="" loading="lazy" onload="this.parentNode.classList.add(\'has-img\')" onerror="this.remove()">\n'
-        '            <span class="thumb-date">설교 숏츠</span>\n'
+        '            <span class="thumb-date">1분 메시지</span>\n'
         f'            <strong>{e(title)}</strong>\n'
         '            <span class="play" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span>\n'
         '          </a>\n'
-        f'          <h2 class="latest-title">[숏츠] {e(title)}</h2>\n'
+        f'          <h2 class="latest-title">[1분 메시지] {e(title)}</h2>\n'
     )
 
 
