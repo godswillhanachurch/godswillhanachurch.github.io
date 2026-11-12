@@ -1713,3 +1713,23 @@ i.k-season{background:var(--k-season)!important}.cal-bar.k-season{background:var
 .msn .nbm-vp-e{font-size:clamp(1.9rem,3vw,2.5rem)!important;margin:.15rem 0 .9rem!important;line-height:1.2!important}
 .nbm-vflower .v6 b{font-size:4cqw!important}
 
+
+/* ===== 글자 크기·글꼴 통일 (교회·브릿지 공통, 2026-11-12) =====
+   제목(h1·h2): Gowun Batang / 블록 제목(h3): Pretendard 굵게 19→22px / 항목 제목(h4급): 17px 굵게
+   본문: 17px / 보조 글(머리말·날짜·버튼·영문 꼬리표): 15px / 작은 꼬리표(배지·태그): 13px
+   ※ 홈 아프리카 배너(.s-af)는 따로 맞춘 크기라 제외 */
+:root{--t-body:1.0625rem;--t-sm:.9375rem;--t-xs:.8125rem;--t-h4:1.0625rem}
+/* 블록 제목 */
+:root body main h3:not(.wt-label):not(.bul-title):not(.af-sec-h){font-family:var(--f-body)!important;font-weight:700!important;letter-spacing:-.01em!important}
+:root body main .msn-goal h3,:root body main .msn-4e h3,:root body main .nbm-hope h3,:root body main .msn-card h3,:root body main .msn-mini h3,:root body main .msn-work h3,:root body main .box h3,:root body main .feature h3{font-size:var(--t-h3)!important;line-height:var(--lh-head)!important}
+:root body main .item h3,:root body main .spirit-item h3,:root body main .msn-sub,:root body main .wt-label,:root body main .nbm-vlist h3,:root body main .msn-h4{font-size:var(--t-h4)!important;line-height:var(--lh-head)!important;font-weight:700!important}
+/* 본문 17px */
+:root body main .msn-goal>p:not(.msn-en),:root body main .msn-card>p:not(.msn-acct-name):not(.eyebrow),:root body main .msn-dl dd,:root body main .nbm-points li,:root body main .msn-4e li>p:not(.msn-4e-en),:root body main .nbm-hope li p:last-child,:root body main .nbm-vp-ko,:root body main .nbm-ice li,:root body main .m-say,:root body main .msn-lead,:root body main .msn-note,:root body main .item-note,:root body main .box>p:not(.eyebrow):not(.small),:root body main .msn-mini>p:not(.msn-en),:root body main .msn-work-body>p:not(.msn-en),:root body main .feature-body>p:not(.cats){font-size:var(--t-body)!important;line-height:var(--lh-body)!important}
+/* 보조 글 15px */
+:root body main .eyebrow,:root body main .msn-en,:root body main .msn-4e-en,:root body main .nbm-vp-en,:root body main .nbm-vp-k,:root body main .msn .nbm-hope-ref,:root body main .nbm-hope-ref,:root body main .msn-acct-name,:root body main .box .small,:root body main .nbm-hl-legend span,:root body main .nbm-history li li span,:root body main .nbm-history time,:root body main .nbm-ice-label,:root body main .cats,:root body main time:not(.af-cards time),:root body main .btn,:root body main .btn-dark,:root body main .reg-btn,:root body main .more-pill,:root body main .sp-more,:root body main .m-tag,:root body main .copy,:root body main .msn-tabs a,:root body main .msn-facts li,:root body main .latest-meta,:root body main .thumb-meta,:root body main .family-cap,:root body main .faq-cat,:root body main .reg-d,:root body main .care-t span,:root body main .reg-cta-t span,:root body main .explore-card span:last-of-type,:root body main .notice td,:root body main .notice th{font-size:var(--t-sm)!important}
+:root body main .msn-en,:root body main .msn-4e-en{font-family:var(--f-body)!important;font-weight:600!important;letter-spacing:.01em!important;color:#8a7140!important}
+.slide:not(.s-af) .slide-eyebrow,.slide:not(.s-af) .slide-ref{font-size:var(--t-sm)!important}
+/* 작은 꼬리표 13px */
+:root body main .msn-badge,:root body main .role,:root body main .person .badge .role,:root body main .album-count,:root body main .af-fig-btn,:root body main .cal-row span,:root body main .slide-goals b,:root body main .nbm-history small{font-size:var(--t-xs)!important}
+:root body main figcaption:not(#lbCap),:root body main .nbm-gallery b{font-size:var(--t-sm)!important}
+:root body main .person .badge b{font-size:var(--t-h4)!important}
