@@ -264,7 +264,7 @@ def update_shorts():
     if not m:
         print("index.html에 shorts 표시가 없어 숏츠는 건너뜁니다.")
         return
-    if f"/shorts/{v['id']}\"" in m.group(2):
+    if f"/shorts/{v['id']}\"" in m.group(2) and os.path.exists(SHORTS_THUMB):
         print("이미 최신 숏츠입니다.")
         return
     for size in ("oar2", "oardefault", "hq720", "hqdefault"):
