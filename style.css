@@ -1876,3 +1876,7 @@ i.k-season{background:var(--k-season)!important}.cal-bar.k-season{background:var
 .nbm-hl-legend span::after,.nbm-history li li::after{left:3.5px!important;width:9px!important;height:9px!important;margin-top:-4.5px!important}
 .nbm-history li li::after{top:10px!important}
 .nbm-history li li{grid-template-columns:16px minmax(0,1fr)!important}
+/* 연합·다음세대 사역 카드: 한글 제목 위, 영어 아래 (2026-11-12) */
+.msn-mini h3+.msn-en{margin:.15rem 0 0!important}
+.msn-mini h3 .msn-badge{vertical-align:middle;margin-left:.4rem}
+.msn-mini h3+.msn-en{margin:.2rem 0 1rem!important}
