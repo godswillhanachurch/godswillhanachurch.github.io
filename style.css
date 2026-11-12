@@ -1860,3 +1860,9 @@ i.k-season{background:var(--k-season)!important}.cal-bar.k-season{background:var
 .nbm-vflower .nbm-vcore{left:33%!important;top:33%!important;width:34%!important}
 .nbm-vflower .nbm-vcore b{font-size:6.6cqw!important}.nbm-vflower .nbm-vcore small{font-size:2.4cqw!important}
 .nbm-vflower .v6 b{font-size:3.8cqw!important}
+/* 가치 설명 박스 작게 (2026-11-12) */
+.nbm-vpanel{max-width:480px;padding:22px 26px!important;border-radius:12px}
+.msn .nbm-vp-e,.nbm-vp-e{font-size:1.7rem!important;margin:.1rem 0 .6rem!important}
+.nbm-vp-ko{font-size:var(--t-sm)!important;margin:0 0 .3rem!important}
+.nbm-vp-en{font-size:13px!important;margin:0!important}
+.msn .nbm-vp-k{font-size:13px!important}
