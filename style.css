@@ -1882,3 +1882,14 @@ i.k-season{background:var(--k-season)!important}.cal-bar.k-season{background:var
 .msn-mini h3+.msn-en{margin:.2rem 0 1rem!important}
 /* 영어 페이지 선교 소개 (2026-11-12) */
 .en-sub{color:#8a7140;font-weight:700;font-size:var(--t-sm);margin:-.6rem 0 .7rem!important;letter-spacing:.02em}
+/* 북한선교 첫 화면·비전 여백 줄이기 (2026-11-12) */
+@media (min-width:761px){
+  .msn #nbm.msn-hero{padding-block:24px 44px!important}
+  #nbm .msn-hero-in{grid-template-columns:minmax(0,560px) 190px;justify-content:start;gap:clamp(40px,7vw,96px)}
+  #nbm .msn-emblem{width:190px;justify-self:start}
+  #nbm .msn-tabs{margin-bottom:22px!important}
+  #goals.alt{padding-top:clamp(36px,4.5vw,56px)!important}
+  #goals .msn-map{width:104px!important;height:auto}
+  #goals .msn-vision{margin-bottom:clamp(28px,4vw,40px)!important;padding-bottom:clamp(24px,3vw,36px)!important;align-items:center}
+  #goals .msn-map{width:84px!important}
+}
