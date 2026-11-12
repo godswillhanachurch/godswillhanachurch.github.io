@@ -1815,3 +1815,21 @@ i.k-season{background:var(--k-season)!important}.cal-bar.k-season{background:var
 /* 1분 메시지 제목 한 줄: 칸 너비에 맞춰 글자 크기 자동 조절(site.js) */
 .thumb.thumb-short{container-type:inline-size}
 #notice .thumb-short strong{white-space:nowrap!important;overflow:hidden;text-overflow:clip;font-size:min(8.5cqw,1.75rem)!important}
+/* 휴대폰만: 지난 설교 더보기를 작은 버튼으로 제목 옆에, 1분 메시지 화면을 주일설교와 같은 크기로 (2026-11-12) */
+@media (max-width:760px){
+  #notice .latest:not(.latest-short){display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:12px;align-items:start}
+  #notice .latest:not(.latest-short)>.thumb{grid-column:1/-1}
+  #notice .latest:not(.latest-short)>.latest-title{grid-column:1;margin:0}
+  #notice .latest:not(.latest-short)>.latest-btns{grid-column:2;margin:4px 0 0}
+  #notice .latest .latest-btns .more-pill{width:auto;height:32px;padding:0 12px!important;font-size:var(--t-xs)!important;white-space:nowrap}
+  #notice .latest.latest-short{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-rows:auto auto;column-gap:12px;row-gap:0;align-items:start}
+  #notice .latest-short>.thumb-short{grid-column:1/-1;grid-row:1;aspect-ratio:16/9!important;width:100%}
+  #notice .latest-short>.latest-title{grid-column:1;grid-row:2;margin:.9rem 0 0!important}
+  #notice .latest-short>.latest-btns{grid-column:2;grid-row:2;margin:calc(.9rem + 4px) 0 0!important}
+  #notice .thumb.thumb-short::before{left:7%;top:15%;bottom:15%}
+  #notice .thumb.thumb-short .thumb-date,#notice .thumb.thumb-short strong,#notice .thumb.thumb-short .thumb-meta{left:calc(7% + 18px);right:auto;max-width:56%}
+  #notice .thumb.thumb-short .thumb-date{top:15%}
+  #notice .thumb.thumb-short strong{top:32%;font-size:1.25rem!important;white-space:normal!important;overflow:visible}
+  #notice .thumb.thumb-short .thumb-meta{bottom:15%;font-size:12px!important}
+  #notice .thumb.thumb-short .play{top:50%!important;left:80%!important;transform:translate(-50%,-50%)!important}
+}
