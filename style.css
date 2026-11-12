@@ -1812,3 +1812,6 @@ i.k-season{background:var(--k-season)!important}.cal-bar.k-season{background:var
   .latest-short .latest-btns .more-pill{width:auto;padding:0 18px!important}
 }
 @media (max-width:760px){#notice .thumb.thumb-short .thumb-meta{font-size:11px!important;letter-spacing:-.01em}}
+/* 1분 메시지 제목 한 줄: 칸 너비에 맞춰 글자 크기 자동 조절(site.js) */
+.thumb.thumb-short{container-type:inline-size}
+#notice .thumb-short strong{white-space:nowrap!important;overflow:hidden;text-overflow:clip;font-size:min(8.5cqw,1.75rem)!important}

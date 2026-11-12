@@ -150,3 +150,15 @@ if ('serviceWorker' in navigator) {
     show(start); play();
   });
 })();
+
+/* 홈 1분 메시지 제목을 한 줄로: 칸에 넘치면 글자를 줄입니다 */
+(function(){
+  var t=document.querySelector('.thumb-short strong'); if(!t) return;
+  function fit(){
+    t.style.removeProperty('font-size');
+    var fs=parseFloat(getComputedStyle(t).fontSize), n=0;
+    while(t.scrollWidth>t.clientWidth+1 && fs>11 && n++<40){fs-=.5; t.style.setProperty('font-size',fs+'px','important');}
+  }
+  fit(); addEventListener('resize',fit);
+  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(fit);
+})();
