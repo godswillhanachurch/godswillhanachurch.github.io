@@ -30,7 +30,7 @@ jobs:
         run: python3 .github/scripts/update_sermon.py
       - name: 바뀐 내용이 있으면 게시
         run: |
-          if git diff --quiet; then echo "변경 없음"; exit 0; fi
+          if [ -z "$(git status --porcelain index.html images)" ]; then echo "변경 없음"; exit 0; fi
           git config user.name "godswillhanachurch"
           git config user.email "godswillhanachurch@users.noreply.github.com"
           git add index.html images/
