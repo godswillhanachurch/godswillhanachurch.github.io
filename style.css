@@ -1739,3 +1739,7 @@ i.k-season{background:var(--k-season)!important}.cal-bar.k-season{background:var
 .bro-map img{display:block;width:100%;height:auto}
 .bro-map a{position:absolute;border-radius:8px;transition:background .2s,box-shadow .2s}
 .bro-map a:hover,.bro-map a:focus-visible{background:transparent;box-shadow:0 0 0 2px #fff,0 4px 14px rgba(34,48,58,.12);outline:none}
+
+/* 해외선교: 아웃리치 신청서 버튼 (링크 받기 전엔 준비 중) */
+.outreach-apply[aria-disabled="true"]{opacity:.55;cursor:default;pointer-events:none}
+.outreach-apply small{font-size:.85em;font-weight:500}
