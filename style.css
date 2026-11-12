@@ -1870,3 +1870,9 @@ i.k-season{background:var(--k-season)!important}.cal-bar.k-season{background:var
 .k-base{--c:#4a72b0}.k-field{--c:#3e8e57}.k-host{--c:#8a5bb8}.k-gather{--c:#d27a26}
 .nbm-hl-legend span::before,.nbm-history li li::before{background:var(--c)!important}
 .nbm-hl-legend span::after,.nbm-history li li::after{background:#fff!important}
+/* 걸어온 길 아이콘 70% 크기 (2026-11-12) */
+.nbm-hl-legend span::before,.nbm-history li li::before{width:16px!important;height:16px!important;margin-top:2px}
+.nbm-hl-legend span::before{margin-top:0}
+.nbm-hl-legend span::after,.nbm-history li li::after{left:3.5px!important;width:9px!important;height:9px!important;margin-top:-4.5px!important}
+.nbm-history li li::after{top:10px!important}
+.nbm-history li li{grid-template-columns:16px minmax(0,1fr)!important}
