@@ -1915,3 +1915,46 @@ i.k-season{background:var(--k-season)!important}.cal-bar.k-season{background:var
 .sbtn.sbtn-fill{background:#f0c24b;border-color:#f0c24b;color:#1f2427!important}
 .sbtn.sbtn-fill:hover{background:#f5d06a}
 @media (max-width:640px){.sbtn{height:38px;padding:0 16px;font-size:13px}}
+
+/* ===== 홈 '이번 주 교회'(home-week.js) + '처음 오셨나요' (2026-11-13) ===== */
+.home-week{padding-block:clamp(40px,5vw,64px)!important;background:var(--paper-2,#efeee9)}
+.hw-head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;margin-bottom:clamp(18px,2.4vw,28px)}
+.hw-head h2{margin:0}
+.hw-list{list-style:none;margin:0;padding:0;display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);gap:14px}
+.hw-day{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 18px 14px;box-shadow:0 1px 2px rgba(20,30,36,.04)}
+.hw-day.is-today{border-color:var(--pine);box-shadow:0 6px 18px rgba(52,70,82,.12)}
+.hw-date{display:flex;align-items:baseline;gap:.5rem;margin:0 0 .7rem;padding-bottom:.7rem;border-bottom:1px solid var(--line)}
+.hw-date b{font-family:var(--f-serif);font-size:1.5rem;font-weight:700;color:var(--ink)}
+.hw-date span{font-size:var(--t-sm);color:var(--muted);font-variant-numeric:tabular-nums}
+.hw-day.is-today .hw-date span{color:#8a7140;font-weight:700}
+.hw-day ul{list-style:none;margin:0;padding:0;display:grid;gap:.5rem}
+.hw-day ul li{display:grid;grid-template-columns:3.2em minmax(0,1fr);gap:.5rem;align-items:baseline;font-size:var(--t-sm)}
+.hw-time{font-variant-numeric:tabular-nums;font-weight:700;color:var(--ink)}
+.hw-title{color:var(--ink);line-height:1.45}
+.hw-none{grid-column:1/-1;color:var(--muted);font-size:var(--t-sm)}
+.home-first{padding-block:clamp(36px,5vw,60px) 0!important}
+.hf-box{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.5fr);gap:clamp(20px,4vw,48px);align-items:center;background:#dde9e4;border-radius:18px;padding:clamp(22px,3.4vw,40px)}
+.hf-text h2{margin:.1rem 0 .5rem}
+.hf-text p:last-child{margin:0;color:var(--ink);font-size:1rem;line-height:1.65}
+.hf-steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.hf-steps a{display:grid;gap:.25rem;height:100%;box-sizing:border-box;background:#fff;border-radius:14px;padding:16px 16px 14px;text-decoration:none;color:var(--ink);border:1px solid transparent;transition:border-color .2s,transform .2s}
+.hf-steps a:hover{border-color:var(--pine);transform:translateY(-2px)}
+.hf-steps i{font-style:normal;display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--pine);color:#fff;font-size:13px;font-weight:700;margin-bottom:.35rem}
+.hf-steps b{font-size:1rem;line-height:1.35}
+.hf-steps span{font-size:var(--t-sm);color:var(--muted)}
+.hf-steps span::after{content:" →"}
+@media (max-width:900px){.hf-box{grid-template-columns:1fr}}
+@media (max-width:760px){
+  .hw-head .more-pill{height:32px;padding:0 12px!important;font-size:13px!important;width:auto}
+  .hw-list{grid-auto-flow:row;grid-template-columns:1fr;gap:8px}
+  .hw-day{display:grid;grid-template-columns:4.6em minmax(0,1fr);gap:12px;padding:12px 14px;align-items:start}
+  .hw-date{flex-direction:column;gap:0;margin:0;padding:0;border:0}
+  .hw-date b{font-size:1.25rem}.hw-date span{font-size:13px}
+  .hf-steps{grid-template-columns:1fr;gap:8px}
+  .hf-steps a{grid-template-columns:26px minmax(0,1fr);column-gap:12px;align-items:center;padding:12px 14px}
+  .hf-steps i{grid-row:1/3;margin:0}
+}
+/* 노트북: 1분 메시지 제목도 한 줄로(주일예배 제목과 줄 맞춤) */
+@media (min-width:761px){#notice .latest-short>.latest-title{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}}
+/* 휴대폰: 제목이 가장 작은 글자로도 한 줄에 안 들어가면 두 줄로 */
+@media (max-width:760px){#notice .latest .latest-title.is-wrap{white-space:normal!important;overflow:visible;line-height:1.35}}

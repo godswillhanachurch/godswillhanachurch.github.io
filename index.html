@@ -28,7 +28,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&display=swap">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css">
-<link rel="stylesheet" href="style.css?v=20261113b">
+<link rel="stylesheet" href="style.css?v=20261113c">
 <script data-goatcounter="https://godswillhanachurch.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </head>
 <body>
@@ -196,6 +196,16 @@
         </div>
     </div>
   </section>
+<!-- 이번 주 교회 — events.json에서 자동으로 -->
+  <section class="home-week" id="week">
+    <div class="wrap">
+      <div class="hw-head">
+        <div><p class="eyebrow">함께하는 한 주</p><h2>이번 주 교회</h2></div>
+        <a class="more more-pill" href="news.html#calendar">전체 일정 보기</a>
+      </div>
+      <ul class="hw-list" id="homeWeek"><li class="hw-none">일정을 불러오는 중…</li></ul>
+    </div>
+  </section>
 <!-- 3. 교회소개 — 비전 -->
   <section class="vision has-photo" id="vision">
     <figure class="ph ph-bg has-img" aria-hidden="true"><img src="images/vision-bg.jpg" alt="" loading="lazy" decoding="async"></figure>
@@ -206,6 +216,23 @@
     </div>
   </section>
 
+<!-- 처음 오셨나요 -->
+  <section class="home-first" id="first">
+    <div class="wrap">
+      <div class="hf-box">
+        <div class="hf-text">
+          <p class="eyebrow">환영합니다</p>
+          <h2>처음 오셨나요?</h2>
+          <p>편안한 마음으로 오세요. 예배 시간과 오시는 길, 새가족 등록을 차례로 안내해 드립니다.</p>
+        </div>
+        <ol class="hf-steps">
+          <li><a href="#worship"><i>1</i><b>주일예배 11:45</b><span>예배 시간 보기</span></a></li>
+          <li><a href="#offering"><i>2</i><b>신항동로 226 · 상가 2층</b><span>오시는 길 · 주차</span></a></li>
+          <li><a href="welcome.html"><i>3</i><b>새가족 등록</b><span>등록 안내와 자주 묻는 질문</span></a></li>
+        </ol>
+      </div>
+    </div>
+  </section>
   <!-- 홈: 둘러보기 -->
   <section id="explore">
     <div class="wrap">
@@ -273,6 +300,7 @@
   <a href="news.html#bulletin-list">주보·말씀</a>
 </nav>
 
-<script src="site.js?v=20261112d"></script>
+<script src="site.js?v=20261113"></script>
+<script src="home-week.js?v=20261113" defer></script>
 </body>
 </html>
