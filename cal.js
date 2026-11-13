@@ -18,7 +18,7 @@
   function label(e){ return e.time ? esc(e.time) : (e.kind==='season' ? '절기' : (e.last ? '마감' : (e.range ? '기간' : (e.weekly ? '미정' : '종일')))); }
   // 오늘 진행 중인 신청·기간 일정 (달력 위 안내 띠)
   function ongoing(){
-    return (data.events||[]).filter(function(e){ return e.end && (e.kind||'special') === 'special' && parse(e.date) <= today && parse(e.end) >= today; })
+    return (data.events||[]).filter(function(e){ return e.end && (e.pin || (e.kind||'special') === 'special') && parse(e.date) <= today && parse(e.end) >= today; })
       .sort(function(x,y){ return parse(x.end) - parse(y.end); });
   }
   function cls(e){ return (e.special?'is-special':'') + (e.kind==='season'?' is-season':''); }
@@ -26,6 +26,7 @@
   function on(d){
     var k = key(d), list = [], replaced = [], skip = (data.skip||[]).indexOf(k) > -1;
     (data.events||[]).forEach(function(e){
+      if (e.pin) return;                                     // pin: 달력 위 띠로만 보여 줌
       var a = parse(e.date), b = e.end ? parse(e.end) : a;
       if (d >= a && d <= b) {
         if (e.replace) replaced.push(e.replace);
@@ -50,7 +51,7 @@
     return (data.events||[]).map(function(e){
       var a = parse(e.date), b = e.end ? parse(e.end) : a;
       return { e: e, a: a, b: b, show: a < from ? from : a };
-    }).filter(function(x){ return x.b >= from && !(x.e.end && (x.e.kind||'special') === 'special' && x.a <= today); })
+    }).filter(function(x){ return x.b >= from && !x.e.pin && !(x.e.end && (x.e.kind||'special') === 'special' && x.a <= today); })
       .sort(function(x,y){ return x.show - y.show || ((x.e.time||'') < (y.e.time||'') ? -1 : 1); })
       .slice(0, n);
   }
