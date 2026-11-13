@@ -7,16 +7,16 @@ document.querySelectorAll('a[href$="#life"]').forEach(function(a){a.addEventList
   function show(n){cur=n;imgs.forEach(function(im,k){im.classList.toggle('on',k===n)});tabs.forEach(function(t,k){t.classList.toggle('on',k===n);t.setAttribute('aria-selected',k===n)})}
   // 최근 4주 주보만 보관합니다. 새 주보는 맨 위에 추가하고 가장 오래된 것은 지웁니다.
   var B={
+    '448':['2026년 11월 15일','제9권 46호'],
     '447':['2026년 11월 8일','제9권 45호'],
     '446':['2026년 11월 1일','제9권 44호'],
-    '445':['2026년 10월 25일','제9권 43호'],
-    '444':['2026년 10월 18일','제9권 42호']
+    '445':['2026년 10월 25일','제9권 43호']
   };
   var title=document.getElementById('bvTitle');
   function load(n){var b=B[n]; if(!b) return;
     imgs[0].src='bulletin-'+n+'-1.jpg'; imgs[1].src='bulletin-'+n+'-2.jpg';
     title.innerHTML=b[0]+' 주보 <span>'+b[1]+' (통권 '+n+'호)</span>';}
-  function open(e){e.preventDefault();last=document.activeElement;load(this.getAttribute('data-b')||'447');show(0);v.hidden=false;document.body.style.overflow='hidden';document.getElementById('bvClose').focus()}
+  function open(e){e.preventDefault();last=document.activeElement;load(this.getAttribute('data-b')||'448');show(0);v.hidden=false;document.body.style.overflow='hidden';document.getElementById('bvClose').focus()}
   function close(){v.hidden=true;document.body.style.overflow='';if(last)last.focus()}
   document.querySelectorAll('.open-bulletin').forEach(function(a){a.addEventListener('click',open)});
   tabs.forEach(function(t,k){t.onclick=function(){show(k)}});
