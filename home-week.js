@@ -10,7 +10,7 @@
     var t=new Date(); t.setHours(0,0,0,0); var rows=[];
     for(var i=0;i<7;i++){
       var d=new Date(t); d.setDate(t.getDate()+i); var k=key(d), list=[], rep=[], skip=(data.skip||[]).indexOf(k)>-1;
-      (data.events||[]).forEach(function(e){var a=parse(e.date),b=e.end?parse(e.end):a; if(d>=a&&d<=b){ if(e.replace)rep.push(e.replace); list.push({time:e.time||'',title:e.title,note:e.note||'',kind:e.kind||'special'}); }});
+      (data.events||[]).forEach(function(e){if(e.pin)return;var a=parse(e.date),b=e.end?parse(e.end):a; if(d>=a&&d<=b){ if(e.replace)rep.push(e.replace); list.push({time:e.time||'',title:e.title,note:e.note||'',kind:e.kind||'special'}); }});
       if(!skip){
         (data.weekly||[]).forEach(function(w){ if(d.getDay()===w.day&&rep.indexOf(w.title)<0) list.push({time:w.time||'',title:w.title,note:w.note||'',kind:w.kind||''}); });
         if(d.getDay()===0) SUN.forEach(function(x){ if(rep.indexOf(x.title)<0) list.push(x); });
