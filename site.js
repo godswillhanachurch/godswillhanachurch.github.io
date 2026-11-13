@@ -171,7 +171,9 @@ if ('serviceWorker' in navigator) {
       t.style.removeProperty('font-size');
       if(innerWidth>760) return;
       var fs=parseFloat(getComputedStyle(t).fontSize), n=0;
+      t.classList.remove('is-wrap');
       while(t.scrollWidth>t.clientWidth+1 && fs>12 && n++<40){fs-=.5; t.style.setProperty('font-size',fs+'px','important');}
+      if(t.scrollWidth>t.clientWidth+1){t.classList.add('is-wrap'); t.style.setProperty('font-size','14px','important');}
     });
   }
   fit(); addEventListener('resize',fit);
