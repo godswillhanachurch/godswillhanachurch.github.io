@@ -27,7 +27,7 @@
 | en.html | English | 영어 안내 (예배 시간·위치·연락처·소개, 해외선교 FaithMission·북한선교 NBM 짧은 소개 2026-11-12) |
 
 - 공통 스크립트 site.js: 메뉴, 스크롤 시 헤더 줄이기, 슬라이드, 모바일 키워드 버튼, 주보 목록(`var B`), 바닥글 누적 방문 수.
-- cal.js + events.json: 홈의 교회 일정 달력.
+- cal.js + events.json: 교회 일정 달력(news.html). 브릿지 동역하기 페이지도 이 cal.js를 불러 씀 — `#churchCal`에 data-src(일정 파일 주소)·data-only="ministry"(kind ministry이거나 이름에 반찬·북향민·탈북민·아웃리치·브릿지·호스팅·게더링·NK·드림빌더가 든 일정만)를 주면 그렇게 동작(2026-11-14). cal.js를 고치면 브릿지 달력도 확인.
 - sw.js(PWA, 네트워크 우선), manifest.webmanifest, icons/: 홈 화면 앱.
 
 ## 디자인 원칙
