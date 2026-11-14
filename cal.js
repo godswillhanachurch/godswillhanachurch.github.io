@@ -121,7 +121,12 @@
     else if (t.dataset.d) { sel = parse(t.dataset.d); render(); }
   });
 
-  fetch('events.json', { cache: 'no-cache' }).then(function(r){ return r.json(); })
-    .then(function(d){ data = d; render(); })
+  // 브릿지 사이트처럼 다른 곳에서 쓸 때: data-src(일정 파일 주소), data-only="ministry"(브릿지 사역 관련만)
+  var ONLY = box.getAttribute('data-only'), RX = /북향민|탈북민|반찬|아웃리치|브릿지|호스팅|게더링|NK|드림빌더/;
+  function keep(x){ return x.kind === 'ministry' || RX.test(x.title || ''); }
+  fetch(box.getAttribute('data-src') || 'events.json', { cache: 'no-cache' }).then(function(r){ return r.json(); })
+    .then(function(d){
+      if (ONLY === 'ministry') ['events','weekly','monthly'].forEach(function(k){ d[k] = (d[k] || []).filter(keep); });
+      data = d; render(); })
     .catch(function(){ box.innerHTML = '<p class="cal-none">일정을 불러오지 못했습니다. 잠시 후 다시 열어 주세요.</p>'; });
 })();
