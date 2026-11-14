@@ -28,7 +28,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&display=swap">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css">
-<link rel="stylesheet" href="style.css?v=20261114">
+<link rel="stylesheet" href="style.css?v=20261114b">
 <script data-goatcounter="https://godswillhanachurch.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </head>
 <body>
@@ -53,7 +53,7 @@
  </div>
 </header>
 
-<main id="top" class="msn">
+<main id="top" class="msn pg-nk">
 <!-- 북한선교 — 뉴포트 브릿지 미니스트리 -->
   <section class="msn-hero" id="nbm">
     <div class="wrap">
@@ -164,7 +164,7 @@
         <h2>북향민 돌봄 사역 4E 프로세스</h2>
         <p>돌봄이 동역이 되기까지, 한 가정 한 가정과 천천히 걸어갑니다.</p>
       </div>
-      <ol class="msn-4e"><li><span class="msn-4e-no">1</span><p class="msn-4e-en">Enter</p><h3>진입 및 관찰</h3><p>매주 금요일 반찬을 만들어 각 가정(현재 21가정)을 방문하여 안부를 묻고 친밀한 관계를 위한 기초를 다집니다.</p></li><li><span class="msn-4e-no">2</span><p class="msn-4e-en">Evaluate</p><h3>필요 및 상태 평가</h3><p>북향민들의 실제적인 필요를 돌아보고 살핍니다. 다만, 직접적인 도움을 주는 것을 우선으로 삼지 않고 하나님께 기도할 수 있도록 격려하며 중보합니다.</p></li><li><span class="msn-4e-no">3</span><p class="msn-4e-en">Engage</p><h3>관계 맺기 및 개입</h3><p>더디지만 지속적인 만남을 통해 단순히 도움을 주고받는 관계를 뛰어넘어 신뢰와 친밀한 관계로 나아갑니다.</p></li><li><span class="msn-4e-no">4</span><p class="msn-4e-en">Expand</p><h3>비전 확장 및 파송</h3><p>우리가 섬긴 북향민들이 또 다른 북향민을 연결해 주는 브릿지가 되어, 그들을 함께 사역하는 동역자로 세워 갑니다.</p></li></ol>
+      <ol class="msn-4e"><li><span class="msn-4e-no">1</span><p class="msn-4e-en">Enter</p><h3>만남</h3><p>매주 금요일 반찬을 만들어 각 가정(현재 21가정)을 방문하여 안부를 묻고 친밀한 관계를 위한 기초를 다집니다.</p></li><li><span class="msn-4e-no">2</span><p class="msn-4e-en">Evaluate</p><h3>필요를 살핌</h3><p>북향민들의 실제적인 필요를 돌아보고 살핍니다. 다만, 직접적인 도움을 주는 것을 우선으로 삼지 않고 하나님께 기도할 수 있도록 격려하며 중보합니다.</p></li><li><span class="msn-4e-no">3</span><p class="msn-4e-en">Engage</p><h3>관계 맺기</h3><p>더디지만 지속적인 만남을 통해 단순히 도움을 주고받는 관계를 뛰어넘어 신뢰와 친밀한 관계로 나아갑니다.</p></li><li><span class="msn-4e-no">4</span><p class="msn-4e-en">Expand</p><h3>동역하기</h3><p>우리가 섬긴 북향민들이 또 다른 북향민을 연결해 주는 브릿지가 되어, 그들을 함께 사역하는 동역자로 세워 갑니다.</p></li></ol>
     </div>
   </section>
   <section class="msn-join" id="join">
@@ -230,6 +230,17 @@
   });
 })();
 
+// 4E 프로세스: 휴대폰에서는 설명을 접어 두고 '더보기'로 펼칩니다 (2026-11-14)
+(function(){
+  document.querySelectorAll('.msn-4e>li').forEach(function(li,i){
+    var d=li.querySelector('p:last-child'); if(!d) return;
+    d.id='e4d'+(i+1);
+    var b=document.createElement('button'); b.type='button'; b.className='msn-4e-more'; b.textContent='더보기';
+    b.setAttribute('aria-expanded','false'); b.setAttribute('aria-controls',d.id);
+    b.addEventListener('click',function(){ var on=!li.classList.contains('open'); li.classList.toggle('open',on); b.setAttribute('aria-expanded',on); b.textContent=on?'접기':'더보기'; });
+    li.insertBefore(b,d);
+  });
+})();
 // 우리의 가치: 영어 단어를 누르면 옆(휴대폰은 아래) 설명이 바뀝니다.
 (function(){
   var fl=document.querySelector('.nbm-vflower'), pn=document.querySelector('.nbm-vpanel'); if(!fl||!pn) return;
