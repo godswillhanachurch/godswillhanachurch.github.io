@@ -2007,3 +2007,16 @@ i.k-season{background:var(--k-season)!important}.cal-bar.k-season{background:var
   .album-mag .album-img{height:auto;aspect-ratio:4/3!important;border-radius:16px!important}
   .album-mag .album-meta b{font-size:1.6rem!important}
 }
+/* 행사 앨범 크기 줄임: 달력·일정과 비율 맞춤 (2026-11-17) */
+.album-mag{gap:clamp(12px,1.6vw,20px)!important}
+.album-mag .album-img{height:clamp(190px,17vw,240px);border-radius:14px!important;box-shadow:0 6px 18px rgba(24,36,44,.08)}
+.album-mag .album-card{border-radius:14px}
+.album-mag .album-meta{left:18px;right:18px;bottom:14px;gap:.15rem}
+.album-mag .album-meta b,.album-mag .album-card:hover .album-meta b{font-size:clamp(1.2rem,1.6vw,1.45rem)!important}
+.album-mag .album-meta small{font-size:12px}
+@media (max-width:760px){
+  .album-mag{grid-template-columns:1fr 1fr!important;gap:10px!important}
+  .album-mag .album-img{height:auto;aspect-ratio:1/1!important;border-radius:12px!important}
+  .album-mag .album-meta{left:12px;right:12px;bottom:10px}
+  .album-mag .album-meta b{font-size:1.15rem!important}
+}
