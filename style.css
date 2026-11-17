@@ -1984,3 +1984,26 @@ i.k-season{background:var(--k-season)!important}.cal-bar.k-season{background:var
   :root body main.pg-msn .msn-people .person.staff .badge b{font-size:14px!important;line-height:1.25!important;letter-spacing:-.03em;white-space:nowrap;margin:0!important;text-align:center}
   :root body main.pg-msn .msn-people .person.staff .badge .role{font-size:12px!important;line-height:1.25!important;letter-spacing:-.02em;margin:0!important;text-align:center}
 }
+
+/* ===== 행사 앨범 화보형: 넉넉한 간격, 지그재그 크기, 사진 자동 전환 (2026-11-17) ===== */
+.album-mag{grid-template-columns:repeat(5,minmax(0,1fr))!important;gap:clamp(18px,2.4vw,30px)!important;margin-top:clamp(8px,1.2vw,16px)}
+.album-mag>li{grid-column:span 2}
+.album-mag>li.album-big{grid-column:span 3}
+.album-mag .album-card{display:block!important;position:relative;border-radius:18px;transition:transform .45s ease,box-shadow .45s ease}
+.album-mag .album-img{aspect-ratio:auto!important;height:clamp(300px,31vw,420px);border-radius:18px!important;box-shadow:0 10px 30px rgba(24,36,44,.10)}
+.album-mag .album-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity 1.4s ease,transform 7s ease-out!important}
+.album-mag .album-img img:not(.on):not(:only-of-type){opacity:0}
+.album-mag .album-img img.on{opacity:1;transform:scale(1.05)}
+.album-mag .album-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,22,28,0) 42%,rgba(14,22,28,.36) 68%,rgba(14,22,28,.82) 100%);pointer-events:none;z-index:1}
+.album-mag .album-count{display:none}
+.album-mag .album-meta{position:absolute;left:clamp(18px,2vw,28px);right:clamp(18px,2vw,28px);bottom:clamp(18px,2vw,26px);z-index:2;display:flex;flex-direction:column;align-items:flex-start;gap:.3rem;pointer-events:none}
+.album-mag .album-meta b,.album-mag .album-card:hover .album-meta b{color:#fff!important;font-family:'Gowun Dodum',var(--f-body),sans-serif!important;font-size:clamp(1.5rem,2.2vw,2rem)!important;font-weight:400!important;letter-spacing:-.01em;line-height:1.25;text-shadow:0 1px 8px rgba(0,0,0,.3)}
+.album-mag .album-meta small{color:rgba(255,255,255,.9);font-size:13px;font-weight:600;letter-spacing:.02em}
+.album-mag .album-meta small::after{content:"  ·  사진 보기 →";opacity:0;transition:opacity .3s}
+@media (hover:hover){.album-mag .album-card:hover{transform:translateY(-4px)}.album-mag .album-card:hover .album-img{box-shadow:0 18px 40px rgba(24,36,44,.18)}.album-mag .album-card:hover .album-meta small::after{opacity:1}}
+@media (max-width:760px){
+  .album-mag{grid-template-columns:1fr!important;gap:18px!important}
+  .album-mag>li,.album-mag>li.album-big{grid-column:auto}
+  .album-mag .album-img{height:auto;aspect-ratio:4/3!important;border-radius:16px!important}
+  .album-mag .album-meta b{font-size:1.6rem!important}
+}

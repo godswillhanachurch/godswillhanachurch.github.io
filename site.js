@@ -179,3 +179,29 @@ if ('serviceWorker' in navigator) {
   fit(); addEventListener('resize',fit);
   if(document.fonts&&document.fonts.ready) document.fonts.ready.then(fit);
 })();
+
+/* 행사 앨범(화보형): 카드마다 사진이 천천히 하나씩 바뀝니다 (2026-11-17) */
+(function(){
+  var g=document.querySelector('.album-mag'); if(!g) return;
+  var still=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  [].forEach.call(g.querySelectorAll('.album-card'),function(c,ci){
+    var box=c.querySelector('.album-img'), first=box&&box.querySelector('img'), meta=c.querySelector('.album-meta'), n=c.querySelector('.album-count');
+    if(!box||!first) return;
+    if(meta){ if(n){var s=document.createElement('small'); s.textContent=n.textContent; meta.appendChild(s)} box.appendChild(meta); }
+    var list=[]; try{list=(JSON.parse(c.getAttribute('data-photos'))||[]).map(function(x){return x.src||x.poster}).filter(Boolean)}catch(e){}
+    var cover=first.getAttribute('src'); list=[cover].concat(list.filter(function(u){return u.split('?')[0]!==cover.split('?')[0]}));
+    if(list.length<2||still) return;
+    first.classList.add('on');
+    var back=first.cloneNode(false); back.removeAttribute('loading'); back.classList.remove('on'); box.insertBefore(back,first.nextSibling);
+    var cur=first, nxt=back, i=0, seen=false, timer=null;
+    function step(){
+      i=(i+1)%list.length; var pre=new Image();
+      pre.onload=function(){ nxt.src=list[i]; nxt.classList.add('on'); cur.classList.remove('on'); var t=cur; cur=nxt; nxt=t; };
+      pre.src=list[i];
+    }
+    function start(){ if(!timer) timer=setTimeout(function run(){ step(); timer=setTimeout(run,4200); },1800+ci*1050); }
+    function stop(){ clearTimeout(timer); timer=null; }
+    if('IntersectionObserver' in window) new IntersectionObserver(function(es){ es[0].isIntersecting?start():stop(); },{threshold:.25}).observe(c); else start();
+    document.addEventListener('visibilitychange',function(){ if(document.hidden) stop(); });
+  });
+})();
