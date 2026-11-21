@@ -1,12 +1,13 @@
 # 주보 PDF → 홈페이지용 JPG (bulletin-NNN-1.jpg, -2.jpg)
-# 홈페이지에 올릴 때 지울 이름(HIDE)을 글자째 지우고(앞뒤 쉼표 포함) 변환합니다. (사용자 요청 2026-11-21)
-# 사용: python3 bulletin_to_jpg.py 주보.pdf NNN 저장폴더
+# 홈페이지에 올릴 때 지울 이름을 글자째 지우고(앞뒤 쉼표 포함) 변환합니다. (사용자 요청 2026-11-21)
+# 지울 이름은 공개 저장소에 적지 않고, 예약 작업 안내에 적힌 것을 HIDE 환경 변수(쉼표로 구분)로 넘깁니다.
+# 사용: HIDE='이름1,이름2' python3 bulletin_to_jpg.py 주보.pdf NNN 저장폴더
 # 필요: pip install pymupdf pillow
-import sys, io
+import sys, io, os
 import pymupdf
 from PIL import Image
 
-HIDE = ['(이름)']   # 교회 청소 안내 등 어디에 있든 홈페이지에서는 뺌
+HIDE = [x.strip() for x in os.environ.get('HIDE', '').split(',') if x.strip()]
 
 
 def chars_of(page):
@@ -57,6 +58,8 @@ def redact(page):
 
 
 def main(pdf, num, outdir='.'):
+    if not HIDE:
+        print('경고: HIDE가 비어 있어 아무 이름도 지우지 않습니다')
     doc = pymupdf.open(pdf)
     total = 0
     for pno in range(min(2, len(doc))):
