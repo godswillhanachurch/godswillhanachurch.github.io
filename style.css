@@ -2020,3 +2020,14 @@ i.k-season{background:var(--k-season)!important}.cal-bar.k-season{background:var
   .album-mag .album-meta{left:12px;right:12px;bottom:10px}
   .album-mag .album-meta b{font-size:1.15rem!important}
 }
+/* 해외선교 첫 화면을 북한선교와 같은 크기로 맞춤: 위아래 여백·탭 간격 같게, 사진은 글 높이에 맞춤 (2026-11-21) */
+@media (min-width:761px){
+  .msn #faithmission.msn-hero{padding-block:24px 44px!important}
+  #faithmission>.wrap{width:100%}
+  #faithmission .msn-tabs{margin-bottom:22px!important}
+  #faithmission .msn-hero-in{grid-template-columns:minmax(0,520px) minmax(260px,1fr);gap:clamp(32px,5vw,64px);align-items:stretch}
+  #faithmission .msn-hero-text{align-self:center}
+  #faithmission .msn-hero-ph{aspect-ratio:auto;position:relative;min-height:240px}
+  #faithmission .msn-hero-ph img{position:absolute;inset:0}
+  #faithmission .msn-hero-in,#nbm .msn-hero-in{min-height:330px}
+}
