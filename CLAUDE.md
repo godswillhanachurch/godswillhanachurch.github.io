@@ -79,6 +79,7 @@
 - A. 설교 슬라이드: Google 드라이브 '주일 예배' 폴더(1A3LCyaemCZUITSGB6UGd8S3TvHUTHgpa)의 "YYYY년 M월 D일 주일예배 설교 피피티.pptx" 첫 장 → images/sermon-slide-YYYYMMDD.jpg (최근 2개만 유지).
 - B. 주보: 드라이브 '주보모음'(1EtINnXzQiCXV51iWvgbT79JITscg4jIg) / '2026년'(18YJYDZJQ3z-CUKhgkdVyp2931BWQM-kT)의 `하나되는주보_NNN_MMDD.pdf` → bulletin-NNN-1.jpg·-2.jpg, site.js `var B`(최근 4호), news.html 주보 표·보기, 바닥글, 소식 3개, events.json 갱신.
 - 주보는 출석·헌금 내역까지 원본 그대로 이미지로 공개합니다(사용자 허락).
+- 단, '(이름)'(교회 청소 안내 등)는 홈페이지에 올릴 때 항상 지웁니다(2026-11-21 사용자 요청). 주보 이미지는 `.github/scripts/bulletin_to_jpg.py 주보.pdf NNN .`(pymupdf 필요)로 만들면 이 이름과 앞 쉼표를 글자째 지우고 변환합니다. 지울 이름이 늘면 스크립트의 HIDE 목록에 추가.
 - 드라이브의 주소록 등 개인정보 파일은 열지 않습니다.
 
 ## 방문자 통계
