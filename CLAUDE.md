@@ -73,11 +73,11 @@
 - 날짜는 영상 제목의 "26. 11. 08. | 주일 예배" 형식에서, 제목·본문·설교자는 설명란의 `제목:`·`본문:`·`설교자:` 줄에서 읽습니다.
 - index.html의 `<!-- sermon:start -->` ~ `<!-- sermon:end -->` 사이만 바꿉니다. 이 표시는 지우지 마세요.
 - 숏츠(2026-11-12): 같은 스크립트의 update_shorts()가 채널 RSS의 /shorts/ 링크(안 되면 @Godwillhanachurch/shorts 화면)에서 최신 숏츠를 찾아 `<!-- shorts:start -->` ~ `<!-- shorts:end -->` 사이와 images/shorts-thumb.jpg를 바꿉니다. 매일 밤 12시(한국 시간, 0:01과 0:31 두 번)에도 돌며 '하루 하나씩' 바꿉니다: 새 숏츠가 올라왔으면 그것을, 아니면 날짜에 따라 채널 숏츠 목록을 돌아가며 보여 줌(기록: shorts-state.json). 홈 표기는 '[1분 메시지]'(사용자 요청). 홈의 1분 메시지 화면은 사진 대신 주일설교 슬라이드처럼 남색 바탕·금색 세로줄·흰 제목으로 그림(CSS .thumb-short, 사진 파일은 받아 두지만 숨김). 설교·숏츠 아래 줄은 subgrid로 두 칸의 제목 줄·버튼 줄을 맞춤. 휴대폰(760px 이하)에서는 1분 메시지 화면도 주일설교와 같은 가로형 16:9 크기이고, 두 '더보기' 버튼은 작게 해서 각 제목 오른쪽에 둠. 휴대폰에선 설교 본문·설교자 줄을 숨기고 두 제목을 버튼 옆 한 줄로(넘치면 site.js가 글자 크기를 줄임). 노트북은 제목 줄이 영상 위, 더보기 버튼(140px)이 영상 아래 가운데(2026-11-12).
-- 설교 카드 이미지: `images/sermon-slide-YYYYMMDD.jpg`(그 주 설교 슬라이드 첫 화면)가 있으면 그것을, 없으면 유튜브 썸네일(images/sermon-thumb.jpg)을 씁니다.
+- 설교 카드 이미지: `images/sermon-slide-YYYYMMDD.jpg`. 2026-11-23부터 드라이브 PPT를 쓰지 않고, 기존 슬라이드 모양(남색 바탕·금색 세로줄·날짜·제목·본문·'말씀선포 · 설교자')에 기본 정보만 바꿔 `.github/scripts/make_sermon_slide.py`로 만듭니다(사용자 요청). 영상이 올라오면 update_sermon.py가 설명란의 제목·본문·설교자로 자동 생성(없을 때만, 최근 2개 유지, Actions에서 fonts-noto-cjk 설치). 토요일 예약 작업은 주보 앞면(말씀봉독·말씀선포·제목)으로 미리 만들어 둡니다. 만들 수 없으면 유튜브 썸네일(images/sermon-thumb.jpg).
 
 ### 주보·설교 슬라이드 정기 반영 (Claude 예약 작업)
 - 예약 작업 "주보 홈페이지 반영" (trig_01EaFnb7fa2zKVsmqZCeNerD) — 토·일 오전 7:51, 오후 7:51(한국 시간).
-- A. 설교 슬라이드: Google 드라이브 '주일 예배' 폴더(1A3LCyaemCZUITSGB6UGd8S3TvHUTHgpa)의 "YYYY년 M월 D일 주일예배 설교 피피티.pptx" 첫 장 → images/sermon-slide-YYYYMMDD.jpg (최근 2개만 유지).
+- A. 설교 카드 그림: 드라이브에서 찾지 않고(2026-11-23 사용자 요청) 주보 앞면의 제목·본문·설교자로 make_sermon_slide.py를 돌려 images/sermon-slide-YYYYMMDD.jpg를 만듦 (최근 2개만 유지).
 - B. 주보: 드라이브 '주보모음'(1EtINnXzQiCXV51iWvgbT79JITscg4jIg) / '2026년'(18YJYDZJQ3z-CUKhgkdVyp2931BWQM-kT)의 `하나되는주보_NNN_MMDD.pdf` → bulletin-NNN-1.jpg·-2.jpg, site.js `var B`(최근 4호), news.html 주보 표·보기, 바닥글, 소식 3개, events.json 갱신.
 - 주보는 출석·헌금 내역까지 원본 그대로 이미지로 공개합니다(사용자 허락).
 - 단, 사용자가 정한 특정 이름(교회 청소 안내 등)은 홈페이지에 올릴 때 항상 지웁니다(2026-11-21). 이름은 공개 저장소에 적지 않고 예약 작업 "주보 홈페이지 반영" 안내에만 적혀 있습니다. 주보 이미지는 `HIDE='이름' python3 .github/scripts/bulletin_to_jpg.py 주보.pdf NNN .`(pymupdf 필요)로 만들면 그 이름과 앞 쉼표를 글자째 지우고 변환합니다.

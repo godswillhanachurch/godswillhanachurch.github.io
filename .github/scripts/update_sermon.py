@@ -115,9 +115,20 @@ def field(desc, *labels):
     return ""
 
 
-def thumb_src(day, vid):
-    """설교 슬라이드 첫 화면(images/sermon-slide-YYYYMMDD.jpg)이 있으면 그것을, 없으면 유튜브 썸네일을 씁니다."""
+def thumb_src(day, vid, title="", passage="", preacher=""):
+    """설교 카드 그림(images/sermon-slide-YYYYMMDD.jpg)을 씁니다. 없으면 기존 슬라이드 모양 그대로
+    제목·본문·설교자·날짜만 바꿔 새로 만들고(make_sermon_slide.py), 만들 수 없으면 유튜브 썸네일을 씁니다."""
     slide = f"images/sermon-slide-{day:%Y%m%d}.jpg"
+    if not os.path.exists(os.path.join(ROOT, slide)) and title and title != "주일예배 말씀" \
+            and not os.environ.get("PREVIEW"):
+        try:
+            sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+            import make_sermon_slide as ms
+            ms.make(day, title, passage, preacher)
+            ms.prune()
+            print("설교 카드 그림을 만듦:", slide)
+        except BaseException as ex:  # 글꼴·pillow가 없으면 썸네일로
+            print("설교 카드 그림을 만들지 못함:", ex)
     if os.path.exists(os.path.join(ROOT, slide)):
         return slide
     return f"images/sermon-thumb.jpg?v={vid}"
@@ -145,7 +156,7 @@ def render(v):
     url = f"https://www.youtube.com/watch?v={v['id']}"
     return (
         f'          <a class="thumb" href="{url}" target="_blank" rel="noopener" aria-label="{day.month}월 {day.day}일 주일예배 영상 보기 (유튜브)">\n'
-        f'            <img class="thumb-img" src="{thumb_src(day, v["id"])}" alt="" loading="lazy" onload="this.parentNode.classList.add(\'has-img\')" onerror="this.remove()">\n'
+        f'            <img class="thumb-img" src="{thumb_src(day, v["id"], title, passage, preacher)}" alt="" loading="lazy" onload="this.parentNode.classList.add(\'has-img\')" onerror="this.remove()">\n'
         f'            <span class="thumb-date">{day.year}. {day.month}. {day.day} 주일예배</span>\n'
         f'            <strong>{e(title)}</strong>\n'
         + (f'            <span class="thumb-meta">{e(meta_short)}</span>\n' if meta_short else "")

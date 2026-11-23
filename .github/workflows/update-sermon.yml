@@ -25,6 +25,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: 설교 카드 그림용 글꼴·pillow 준비
+        run: |
+          pip install --quiet pillow || true
+          fc-list | grep -q "Noto Sans CJK" || (sudo apt-get install -y --no-install-recommends fonts-noto-cjk || (sudo apt-get update -q && sudo apt-get install -y --no-install-recommends fonts-noto-cjk)) || true
       - name: 최신 주일예배 영상 확인
         env:
           YT_CHANNEL_ID: ${{ vars.YT_CHANNEL_ID }}
