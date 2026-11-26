@@ -176,6 +176,27 @@
       "title": "(유아)세례·입교식",
       "note": "성탄예배 중",
       "kind": "worship"
+    },
+    {
+      "date": "2027-01-09",
+      "time": "14:00",
+      "title": "선교학교 (1주차)",
+      "note": "2027 FaithMission 케냐 · 오후 2시~5시",
+      "kind": "mission"
+    },
+    {
+      "date": "2027-01-16",
+      "time": "14:00",
+      "title": "선교학교 (2주차)",
+      "note": "2027 FaithMission 케냐 · 오후 2시~5시",
+      "kind": "mission"
+    },
+    {
+      "date": "2027-01-19",
+      "end": "2027-01-29",
+      "title": "2027 FaithMission 케냐",
+      "note": "1월 19일(화)~29일(금) · 마사이 마을 외",
+      "kind": "mission"
     }
   ],
   "skip": [

@@ -2031,3 +2031,13 @@ i.k-season{background:var(--k-season)!important}.cal-bar.k-season{background:var
   #faithmission .msn-hero-ph img{position:absolute;inset:0}
   #faithmission .msn-hero-in,#nbm .msn-hero-in{min-height:330px}
 }
+/* 달력 '선교' 종류 (2026-11-26) */
+.cal,.cal-wrap{--k-mission:#2fa4e0}
+i.k-mission{background:var(--k-mission,#2fa4e0)!important}.cal-bar.k-mission{background:var(--k-mission,#2fa4e0)!important}
+/* 해외선교 아웃리치 소개: 다음 아웃리치 일정 */
+.outreach-next{margin:.1rem 0 .5rem!important;color:#8a7140}
+.outreach-next b{font-size:1rem;letter-spacing:.01em}
+.outreach-dl{margin:0 0 1rem;display:grid;gap:.35rem}
+.outreach-dl>div{display:grid;grid-template-columns:4.6em minmax(0,1fr);gap:.5rem;font-size:var(--t-sm)}
+.outreach-dl dt{font-weight:700;color:var(--ink)}
+.outreach-dl dd{margin:0;color:var(--ink)}
