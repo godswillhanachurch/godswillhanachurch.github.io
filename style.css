@@ -2041,3 +2041,4 @@ i.k-mission{background:var(--k-mission,#2fa4e0)!important}.cal-bar.k-mission{bac
 .outreach-dl>div{display:grid;grid-template-columns:4.6em minmax(0,1fr);gap:.5rem;font-size:var(--t-sm)}
 .outreach-dl dt{font-weight:700;color:var(--ink)}
 .outreach-dl dd{margin:0;color:var(--ink)}
+.outreach-sub{display:block;font-size:13px;color:var(--muted);margin-top:.1rem}
