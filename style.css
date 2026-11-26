@@ -2042,3 +2042,12 @@ i.k-mission{background:var(--k-mission,#2fa4e0)!important}.cal-bar.k-mission{bac
 .outreach-dl dt{font-weight:700;color:var(--ink)}
 .outreach-dl dd{margin:0;color:var(--ink)}
 .outreach-sub{display:block;font-size:13px;color:var(--muted);margin-top:.1rem}
+/* 달력 안내 띠 오른쪽 신청서 버튼(events.json의 link·linkText, 2026-11-26) */
+.cal-band:has(.cal-band-btn){position:relative;padding-right:150px}
+.cal-band-btn{position:absolute;right:1rem;top:50%;transform:translateY(-50%);display:inline-flex;align-items:center;height:36px;padding:0 16px;border-radius:999px;background:var(--pine);color:#fff!important;font-size:var(--t-sm);font-weight:700;text-decoration:none;white-space:nowrap}
+.cal-band-btn::after{content:" →";margin-left:.25rem}
+.cal-band-btn:hover{filter:brightness(1.12)}
+@media (max-width:640px){
+  .cal-band:has(.cal-band-btn){padding-right:1rem}
+  .cal-band-btn{position:static;transform:none;margin-top:.4rem;height:34px}
+}

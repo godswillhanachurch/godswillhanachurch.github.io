@@ -64,7 +64,8 @@
       var b = parse(e.end), left = Math.round((b - today) / 864e5);
       return '<p class="cal-band"><span class="cal-band-tag">'+(/신청/.test(e.title)?'신청 중':'진행 중')+'</span>'
         + '<b>'+esc(e.title)+'</b><span class="cal-band-when">'+(b.getMonth()+1)+'월 '+b.getDate()+'일까지 <em>'+(left===0?'오늘 마감':'D-'+left)+'</em></span>'
-        + (e.note?'<small>'+esc(e.note)+'</small>':'')+'</p>';
+        + (e.note?'<small>'+esc(e.note)+'</small>':'')
+        + (e.link?'<a class="cal-band-btn" href="'+esc(e.link)+'"'+(/^https?:/.test(e.link)?' target="_blank" rel="noopener"':'')+'>'+esc(e.linkText||'신청서 작성')+'</a>':'')+'</p>';
     }).join('');
     h += '<div class="cal-head"><button type="button" class="cal-nav" data-go="-1" aria-label="이전 달"'+(atMin?' disabled':'')+'>‹</button>'
       + '<strong class="cal-month">'+y+'년 '+(m+1)+'월</strong>'
