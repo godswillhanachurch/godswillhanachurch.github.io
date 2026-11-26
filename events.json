@@ -197,6 +197,14 @@
       "title": "2027 FaithMission 케냐",
       "note": "1월 19일(화)~29일(금) · 마사이 마을 외",
       "kind": "mission"
+    },
+    {
+      "date": "2026-11-26",
+      "end": "2026-12-31",
+      "title": "2027 FaithMission 케냐 신청",
+      "note": "12월 31일까지 · 해외선교 페이지의 '아웃리치 신청서'로 신청",
+      "kind": "special",
+      "pin": true
     }
   ],
   "skip": [
